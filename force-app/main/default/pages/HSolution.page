@@ -1,0 +1,2898 @@
+<apex:page controller="PageController" showHeader="false" sidebar="false" docType="html-5.0">
+    <head>
+        <apex:stylesheet value="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
+        <apex:includeScript value="https://code.jquery.com/jquery-1.9.1.js"/>
+        <apex:includeScript value="https://code.jquery.com/ui/1.10.3/jquery-ui.js"/>
+        <script type="text/javascript">
+            j$ = jQuery.noConflict();
+            j$(document).ready(function () {
+                var label = j$("label[id$='afr_language']").text();
+
+                j$("a[class*='ink']").each(function () {
+                    var link_href = j$(this).attr('href');
+                    var pattern = new RegExp(/[#]/);
+
+                    if (pattern.test(link_href)) {
+                        link_href = link_href.replace('#', '?lang=' + label + '#');
+                    } else {
+                        link_href = link_href + '?lang=' + label;
+                    }
+
+                    j$(this).attr('href', link_href);
+                });
+            });
+        </script>
+    </head>
+    <apex:outputLabel style="display:none;" id="afr_language" value="{!language}"/>
+    <apex:outputPanel rendered="{!language = 'en'}">
+        <div id="header" style="height:628px;">
+            <div>
+                <meta charset="utf-8"/>
+                <title>AFR Solutions</title>
+                <link rel="stylesheet" type="text/css"
+                      href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRmenu.css?v=306"/>
+                <link rel="stylesheet" type="text/css"
+                      href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRlogo.css?v=260"/>
+                <link rel="stylesheet" type="text/css"
+                      href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbody.css?v=1812"/>
+                <link rel="shortcut icon" href="https://afrs-developer-edition.ap6.force.com/afr/s/logoicon.ico?v=2"/>
+                <style type="text/css">
+                    #textcenter {
+                        text-align: center;
+                        color: white;
+                        font-weight: bold;
+                        background-color: gray;
+                    }
+
+                    @import url(//fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+                </style>
+                <style>
+                    /* ------------------------------------ image style --------------------------------------------*/
+
+                    .payZone img:hover {
+                        /* 위로 올리기
+                        background:#000;
+                        -moz-transform: translate3d(0, -100%, 0); /* position elements past bottom of layout */
+                        -webkit-transform: translate3d(0, -20%, 0);
+                        transform: translate3d(0, -20%, 0);
+                        -moz-transition: all 0.5s;
+                        -webkit-transition: all 0.5s;
+                        -ms-transition: all 0.5s;
+                        transition: all 0.5s;
+                    }
+                </style>
+                <!--------------------------------------- logo body ------------------------------------>
+                <div id="logo">
+                    <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution?lang=en"> <img
+                            src="https://afrs-developer-edition.ap6.force.com/afr/s/afrlogo.jpg?v=1"
+                            style="width:300px; height:100px;"/></a>
+                </div>
+                <div class="moveleft">
+                    <div class="payZone" style="">
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution?lang=vi"><img
+                                src="https://afrs-developer-edition.ap6.force.com/afr/s/Vietnam.png?v=1"
+                                style="width:30px"/></a>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution?lang=en"><img
+                                src="https://afrs-developer-edition.ap6.force.com/afr/s/America.png?v=1"
+                                style="width:30px"/></a>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution?lang=ja"><img
+                                src="https://afrs-developer-edition.ap6.force.com/afr/s/Japan.png?v=1"
+                                style="width:30px"/></a>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution?lang=ko"><img
+                                src="https://afrs-developer-edition.ap6.force.com/afr/s/Korea.png?v=1"
+                                style="width:30px"/></a>
+                    </div>
+                </div>
+                <!--------------------------------------- slide menu body ------------------------------------>
+                <div id="topMenu">
+                    <ul>
+                        <li class="topMenuLi"><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution" class="menuLink">Solution</a>
+                            <ul class="submenu">
+                                <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFor"
+                                       class="submenuLink longLink">Cloud Forwarding(CloFor)</a></li>
+                                <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloTra"
+                                       class="submenuLink longLink">Cloud Tracking(CloTra)</a></li>
+                                <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloSyn"
+                                       class="submenuLink longLink">Cloud Syn(CloSyn)</a></li>
+                                <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFil"
+                                       class="submenuLink longLink">AFR Filling(CloFil)</a></li>
+                            </ul>
+                        </li>
+                        <li>|</li>
+                        <li class="topMenuLi"><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService"
+                                                 class="menuLink">Service</a>
+                            <ul class="submenu">
+                                <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#DataInputService"
+                                       class="submenuLink longLink">Data Input Service</a></li>
+                                <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#Development SF Service"
+                                       class="submenuLink longLink">Salesforce Implementation Consulting</a></li>
+                            </ul>
+                        </li>
+                        <li>|</li>
+                        <li class="topMenuLi"><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice" class="menuLink">Price</a>
+                            <ul class="submenu">
+                                <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Solution List Price"
+                                       class="submenuLink longLink">Solution List Price</a></li>
+                                <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Service List Price"
+                                       class="submenuLink longLink">Service List Price</a></li>
+                                <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#How to pay"
+                                       class="submenuLink longLink">How to pay?</a></li>
+                                <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Legal information"
+                                       class="submenuLink longLink">Legal information</a></li>
+                            </ul>
+                        </li>
+                        <li>|</li>
+                        <li class="topMenuLi"><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength" class="menuLink">Strength</a>
+                            <ul class="submenu">
+                                <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cost Competitive"
+                                       class="submenuLink longLink">Cost Competitive</a></li>
+                                <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Speed and Flexibility"
+                                       class="submenuLink longLink">Speed and Flexibility</a></li>
+                                <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Accessibility"
+                                       class="submenuLink longLink">Accessibility<br/>/Security/Backup</a></li>
+                                <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Real Time Performance"
+                                       class="submenuLink longLink">Real Time Performance</a></li>
+                                <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cargo Process"
+                                       class="submenuLink longLink">Cargo Process</a></li>
+                            </ul>
+                        </li>
+                        <li>|</li>
+                        <li class="topMenuLi"><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown"
+                                                 class="menuLink">Trial/Download</a>
+                            <ul class="submenu">
+                                <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Trial"
+                                       class="submenuLink longLink">Trial</a></li>
+                                <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Appexchange" class="submenuLink longLink">AppExchange</a>
+                                </li>
+                                <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Data download"
+                                       class="submenuLink longLink">Data download</a></li>
+                            </ul>
+                        </li>
+                        <li>|</li>
+                        <li class="topMenuLi"><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs" class="menuLink">Contact us</a>
+                            <ul class="submenu">
+                                <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Customer Support"
+                                       class="submenuLink longLink">Customer Support</a></li>
+                                <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Partner Support"
+                                       class="submenuLink longLink">Partner Support</a></li>
+                                <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Solutions"
+                                       class="submenuLink longLink">Inquiry for Solutions</a></li>
+                                <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Hearing Sheet"
+                                       class="submenuLink longLink">Hearing Sheet</a></li>
+                                <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#FAQ &amp; Our Solutions"
+                                       class="submenuLink longLink">FAQ &amp; Our Solutions</a></li>
+                                <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Technical Issue"
+                                       class="submenuLink longLink">Inquiry for Technical Issue</a></li>
+                                <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Server Status"
+                                       class="submenuLink longLink">Server Status</a></li>
+                            </ul>
+                        </li>
+                        <li></li>
+                        <li>|</li>
+                        <li class="topMenuLi"><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs" class="menuLink">About Us</a>
+                            <ul class="submenu">
+                                <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Greetings" class="submenuLink longLink">Greetings</a>
+                                </li>
+                                <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Our team" class="submenuLink longLink">Our
+                                    team</a></li>
+                                <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Japan Headquater"
+                                       class="submenuLink longLink">Japan Headquater</a></li>
+                                <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Vietnam Office"
+                                       class="submenuLink longLink">Vietnam Office</a></li>
+                                <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Korea Office" class="submenuLink longLink">Korea
+                                    Office</a></li>
+                                <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Career in AFR" class="submenuLink longLink">Career
+                                    in AFR</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mainimage"><img src="https://afrs-developer-edition.ap6.force.com/afr/s/mainpage.jpg?v=1" height="400px;"
+                                            width="1400px;"/></div>
+            </div>
+        </div>
+        <div style="overflow:hidden;height:6400px;">
+            <div>
+                <link rel="stylesheet" type="text/css"
+                      href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRtitle.css?v=174"/>
+                <link rel="stylesheet" type="text/css"
+                      href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbody.css?v=1812"/>
+                <link rel="stylesheet" type="text/css"
+                      href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3line.css?v=101"/>
+                <link rel="stylesheet" type="text/css"
+                      href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3linecontent.css?v=943"/>
+                <link rel="stylesheet" type="text/css"
+                      href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3linetitle.css?v=815"/>
+                <link rel="stylesheet" type="text/css"
+                      href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRline.css?v=220"/>
+                <style type="text/css">
+                    @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+                    @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+                    #orangeline {
+                        margin: 0.5px;
+                        text-align: center;
+                    }
+
+                    body {
+                        overflow-x: hidden
+                    }
+                </style>
+                <div class="grayline"></div>
+                <!---------------------- Cloud forwarding solutions start ------------------------------------>
+                <!-------- title --------------->
+                <div class="wrap"><br/> <a name="CloFor">CloFor(Cloud Forwarding Solutions)</a> <br/></div>
+                <div class="orangeline"></div>
+                <!-------- body ---------------><br/><br/>
+
+                <div class="bodytitle"><img
+                        src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1" width="12px"/> <a
+                        name="Greetings">Greetings</a></div>
+                <div class="bodybody"><br/> Welcome to the website of AFR Solutions Co., LTD.!<br/> The role of freight
+                    forwarding(NVOCC, Consolidator, International Logistics, etc.) is more important than ever before.
+                    <br/> In today's fast-paced and global network environment, faster deliveries and more efficient
+                    services are demanded by people at lower prices.<br/> Forwarding industry is getting bigger and
+                    becoming more competitive as the number of forwarders entering the market increases. <br/> Our
+                    mission is to provide our cloud-forwarding solution to freight forwarders who want to improve their
+                    service, efficiency, and performance. <br/> ・Cloud forwarding solution enables you to keep track of
+                    the entire freight forwarding process and document operation. <br/> ・One-stop-solution for
+                    forwarding and customer management with the Salesforce CRM Basic function. <br/> ・One time Input
+                    only. ・Print-out function in various languages and templates. <br/></div>
+                <br/>
+                <!---------------------- Application Concepts 1st table start ------------------------------------>
+                <!------------------------------- Application Concepts's 1st line start----------------------------------->
+                <!-------- Application Concepts's first line image--------------->
+                <div class="bodytitle"><img
+                        src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1" width="12px"/> <a
+                        name="Application Concepts">Application Functions</a></div>
+                <div class="firstshot"><img src="https://afrs-developer-edition.ap6.force.com/afr/s/forwarding.jpg?v=1"
+                                            style="margin-right:80px; width:300px; height:200px;"/> <img
+                        src="https://afrs-developer-edition.ap6.force.com/afr/s/consol.jpg?v=1"
+                        style="margin-right:80px; width:300px; height:200px;"/> <img
+                        src="https://afrs-developer-edition.ap6.force.com/afr/s/invoice.jpg?v=1"
+                        style="width:300px; height:200px;"/></div>
+                <br/>
+                <!-------- Application Concepts's 1st line title--------------->
+                <div class="threelinetitlediv">
+                    <div class="threelinetitle"> FORWARDING DOCUMENT MANAGEMENT</div>
+                    <div class="threelinetitle"> CONSOLIDATION/GROUPAGE SHIPMENT MANAGEMENT</div>
+                    <div class="threelinetitle"> INVOICE AND RECEIVABLE</div>
+                </div>
+                <!-------- Application Concepts's 1st line content--------------->
+                <div class="threelinecontent" style="margin-bottom:30px;">
+                    <div class="threelinebody"> ONE-TIME INPUT APPLICATION TO HELP YOU MANAGER YOUR DOCUMENT TEAM
+                        EFFICIENTLY<br/> ・HOUSE BOOKING INFORMATION<br/> ・SHIPMENT STATUS UPDATE<br/> ・PROFIT ANALYSIS
+                        PER HOUSE B/L<br/> ・TRIANGLE TRADE/TRANSIT DETAIL <br/> ・CY/CFS WAREHOUSE DETAIL<br/> ・LOCAL
+                        LANGUAGE DOCUMENT ISSUE AND PRINT-OUT <br/> ・IMPORT DOCUMENT:A/N,D/O,DEBIT NOTE,CREDIT
+                        NOTE,INVOICE<br/> ・EXPORT DOCUMENT:S/I, FREIGHT MEMO,INVOICE,DRIFT B/L,ORIGINAL
+                        B/L,WAYBILL,DEBIT NOTE,CREDIT NOTE<br/> <br/></div>
+                    <div class="threelinebody"> APPLICATION TO MANAGE SEPARATE HOUSE B/L AND MASTER B/L AS PART OF
+                        CONSOLIDATION AND GROUPAGE SHIPMENT<br/> ・MASTER BOOKING INFORMATION<br/> ・AUTOMATIC DATA COPY
+                        TO HOUSE B/L SHIPMENT<br/> ・AUTOMATIC COST ALLOCATION FROM MOUSE B/L COST TO HOUSE B/L
+                        SHIPMENT<br/> ・PROFIT ANALYSIS PER MASTER B/L(CONSOLIDATION SHIPMENT OR GROUPAGE SHIPMENT)<br/>
+                        ・DOCUMENT PRINTOUT:CONTAINER LOAD PLAN(CLP) ISSUE,DEVANNING REQUEST FORM,ETC<br/> <br/></div>
+                    <div class="threelinebody"> APPLICATION TO GENERATE MULTI-LANGUAGE INVOICE TO CUSTOMER,PARTNERS,AND
+                        ANY PARTY<br/> ・MULTI-LANGUAGE INVOICE<br/> ・DEBIT-CREDIT STATEMENT<br/> ・TAX MANAGEMENT<br/>
+                        ・RECEIVABLE BALANCE MANAGEMENT<br/> ・PAYABLE BALANCE MANAGEMENT<br/> <br/></div>
+                </div>
+                <!------------------------------- Application Concepts's 1st line end----------------------------------->
+                <!------------------------------- Application Concepts's 2nd line start----------------------------------->
+                <!-------- Application Concepts's first line image--------------->
+                <div class="firstshot"><img src="https://afrs-developer-edition.ap6.force.com/afr/s/costdown.jpg?v=1"
+                                            style="margin-right:80px; width:300px; height:200px;"/> <img
+                        src="https://afrs-developer-edition.ap6.force.com/afr/s/CC.png?v=3"
+                        style="margin-right:80px; width:300px; height:200px;"/> <img
+                        src="https://afrs-developer-edition.ap6.force.com/afr/s/delivery.jpg?v=1"
+                        style="width:300px; height:200px;"/></div>
+                <!-------- Application Concepts's 2nd line title--------------->
+                <div class="threelinetitlediv">
+                    <div class="threelinetitle"> COSTS AND PROFIT/LOSS MANAGEMENT<br/></div>
+                    <div class="threelinetitle"> CUSTOMS CLEARANCE MANAGEMENT<br/></div>
+                    <div class="threelinetitle"> PICKUP &amp; DELIVERY MANAGEMENT<br/></div>
+                </div>
+                <!-------- Application Concepts's 2nd line content--------------->
+                <div class="threelinecontent">
+                    <div class="threelinebody"> CALCULATE THE PROFIT FOR THE SHIPMENT AND NOTIFIY OPERATION TEAM WHEN
+                        LOSSES OCCUR<br/> ・PROFIT ANALYSIS PER HOUSE B/L<br/> ・PROFIT ANALYSIS PER MASTER B/L FOR
+                        CONSOLIDATION OR GROUPAGE SHIPMENT<br/> ・AUTOMATIC ALERT WHEN NEGATIVE NET INCOME FROM
+                        SHIPMENT<br/></div>
+                    <div class="threelinebody"> SECTION IN FORWARDING DOCUMENT MANAGEMENT TO MANAGE CUSTOMS CLEARANCE
+                        INFORMATION<br/> ・CUSTOMS CLEARANCE APPLICATION DETAIL<br/> ・CUSTOMS CLEARANCE PERMISSION DETAIL<br/>
+                        ・CUSTOMS CLEARANCE BROKER DETAIL<br/> ・DOCUMENT PRINT-OUT: APPLICATION REQUEST ORDER FORM TO
+                        CUSTOMS CLEARANCE AGENT<br/></div>
+                    <div class="threelinebody"> SECTION IN FORWARDING DOCUMENT MANAGEMENT TO MANAGE DELIVERY INFORMATION<br/>
+                        ・TRUCKING/CONTAINER DRAYAGE VENDOR DETAIL<br/> ・PICKUP AN DESTINATION DETAIL<br/> ・TRUCK
+                        DETAIL<br/> ・DOCUMENT PRINT-OUT:REQUEST ORDER FORM TO TRUCKING AGENT<br/></div>
+                </div>
+                <!------------------------------- Application Concepts's 2nd line end----------------------------------->
+                <!------------------------------- Application Concepts's 3rd line start----------------------------------->
+                <!--------  Application Concepts's 3rd line image--------------->
+                <div class="firstshot">
+                    <img src="https://afrs-developer-edition.ap6.force.com/afr/s/account.jpg?v=1"
+                         style="margin-right:80px; width:300px; height:200px;"/>
+                    <img src="https://afrs-developer-edition.ap6.force.com/afr/s/docshare.jpg?v=2"
+                         style="margin-right:80px; width:300px; height:200px;"/>
+                    <img src="https://afrs-developer-edition.ap6.force.com/afr/s/servicemaster.jpg?v=2"
+                         style="width:300px; height:200px;"/></div>
+                <!--------  Application Concepts's 3rd line title--------------->
+                <div class="threelinetitlediv">
+                    <div class="threelinetitle"> ACCOUNTING MANAGEMENT<br/></div>
+                    <div class="threelinetitle"> WEB-BASED DOCUMENT SHARING<br/></div>
+                    <div class="threelinetitle"> SERVICE MASTER MANAGEMENT<br/></div>
+                </div>
+                <!--------  Application Concepts's 3rd line content--------------->
+                <div class="threelinecontent">
+                    <div class="threelinebody"> ONE TIME MANUAL PROCESSING TO UPDATE PAYMENT TO SYNCRONIZE WITH
+                        BANK　ACCOUNTS<br/> ・PAYMENT RECEIVED MANAGE FROM CUSTOMER（DATE, AMOUNT, REMITTER, TRANSFER
+                        ACCOUNT, ETC.) <br/> ・PAYMENT REMITTED MANAGE TO VENDOR（DATE, AMOUNT, REMITTANCE DATE, RECEIVER
+                        ACCOUNT, ETC.)<br/> ・REPORT DOWNLOAD FOR DATA UPLOAD TO ACCOUNTING SYSTEM <br/></div>
+                    <div class="threelinebody"> APPLICATION TO CONVERT ANY DOCUMENTS IN YOUR COMPANY INTO WEB-BASED
+                        VERSION FOR ONLINE VIEWING<br/> ・SEND ENCRYPTED URL TO RECIPIENTS INSTEAD OF EMAIL ATTACHMENT,
+                        SO THAT THEY CAN TRACK THE NUMBER OF PAGE VIEWS AND DOWNLOADS<br/></div>
+                    <div class="threelinebody"> APPLICATION TO MANAGE PREDEFINED LIST OF SERVICES FOR INVOICE
+                        PREPARATION<br/> ・VENDOR DETAIL<br/> ・BUYING(COST) DETAIL <br/> ・SELLING DETAIL <br/> ・SERVICE
+                        CATEGORY DETAIL <br/> ・TAX <br/></div>
+                </div>
+                <!-------------------------------  Application Concepts's 3rd line end----------------------------------->
+                <!-------------------------------  Application Concepts's 4th line start----------------------------------->
+                <!-------- Application Concepts's 4th line image--------------->
+                <div class="firstshot"><img src="https://afrs-developer-edition.ap6.force.com/afr/s/smartphone.jpg?v=1"
+                                            style="margin-right:80px; width:300px; height:200px;"/> <img
+                        src="https://afrs-developer-edition.ap6.force.com/afr/s/exchange.jpg?v=2"
+                        style="margin-right:80px; width:300px; height:200px;"/> <img
+                        src="https://afrs-developer-edition.ap6.force.com/afr/s/quotation.jpg?v=1"
+                        style="width:300px; height:200px;"/></div>
+                <!-------- Application Concepts's 4th line title--------------->
+                <div class="threelinetitlediv">
+                    <div class="threelinetitle"> SMARTPHONE/TABLET ACCESSBILITY<br/></div>
+                    <div class="threelinetitle"> EXCHANGE MANAGEMENT<br/></div>
+                    <div class="threelinetitle"> QUOTATION MANAGEMENT<br/></div>
+                </div>
+                <!-------- Application Concepts's 4th line content--------------->
+                <div class="threelinecontent">
+                    <div class="threelinebody"> BY INSTALLING "Salesforce1" APPLICATION FROM Apple App Store/Google Play
+                        Store, YOU CAN HAVE ACCESS TO CLOFOR TO SEE ALL THE DATA AVAILABLE<br/></div>
+                    <div class="threelinebody"> STANDARD EXCHANGE RATE TOOL IS TO MANAGE EXCHANGE RATE IN A PREDEFINED
+                        PERIOD OF TIME. <br/> NON-STANDARD EXCHANGE IS PIN-POINT EXCHANGE RATE FOR DEDICATED CUSTOMER OR
+                        PARTNER. <br/> ・EXCHANGE RATE VALIDITY AND PERIOD DETAIL <br/> ・AUTOMATICALLY SNYCHRONIZING THE
+                        VALID EXCHANGE RATE TO HOUSE B/L AND MASTER B/L SHIPMENT.<br/></div>
+                    <div class="threelinebody"> DOCUMENT QUOATIONS AND ISSUE TO CUSTOMERS OR PARTNERS<br/> ・PROFIT
+                        ANALYSIS <br/> ・MULTI-LANGUAGE TEMPLATE WITH MULTI-CURRENCY <br/></div>
+                </div>
+                <!------------------------------- Application Concepts's 4th line end----------------------------------->
+                <!---------------------- Application Concepts end ------------------------------------>
+                <div class="grayline"></div>
+                <!-------- CloSync--------------->
+                <div class="wrap"><br/> <a name="CloSyn">CloSyn(Cloud Syn)</a> <br/></div>
+                <div class="orangeline"></div>
+                <br/><br/>
+
+                <div class="bodytitle"><img
+                        src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1" width="12px"/>
+                    What is CloSyn?<br/></div>
+                <div class="bodybody"><br/> CloSyn is the data synchronization technology to help you share the data
+                    with your head-quarter/partner in destination port.<br/> If you use CloSyn, you are no longer
+                    required to document a pre-alert to share booking information with your headquarter/partner in
+                    destination port.<br/> Just imagine you are a branch or a headquarter in departure port. You could
+                    push data by just clicking to your headquarter.<br/> your head-quarther in destination port no
+                    longer need data entry again and it brings a lot of benefits; cost-saving, prevent data entry human
+                    error, speedy. To activate this CloSyn, either your destination forwarder use our CloFor or allow us
+                    to develop interface based on their system requirement.<br/> <br/><br/></div>
+                <br/>
+
+                <div class="firstshot"><img src="https://afrs-developer-edition.ap6.force.com/afr/s/datasync.jpg?v=1"
+                                            style="margin-right:80px; width:300px; height:200px;"/> <img
+                        src="https://afrs-developer-edition.ap6.force.com/afr/s/datasync2.jpg?v=1"
+                        style="margin-right:80px; width:300px; height:200px;"/> <img
+                        src="https://afrs-developer-edition.ap6.force.com/afr/s/datasync3.jpg?v=1"
+                        style="width:300px; height:200px;"/></div>
+                <!-------- CloSync 1st line title--------------->
+                <div class="threelinetitlediv">
+                    <div class="threelinetitle"> Booking Data Synchronization Between CloFor and CloFor<br/></div>
+                    <div class="threelinetitle"> Debit/Credit Data Synchronization Between CloFor and CloFor<br/></div>
+                    <div class="threelinetitle"> Booking Data Synchronization Between CloFor and other Forwarding System<br/>
+                    </div>
+                </div>
+                <!-------- CloSync 1st line content--------------->
+                <div class="threelinecontent">
+                    <div class="threelinebody"> After entering booking data and partner on CloFor, easy-to-use CloSyn
+                        automatically backs up the information by clicking the Data Synchronization button.<br/>
+                        Pre-alert data will be push to your destination CloFor for your head-quartner or your oversea
+                        agent partner. <br/></div>
+                    <div class="threelinebody"> After debit data entry and define the partner to your CloFor, click the
+                        Data Syncronization button.<br/> Debit data will be push to your destination CloFor for your
+                        head-quartner or your oversea agent partner.<br/></div>
+                    <div class="threelinebody"> If your headquarter or oversea partner is already in use of other
+                        forwarding system, we can manage an interface to do data synchronization<br/></div>
+                </div>
+                <!-------------------------------CloSync 1st line end----------------------------------->
+                <!------------------------------- CloSync end----------------------------------->
+                <div class="grayline"></div>
+                <!----------------------Homepage & Cargo Tracking Service start ------------------------------------>
+                <!------------------------------- CloTra(Cloud Cargo Tracking Service) 1st line start----------------------------------->
+                <!-------- CloTra(Cloud Cargo Tracking Service) 1st line image--------------->
+                <div class="wrap"><br/> <a name="CloTra">CloTra(Cloud Cargo Tracking Service)</a> <br/></div>
+                <div class="orangeline"></div>
+                <br/><br/>
+
+                <div class="bodytitle">
+                    <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1" width="12px"/>
+                    What is CloTra?
+                </div>
+                <div class="bodybody"><br/> CloTra stands for Cloud Cargo Tracking System. CloTra provides your clients
+                    or oversea partners with Real-Time Cargo Tracking informationan via Email and your homepage.<br/>
+                    CloTra is an optional services; it requires an additional Services Contract besides CloFor.<br/>
+                    CloTra consists of four parts.<br/> ・Email Cargo Tracking: CloTra sends email to your clients and
+                    partners.<br/> ・Cargo Tracking Website: Cargo status is updated on the website.<br/> ・Customer
+                    Portal(Require Service Contract with us and Service Contract with Salesforce)<br/> ・Partner
+                    Portal(Require Service Contract with us and Service Contract with Salesforce)<br/> <br/></div>
+                <div class="firstshot">
+                    <img src="https://afrs-developer-edition.ap6.force.com/afr/s/realtime.jpg?v=2"
+                         style="margin-right:80px; width:300px; height:200px;"/>
+                    <img src="https://afrs-developer-edition.ap6.force.com/afr/s/tracking.jpg?v=2"
+                         style="margin-right:80px; width:300px; height:200px;"/>
+                    <img src="https://afrs-developer-edition.ap6.force.com/afr/s/customerportal.png?v=2"
+                         style="width:300px; height:200px;"/></div>
+                <!-------- CloTra(Cloud Cargo Tracking Service) 1st line title--------------->
+                <div class="threelinetitlediv">
+                    <div class="threelinetitle"> Email Cargo Tracking<br/></div>
+                    <div class="threelinetitle"> Cargo Tracking Website<br/></div>
+                    <div class="threelinetitle"> Customer Portal or Partner Portal<br/></div>
+                </div>
+                <!-------- CloTra(Cloud Cargo Tracking Service) 1st line content--------------->
+                <div class="threelinecontent">
+                    <div class="threelinebody"> Cargo status is sent via email<br/> ・Standardized email templates(Select
+                        Local Language Template for Domestic Clients, English Template for Oversea Partners)<br/>
+                        ・Real-Time Automatic Notification for status update(Status Changes systematically trigger Status
+                        Email)<br/></div>
+                    <div class="threelinebody"> We will include the Cargo Tracking Link on your homepage. You have
+                        access to the Cargo Status page by using Shipment ID.<br/></div>
+                    <div class="threelinebody"> Information entered by your operation team is automatically stored in
+                        CloTra. <br/> ・Your clients have access to Customer Portal to check historical cargo data and
+                        all other details.<br/> ・Your partners have access to the Portal to check historical cargo data
+                        and all other details.<br/></div>
+                </div>
+                <!------------------------------- CloTra(Cloud Cargo Tracking Service) 1st line end----------------------------------->
+                <!------------------------------- CloTra(Cloud Cargo Tracking Service) end----------------------------------->
+                <div class="grayline"></div>
+                <!------------------------------- CloFil(Cloud AFR Filling System) start----------------------------------->
+                <!------------------------------- CloFil(Cloud AFR Filling System)1st line start----------------------------------->
+                <!-------- CloFil(Cloud AFR Filling System)--------------->
+                <div class="wrap"><br/> <a name="CloFil">CloFil(Cloud AFR Filling System)</a> <br/></div>
+                <div class="orangeline">
+                </div>
+                <br/><br/>
+
+                <div class="bodytitle">
+                    <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1" width="12px"/>
+                    What is CloFil?<br/></div>
+                <div class="bodybody">
+                    <br/> CloFil stands for Cloud Filing for Advanced Filing Rule Compliance.<br/> CloFil is on cloud
+                    system, but on a different platform from CloFor and CloTra.<br/>
+                    CloFil requires you to enter Cargo and Carrier information to its system.<br/> ##For the upcoming
+                    year, we will be able to file AFR filing through CloFor.<br/>
+                    <a href="http://afr-eng.plism.com" class="hyperlink">Go to PLISM PAGE</a><br/></div>
+                <br/>
+
+                <div class="firstshot">
+                    <img src="https://afrs-developer-edition.ap6.force.com/afr/s/plism.jpg?v=1"
+                         style="margin-right:80px; width:300px; height:200px;"/>
+                    <img src="https://afrs-developer-edition.ap6.force.com/afr/s/cost2.jpg?v=1"
+                         style="margin-right:80px; width:300px; height:200px;"/>
+                    <img src="https://afrs-developer-edition.ap6.force.com/afr/s/onestop.jpg?v=1"
+                         style="width:300px; height:200px;"/></div>
+                <!-------- CloFil(Cloud AFR Filling System) 1st line title--------------->
+                <div class="threelinetitlediv">
+                    <div class="threelinetitle"> One of Certified AFR Filing Service Provider(PLISM by KLNET)<br/></div>
+                    <div class="threelinetitle"> Cost Competitive<br/></div>
+                    <div class="threelinetitle"> One-Stop Services and Supports<br/></div>
+                </div>
+                <!-------- CloFil(Cloud AFR Filling System) 1st line content--------------->
+                <div class="threelinecontent">
+                    <div class="threelinebody"> We are a global partner of KLNET and provide their PLISM services as a
+                        part of CloFil system.<br/></div>
+                    <div class="threelinebody"> We do not charge any initial setting fee. There is a monthly Data Filing
+                        Fee depending on the number of files.<br/></div>
+                    <div class="threelinebody"> We help you issue Report ID from NACCS, and register for your account on
+                        behalf of your company.<br/></div>
+                </div>
+                <!-------------------------------CloFil(Cloud AFR Filling System) 1st line end----------------------------------->
+                <!------------------------------- CloFil(Cloud AFR Filling System) end----------------------------------->
+            </div>
+        </div>
+        <div style="background-color:#bfbfbf;height:400px;">
+            <div>
+                <link rel="stylesheet" type="text/css"
+                      href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbottomtable.css?v=2534"/>
+                <meta charset="utf-8"/>
+                <meta http-equiv="X-UA-Compatible" content="IE=9,chrome=1"/>
+                <style type="text/css">
+                    @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+                    @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+                    html,
+                    body {
+                        width: 100%;
+                        height: 100%
+                    }
+
+                    body {
+                        margin: 0;
+                        padding: 0;
+                    }
+                </style>
+                <div class="absolute1">
+                    <div class="bottomtable1"> □ Solution<br/>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFor" class="link">Cloud
+                            Forwarding(CloFor)</a><br/>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloTra" class="link">Tracking
+                            Service(CloTra)</a><br/>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloSyn" class="link">Cloud Syn(CloSyn)</a><br/>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFil" class="link">AFR
+                            Filling(CloFil)</a><br/></div>
+                    <div class="bottomtable2"> □ Service<br/>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#DataInputService" class="link">Data Input
+                            Service(CloSor)</a><br/>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#Development SF Service" class="link">Salesforce
+                            Implementation <br/>
+
+                            <div style="margin-bottom:-20px;">Consulting</div>
+                        </a><br/></div>
+                    <div class="bottomtable3"> □ Price<br/>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Solution List Price" class="link hover">Solution
+                            List Price</a><br/>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Service List Price" class="link">Service List
+                            Price</a><br/>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#How to pay" class="link">How to pay?</a><br/>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Legal Information" class="link">Legal
+                            Information</a><br/></div>
+                    <div class="bottomtable4"> □ Strength<br/>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cost Competitive" class="link">Cost
+                            Competitive</a><br/>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Speed and Flexibility" class="link">Speed and
+                            Flexibility</a><br/>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Accessibility" class="link">Accessibility/Security/Backup</a><br/>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Real Time Performance" class="link">Real Time
+                            Performance</a><br/>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cargo Process" class="link">Cargo Process</a>
+                    </div>
+                    <div class="bottomtable5"> □ Trail/Download<br/>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Trial" class="link"
+                           style="text-indent:-100px">Trial</a><br/>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Appexchange" class="link">AppExchange</a><br/>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Data download" class="link">Data download</a><br/>
+                    </div>
+                    <div class="bottomtable6"> □ Contact us<br/>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Customer Support" class="link">Customer
+                            Support</a><br/>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Partner Support" class="link">Partner Support</a><br/>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Solutions" class="link">Inquiry for
+                            Solutions</a><br/>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Hearing Sheet" class="link">Hearing Sheet</a><br/>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#FAQ &amp; Our Solutions" class="link">FAQ &amp; Our
+                            Solutions</a><br/>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Technical Issue" class="link">Inquiry for
+                            Technical Issue</a><br/>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Server Status" class="link">Server Status</a><br/>
+                    </div>
+                    <div class="bottomtable7"> □ About Us<br/>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Greetings" class="link">Greetings</a><br/>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Our team" class="link">Our team</a><br/>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Japan Headquater" class="link">Japan Headquater</a><br/>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Vietnam Office" class="link">Vietnam Office</a><br/>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Korea Office" class="link">Korea Office</a><br/>
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Career in AFR" class="link">Career in AFR</a></div>
+                </div>
+            </div>
+        </div>
+        <div id="footer" style="height:64px;background-color:#bfbfbf;">
+            <div style="background-color:#948F8F;">
+                <meta charset="utf-8"/>
+                <meta name="description" content="AFR Solutions Homepage"/>
+                <title>AFR Solutions Homepage</title>
+                <link rel="stylesheet" type="text/css"
+                      href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRmenu.css?v=306"/>
+                <link rel="stylesheet" type="text/css"
+                      href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRlogo.css?v=260"/>
+                <style type="text/css">
+                    #textcenter {
+                        text-align: center;
+                        color: white;
+                        font-weight: bold;
+                        background-color: gray;
+                    }
+                </style>
+                <div id="textcenter"><br/> 3-6-20, HIGASHI-OI, SHINAGAWA-KU, TOKYO<br/> Tel : 036-868-7838<br/> ⓒ&nbsp;2015.
+                    AFR SOLUTIONS CO., LTD all rights reserved.<br/></div>
+            </div>
+        </div>
+    </apex:outputPanel>
+    <!-- ========= VN ============ -->
+    <apex:outputPanel rendered="{!language = 'vi'}">
+        <div id="AFRSolutions">
+            <div id="header" style="height:623px;">
+                <div style="height:0px;">
+                    <meta charset="utf-8"/>
+                    <title>AFR Solutions</title>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRmenu.css?v=306"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRlogo.css?v=260"/>
+                    <link rel="shortcut icon"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/logoicon.ico?v=2"/>
+                    <style type="text/css">
+                        #textcenter {
+                            text-align: center;
+                            color: white;
+                            font-weight: bold;
+                            background-color: gray;
+                        }
+                    </style>
+                    <style>
+                        /* ------------------------------------ image style --------------------------------------------*/
+                        .payZone img:hover {
+                            /* 위로 올리기
+                            background:#000;
+                            -moz-transform: translate3d(0, -100%, 0); /* position elements past bottom of layout */
+                            -webkit-transform: translate3d(0, -20%, 0);
+                            transform: translate3d(0, -20%, 0);
+                            -moz-transition: all 0.5s;
+                            -webkit-transition: all 0.5s;
+                            transition: all 0.5s;
+                        }
+                    </style>
+                    <!--------------------------------------- logo body ------------------------------------>
+                    <div id="logo">
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution?lang=vi"> <img
+                                src="https://afrs-developer-edition.ap6.force.com/afr/s/afrlogo.jpg?v=1"
+                                style="width:300px; height:100px;"/></a>
+                    </div>
+                    <div class="moveleft">
+                        <div class="payZone" style="">
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution?lang=vi"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Vietnam.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution?lang=en"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/America.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution?lang=ja"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Japan.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution?lang=ko"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Korea.png?v=1"
+                                    style="width:30px"/></a>
+                        </div>
+                    </div>
+                    <!--------------------------------------- slide menu body ------------------------------------>
+                    <div id="topMenu">
+                        <ul>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution" class="menuLink">GIẢI PHÁP ĐIỆN TOÁN ĐÁM
+                                    MÂY</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFor" class="submenuLink longLink">Giao
+                                        nhận (CloFor)</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloTra" class="submenuLink longLink">Thông
+                                        tin hàng hóa (CloTra)</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloSyn" class="submenuLink longLink">Đồng
+                                        bộ hóa dữ liệu (CloSyn)</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFil" class="submenuLink longLink">Khai
+                                        AFR (CloFil)</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService" class="menuLink">DỊCH VỤ</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#DataInputService"
+                                           class="submenuLink longLink">Nhập liệu(CloSor)</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#Development SF Service"
+                                           class="submenuLink longLink">Tư vấn cài đặt Salesforce</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice" class="menuLink">GIÁ</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Solution List Price"
+                                           class="submenuLink longLink">Bảng giá gói giải pháp</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Service List Price"
+                                           class="submenuLink longLink">Bảng giá dịch vụ </a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#How to pay" class="submenuLink longLink">
+                                        Cách
+                                        thanh toán</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Legal information"
+                                           class="submenuLink longLink">Thông tin pháp lý</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength" class="menuLink">ƯU ĐIỂM</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cost Competitive"
+                                           class="submenuLink longLink">Chi phí cạnh tranh</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Speed and Flexibility"
+                                           class="submenuLink longLink">Nhanh và dễ tùy biến</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Accessibility"
+                                           class="submenuLink longLink">Dễ sử dụng/ Bảo mật/ Sao lưu</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Real Time Performance"
+                                           class="submenuLink longLink">Hoạt động theo thời gian thật</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cargo Process"
+                                           class="submenuLink longLink">Lệnh giao hàng</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown" class="menuLink">TẢI DÙNG THỬ</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Trial" class="submenuLink longLink">
+                                        Dùng thử </a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Appexchange"
+                                           class="submenuLink longLink">AppExchange</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Data download"
+                                           class="submenuLink longLink">Tải dữ liệu</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs" class="menuLink">LIÊN LẠC VỚI CHÚNG
+                                    TÔI </a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Customer Support"
+                                           class="submenuLink longLink">Chăm sóc khách hàng</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Partner Support"
+                                           class="submenuLink longLink">Hỗ trợ đối tác</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Service"
+                                           class="submenuLink longLink">Yêu cầu giải pháp hay dịch vụ</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Hearing Sheet"
+                                           class="submenuLink longLink">Phiếu khảo sát khách hàng</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#FAQ"
+                                           class="submenuLink longLink">FAQ</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Technical issue"
+                                           class="submenuLink longLink">Yêu cầu về các vấn đề kỹ thuật</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Server Status"
+                                           class="submenuLink longLink">Tình trạng hoạt động của server</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs" class="menuLink">VỀ CHÚNG TÔI</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Greetings" class="submenuLink longLink">Greetings</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Our team" class="submenuLink longLink">Các
+                                        thành viên của công ty</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Japan Headquater"
+                                           class="submenuLink longLink">Japan Headquater</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Vietnam Office"
+                                           class="submenuLink longLink">Vietnam Office</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Korea Office"
+                                           class="submenuLink longLink">Korea
+                                        Office</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Career in AFR"
+                                           class="submenuLink longLink">Cơ
+                                        hội nghề nghiệp với AFR</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mainimage">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/solutions.jpg?v=1" height="400px;"
+                             width="1400px;"/>
+                    </div>
+                </div>
+            </div>
+            <div style="overflow:hidden;height:6500px;">
+                <div>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRtitle.css?v=174"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbody.css?v=1812"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3line.css?v=101"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3linecontent.css?v=943"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3linetitle.css?v=815"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRline.css?v=220"/>
+                    <style type="text/css">
+                        @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+                        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+                        #orangeline {
+                            margin: 0.5px;
+                            text-align: center;
+                        }
+
+                        body {
+                            overflow-x: hidden
+                        }
+                    </style>
+                    <!---------------------- Cloud forwarding solutions start ------------------------------------>
+                    <!-------- title --------------->
+                    <div class="wrap">
+                        <br/>
+                        <a name="CloFor">CloFor(Cloud Forwarding Solutions)</a>
+                        <br/>
+                    </div>
+                    <div class="orangeline">
+                    </div>
+                    <!-------- body --------------->
+                    <br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        <a name="Greetings">Greetings</a>
+                    </div>
+                    <div class="bodybody">
+                        <br/>
+                        Xin chào các bạn đã đến với trang Web của AFR Solutions Co., LTD.!<br/>
+                        Hiện nay vai trò của nghành dịch vụ hậu cần (hay môi giới vận chuyển, ghép hàng...hay một vài cách
+                        gọi
+                        khác), thì quan trọng hơn bao giờ hết. <br/>
+                        Trong môi trường kinh tế toàn cầu luôn tăng trưởng và phát triền nhanh chóng, khách hàng đòi hỏi
+                        một
+                        thị trường giao nhận với dịch vụ nhanh, giá cạnh tranh hơn. <br/>
+                        Và nghành hậu cần phải ngày càng hoàn thiện hơn và cạnh tranh hơn nữa trong môi trường đông đảo
+                        các
+                        doanh nghiệp giao nhận mới hình thành và đi vào hoạt động. <br/>
+                        Phương châm của chúng tôi là cung cấp gói giải pháp cho nghành hậu cần dựa trên nền tảng điện
+                        toán
+                        đám mây cho các công ty giao nhận mong muốn cải thiện hơn nữa hiệu quả của các sản phẩm dịch vụ
+                        của
+                        mình. <br/>
+                        ・Gói giải pháp CloFor này bao gồm toàn bộ đầy đủ các phương tiện quản trị, điều hành cho ngành
+                        hậu
+                        cần. <br/>
+                        ・Cung cấp chức năng cơ bản nhất của ứng dụng quản trị khách hàng của Salesforce, vì vậy đây là
+                        một
+                        giải pháp “tất cả trong một” cho việc quản trị khách hàng cũng như ngành hậu cần. <br/>
+                        ・Chỉ nhập liệu lần đầu, có thể in ra thành nhiều đinh dạng biểu mẫu, nhiều ngôn ngữ. <br/>
+                    </div>
+                    <br/><br/>
+                    <!---------------------- Application Concepts 1st table start ------------------------------------>
+                    <!------------------------------- Application Concepts's 1st line start----------------------------------->
+                    <!-------- Application Concepts's first line image--------------->
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        <a name="Application Concepts">Application Functions</a>
+                    </div>
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/forwarding.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/consol.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/invoice.jpg?v=1"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <br/>
+                    <!-------- Application Concepts's 1st line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            QUẢN LÝ CHỨNG TỪ GIAO NHẬN
+                        </div>
+                        <div class="threelinetitle">
+                            QUẢN LÝ CÔNG TÁC GHÉP HÀNG (CONSOLIDATION)
+                        </div>
+                        <div class="threelinetitle">
+                            QUẢN LÝ THU/ CHI
+                        </div>
+                    </div>
+                    <!-------- Application Concepts's 1st line content--------------->
+                    <div class="threelinecontent" style="margin-bottom:30px;">
+                        <div class="threelinebody">
+                            MỘT LẦN NHẬP LIỆU GIÚP BẠN QUẢN LÝ VÀ SỬ DỤNG CÁC THÔNG TIN VÔ CÙNG HIỆU QUẢ <br/>
+                            ・XÁC NHẬN BOOKING <br/>
+                            ・CẬP NHẬT TÌNH TRẠNG LÔ HÀNG <br/>
+                            ・PHÂN TÍCH LÃI LỖ TỪNG LÔ HÀNG <br/>
+                            ・QUẢN LÝ TỐT CÁC GIAO DỊCH TAY BA <br/>
+                            ・THÔNG TIN CẢNG/KHO HÀNG <br/>
+                            ・SỬ DỤNG CÁC CHỨNG TỪ THEO BẢN NGỮ <br/>
+                            ・CHỨNG TỪ HÀNG NHẬP: A/N,D/O,DEBIT NOTE,CREDIT NOTE,INVOICE <br/>
+                            ・CHỨNG TỪ HÀNG XUẤT:S/I, FREIGHT MEMO,INVOICE,DRAFT B/L,ORIGINAL B/L,WAYBILL,DEBIT
+                            NOTE,CREDIT
+                            NOTE<br/>
+                            <br/>
+                        </div>
+                        <div class="threelinebody">
+                            ỨNG DỤNG QUẢN LÝ TRÌNH TỰ CỦA H B/L, MASTER B/L VÀ HÀNG GHÉP <br/>
+                            ・THÔNG TIN BOOKING VỚI CARRIER <br/>
+                            ・TỰ ĐỘNG COPY THÔNG TIN TỪ M/BL SANG H/BL <br/>
+                            ・TỰ ĐỘNG HẠCH TOÁN CHI PHÍ VÀ DOANH THU CHO LÔ HÀNG <br/>
+                            ・PHÂN TÍCH LỢI NHUẬN CHO MỖI LÔ HÀNG GHÉP<br/>
+                            ・IN RA :CONTAINER LOAD PLAN(CLP) ISSUE,DEVANNING REQUEST FORM,ETC<br/>
+                            <br/>
+                        </div>
+                        <div class="threelinebody">
+                            ỨNG DỤNG TẠO RA HÓA ĐƠN THEO NHIỀU NGÔN NGỮ CHO KHÁCH HÀNG, ĐỐI TÁC VÀ CÁC BÊN LIÊN QUAN
+                            <br/>
+                            ・HÓA ĐƠN ĐA NGÔN NGỮ <br/>
+                            ・BÁO NỢ, BÁO CÓ <br/>
+                            ・QUẢN LÝ VỀ THUẾ <br/>
+                            ・QUẢN LÝ CÔNG NỢ <br/>
+                            ・QUẢN LÝ CHI PHÍ <br/>
+                            <br/>
+                        </div>
+                    </div>
+                    <!------------------------------- Application Concepts's 1st line end----------------------------------->
+                    <!------------------------------- Application Concepts's 2nd line start----------------------------------->
+                    <!-------- Application Concepts's first line image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/costdown.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/CC.png?v=3"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/delivery.jpg?v=1"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <!-------- Application Concepts's 2nd line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            PHÂN TÍCH DOANH THU, CHI PHÍ <br/>
+                        </div>
+                        <div class="threelinetitle">
+                            QUẢN LÝ THÔNG QUAN <br/>
+                        </div>
+                        <div class="threelinetitle">
+                            QUẢN LÝ GIAO HÀNG,NHẬN HÀNG HÓA <br/>
+                        </div>
+                    </div>
+                    <!-------- Application Concepts's 2nd line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            KIỂM TRA LÃI LỖ VÀ THÔNG BÁO CHO BỘ PHẬN LIÊN QUAN KHI PHÁT HIỆN LỖ <br/>
+                            ・PHÂN TÍCH LÃI LỖ TỪNG LÔ HÀNG <br/>
+                            ・PHÂN TÍCH LÃI LỖ TỪNG LÔ HÀNG GHÉP <br/>
+                            ・TỰ ĐỘNG THÔNG BÁO LÔ HÀNG LỖ <br/>
+                        </div>
+                        <div class="threelinebody">
+                            PHẦN THÔNG TIN CHUNG CỦA LÔ HÀNG CÒN CÓ THỂ BAO GỒM DỮ LIỆU ĐỂ THÔNG QUAN <br/>
+                            ・CHI TIẾT CHỨNG TỪ THÔNG QUAN <br/>
+                            ・CHỨNG NHẬN CHO PHÉP THÔNG QUAN <br/>
+                            ・CHI TIẾT CÔNG TY DỊCH VỤ THÔNG QUAN <br/>
+                            ・CHỨNG TỪ IN RA: YÊU CẦU THÔNG QUAN GỬI CHO CÔNG TY DỊCH VỤ THÔNG QUAN <br/>
+                        </div>
+                        <div class="threelinebody">
+                            PHẦN THÔNG TIN CHUNG CỦA LÔ HÀNG CŨNG BAO GỒM DỮ LIỆU GIAO HÀNG <br/>
+                            ・THÔNG TIN NHÀ XE/ NÂNG HẠ <br/>
+                            ・THÔNG TIN NHẬN HÀNG TỪ KHO <br/>
+                            ・CHI TIẾT VẬN CHUYỂN <br/>
+                            ・CHỨNG TỪ IN RA : YÊU CẦU VẬN CHUYỂN GỬI CHO NHÀ XE <br/>
+                        </div>
+                    </div>
+                    <!------------------------------- Application Concepts's 2nd line end----------------------------------->
+                    <!------------------------------- Application Concepts's 3rd line start----------------------------------->
+                    <!--------  Application Concepts's 3rd line image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/account.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/docshare.jpg?v=2"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/servicemaster.jpg?v=2"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <!--------  Application Concepts's 3rd line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            QUẢN TRỊ KẾ TOÁN <br/>
+                        </div>
+                        <div class="threelinetitle">
+                            CHIA SẺ THÔNG TINH TRÊN NỀN INTERNET <br/>
+                        </div>
+                        <div class="threelinetitle">
+                            QUẢN TRỊ CHI PHÍ <br/>
+                        </div>
+                    </div>
+                    <!--------  Application Concepts's 3rd line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            CHỈ MỘT LẦN THAO TÁC CẬP NHẬT DOANH THU THÌ SỐ LIỆU TỪ CLOFOR SẼ KHỚP VỚI BÁO CÓ CỦA NGÂN
+                            HÀNG
+                            <br/>
+                            ・QUẢN LÝ CHI PHÍ ĐÃ ĐƯỢC THANH TOÁN (DATE, AMOUNT, REMITTER, TRANSFER ACCOUNT, ETC.) <br/>
+                            ・QUẢN LÝ CHUYỂN TRẢ CHI PHÍ CHO NHÀ CUNG CẤP (DATE, AMOUNT, REMITTANCE DATE, RECEIVER
+                            ACCOUNT,
+                            ETC.)<br/>
+                            ・XEM HAY BÁO CÁO SỐ LIỆU KẾ TOÁN TRÊN CÙNG GIAO DIỆN WEB <br/>
+                        </div>
+                        <div class="threelinebody">
+                            ỨNG DỤNG CHUYỂN HẦU HẾT CÁC CHỨNG TỪ CỦA CÔNG TY BẠN SANG GIAO DIỆN WEB ĐỂ XEM ONLINE<br/>
+                            ・GỬI ĐƯỜNG LIÊN KẾT ĐÃ MÃ HÓA CHO TẤT CẢ KHÁCH HÀNG THAY VÌ GỬI BẰNG ATTCHMENT EMAIL VÀ CÓ
+                            THỂ
+                            XEM ĐƯỢC SỐ LẦN THÔNG TIN ĐÃ ĐƯỢC TRUY CẬP VÀ TẢI XUỐNG<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ỨNG DỤNG QUẢN LÝ DANH SÁCH CÁC DỊCH VỤ ĐỂ CHUẨN BỊ HÓA ĐƠN <br/>
+                            CHI TIẾT NHÀ CUNG CẤP <br/>
+                            ・CHI TIẾT MUA DỊCH VỤ <br/>
+                            ・CHI TIẾT BÁN <br/>
+                            ・DANH MỤC CHI TIẾT DỊCH VỤ <br/>
+                            ・THUẾ <br/>
+                        </div>
+                    </div>
+                    <!-------------------------------  Application Concepts's 3rd line end----------------------------------->
+                    <!-------------------------------  Application Concepts's 4th line start----------------------------------->
+                    <!-------- Application Concepts's 4th line image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/smartphone.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/exchange.jpg?v=2"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/quotation.jpg?v=1"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <!-------- Application Concepts's 4th line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            TRUY CẬP ĐƯỢC BẰNG SMARTPHONE/TABLET <br/>
+                        </div>
+                        <div class="threelinetitle">
+                            CHIA XẺ THÔNG TIN <br/>
+                        </div>
+                        <div class="threelinetitle">
+                            QUẢN LÝ CHÀO BÁN DỊCH VỤ <br/>
+                        </div>
+                    </div>
+                    <!-------- Application Concepts's 4th line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            SAU KHI TẢI ỨNG DỤNG SALESFORCE TỪ APP STORE/PLAY STORE, THÌ CÓ THỂ TRUY CẬP MỌI THÔNG TIN
+                            VỀ
+                            CLOFOR ĐỀ XEM TÌNH HÌNH KINH DOANH CỦA MÌNH <br/>
+                        </div>
+                        <div class="threelinebody">
+                            ỨNG DỤNG CHUYỂN ĐỔI TỈ GIÁ TIÊU CHUẨN QUẢN LÝ TỈ GIÁ CHUYỂN ĐỔI CHO MỘT THỜI GIAN XÁC ĐỊNH
+                            TRƯỚC
+                            . <br/>
+                            TỈ GIÁ RIÊNG BIỆT ĐƯỢC ÁP DỤNG TÙY THEO KHÁCH HÀNG, ĐỐI TÁC . <br/>
+                            ・THỜI GIAN CÓ HIỆU LỰC TỈ GIÁ <br/>
+                            ・TỰ ĐỘNG ĐỒNG BỘ HIỆU LỰC CỦA TỈ GIÁ ĐẾN H/BL, M/BL.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            CHỨNG TỪ BÁO GIÁ VÀ PHÁT HÀNH CHO KHÁCH HÀNG HOẶC ĐỐI TÁC <br/>
+                            ・PHÂN TÍCH LÃI LỖ <br/>
+                            ・CÁC BIỂU MẨU TỰ ĐỘNG CÓ SẴN HỖ TRỢ ĐA NGÔN NGỮ, TIỀN TỆ <br/>
+                        </div>
+                    </div>
+                    <!------------------------------- Application Concepts's 4th line end----------------------------------->
+                    <!---------------------- Application Concepts end ------------------------------------>
+                    <div class="grayline">
+                    </div>
+                    <!----------------------Homepage & Cargo Tracking Service start ------------------------------------>
+                    <!------------------------------- CloTra(Cloud Cargo Tracking Service) 1st line start----------------------------------->
+                    <!-------- CloTra(Cloud Cargo Tracking Service) 1st line image--------------->
+                    <div class="wrap"><br/>
+                        <a name="CloTra">CloTra(Cloud Cargo Tracking Service)</a>
+                        <br/>
+                    </div>
+                    <div class="orangeline"></div>
+                    <br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        CloTra là gì?
+                        <br/>
+                    </div>
+                    <div class="bodybody">
+                        <br/>
+                        ClorTra là từ viết tắt của Cloud Cargo Tracking System. CloTra cung cấp thông tin lô hàng theo
+                        thời
+                        gian thật cho khách hàng của bạn,đối tác ngoại quốc của bạn thông qua email và trên trang
+                        chủ.<br/>
+                        CloTra là dịch vụ cộng thêm nên cần thêm hợp đồng sử dụng ngoài CloFor.<br/>
+                        CloTra bao gồm bốn phần:<br/>
+                        ・Gửi email thông báo tình trạng hàng hóa cho khách hàng và đối tác của bạn.<br/>
+                        ・Trang web kiểm tra tình trạng hàng hóa: Khách hàng hay đối tác của bạn cần truy cập vào trang
+                        web
+                        chỉ định để kiểm tra tình trạng hàng hóa.<br/>
+                        ・Cổng thông tin khách hàng (yêu cầu hợp đồng với chúng tôi và với Salesforce)<br/>
+                        ・Cổng thông tin đối tác (yêu cầu hợp đồng với chúng tôi và với Salesforce)<br/>
+                    </div>
+                    <br/><br/>
+
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/realtime.jpg?v=2"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/tracking.jpg?v=2"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/customerportal.png?v=2"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <!-------- CloTra(Cloud Cargo Tracking Service) 1st line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            Theo dõi tình trạng hàng hóa bằng Email<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Trang web theo dõi tình trạng hàng hóa<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Cồng thông tin khách hàng, Cổng thông tin đối tác<br/>
+                        </div>
+                    </div>
+                    <!-------- CloTra(Cloud Cargo Tracking Service) 1st line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            Tình trạng hàng hóa được gửi qua email <br/>
+                            ・Biểu mẫu email tiêu chuẩn có sẵn (bằng bản ngữ hay tiếng Anh cho đối tác)<br/>
+                            ・Cập nhật theo thời gian thật ngay khi tình trạng hàng hóa thay đổi (Khi thay đổi trạng thái
+                            hàng hóa thì sẽ kích hoạt trạng thái email cập nhật)<br/>
+                        </div>
+                        <div class="threelinebody">
+                            Chúng tôi sẽ gán đường liên kết vào trang thông báo cập nhật.Bất cứ ai nhận đường liên kết
+                            và có
+                            mã số của lô hàng thì có thể xem tình trạng lô hàng.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            CloTra lưu tất cả các thông tin mà bạn đã truy cập . <br/>
+                            ・Customer Portal cung cấp cho khách hàng của bạn quyền truy cập và xem toàn quá trình của
+                            tình
+                            trạng lô hàng.<br/>
+                            ・Partner Portal cung cấp cho đối tác của bạn quyền truy cập vào lịch sử các lô hàng và các
+                            thông
+                            tin liên quan đến lô hàng.<br/>
+                        </div>
+                    </div>
+                    <!------------------------------- CloTra(Cloud Cargo Tracking Service) 1st line end----------------------------------->
+                    <div class="grayline">
+                    </div>
+                    <!-------- CloSync--------------->
+                    <div class="wrap"><br/>
+                        <a name="CloSyn">CloSyn(Cloud Syn)</a>
+                        <br/>
+                    </div>
+                    <div class="orangeline">
+                    </div>
+                    <br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        CloSyn là gì?<br/>
+                    </div>
+                    <div class="bodybody">
+                        <br/>
+                        CloSyn là kỹ thuật đồng bộ dữ liệu lên saver ảo (cloud) để chúng ta cung cấp dữ liệu cho văn
+                        phòng
+                        chính/ đối tác tại cảng đến .<br/>
+                        Khi đã sử dụng CloSyn, các bạn không cần phải gửi pre-alert hay gởi xác nhận booking cho văn
+                        phòng
+                        chính/ đối tác ở cảng đến.<br/>
+                        Hãy tưởng tượng xem khi chúng ta là chi nhánh ở cảng xuất hàng còn văn phòng chính ở cảng
+                        đến.Bạn
+                        chỉ cần chia sẻ dữ liệu bằng một cú nhấp chuột gửi cho văn phòng chính<br/>
+                        Văn phòng chính của bạn không cần phải nhập liệu lại nữa, việc này mang lại rất nhiều lợi ích:
+                        giảm
+                        chi phí, ngăn chặn sai sót do nhân viên nhập liệu, rút ngắn thời gian.
+                        Để sử dụng chức năng này, đối tác hay văn phòng chính của bạn cũng cài dịch vụ CloFor hay cho
+                        phép
+                        chúng tôi thiết lập liên kết theo yêu cầu của hệ thống ở cảng đến.<br/>
+                        <br/><br/>
+                    </div>
+                    <br/>
+
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/datasync.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/datasync2.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/datasync3.jpg?v=1"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <!-------- CloSync 1st line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            Đồng bộ dữ liệu booking từ CloFor đến CloFor<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Đồng bộ dữ liệu kế toán từ CloFor đến CloFor<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Đồng bộ dữ liệu booking từ CloFor đến các phần mềm giao nhận khác<br/>
+                        </div>
+                    </div>
+                    <!-------- CloSync 1st line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            Sau khi nhập liệu vào CloFor và chọn đối tác , nhấp vào nút Data Synchronization.<br/>
+                            Pre-alert sẽ được truyền tới cảng đến qua CloFor cho đối tác hay văn phòng chính.
+                            <br/>
+                        </div>
+                        <div class="threelinebody">
+                            Sau khi hoàn dữ liệu về công nợ trên CloFor và chọn đối tác,bấm vào nút Data
+                            Synchronization.<br/>
+                            Dữ liệu về công nợ sẽ được gửi đến CloFor ở cảng đến cho đối tác hay văn phòng chính của
+                            bạn.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            Nếu văn phòng chính hay đối tác của bạn đã dùng phần mềm quản lý forwarding khác, chúng tôi
+                            có
+                            thể thiết lập chương trình để đồng bộ với nhau<br/>
+                        </div>
+                    </div>
+                    <!-------------------------------CloSync 1st line end----------------------------------->
+                    <!------------------------------- CloSync end----------------------------------->
+                    <!------------------------------- CloTra(Cloud Cargo Tracking Service) end----------------------------------->
+                    <div class="grayline">
+                    </div>
+                    <!------------------------------- CloFil(Cloud AFR Filling System) start----------------------------------->
+                    <!------------------------------- CloFil(Cloud AFR Filling System)1st line start----------------------------------->
+                    <!-------- CloFil(Cloud AFR Filling System)--------------->
+                    <div class="wrap"><br/>
+                        <a name="CloFil">CloFil (Cloud AFR Filling System)</a>
+                        <br/>
+                    </div>
+                    <div class="orangeline">
+                    </div>
+                    <br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        CloFil là gì?<br/>
+                    </div>
+                    <div class="bodybody">
+                        <br/>
+                        CloFil stands for Cloud Filing for Advanced Filing Rule Compliance.<br/>
+                        CloFil là ứng dụng điện toán đám mây nhưng khác với ứng dụng CloFor hay CloTra.<br/>
+                        CloFil yêu cầu bạn nhập thông tin hàng hóa, nhà vận chuyển vào hệ thông CloFil.<br/>
+                        ##Trong thời gian tới,chúng ta có thể khai báo hải quan chuẩn Nhật Bản trên ứng dụng
+                        CloFor.<br/>
+                        <a href="http://afr-eng.plism.com" class="hyperlink">Go to PLISM PAGE</a><br/>
+                    </div>
+                    <br/><br/>
+
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/plism.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/cost2.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/onestop.jpg?v=1"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <!-------- CloFil(Cloud AFR Filling System) 1st line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            KLNET là một trong những ứng dụng được cấp phép cho việc khai báo hải quan theo chuẩn Nhật
+                            Bản
+                            (PLISM by KLNET)<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Chi phí cạnh tranh <br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Dịch vụ vào bảo trì tất cả trong một <br/>
+                        </div>
+                    </div>
+                    <!-------- CloFil(Cloud AFR Filling System) 1st line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            Chúng tôi là đối tác toàn cầu của KLNET và cung cấp ứng dụng PLISM của họ với tên
+                            ClorFil.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            Chúng tôi không thu phí cài đặt ban đầu. Bạn chỉ phải trả cho các thông tin được khai báo
+                            thực
+                            tế trong tháng .<br/>
+                        </div>
+                        <div class="threelinebody">
+                            Nhân viên của chúng tôi sẽ hỗ trợ bạn đăng ký mật khẩu truy cập từ NACCS rồi thiết lập tài
+                            khoản
+                            và cài đặt hệ thống cho bạn sử dụng <br/>
+                        </div>
+                    </div>
+                    <!-------------------------------CloFil(Cloud AFR Filling System) 1st line end----------------------------------->
+                    <!------------------------------- CloFil(Cloud AFR Filling System) end----------------------------------->
+                </div>
+            </div>
+            <div style="height:450px;background-color:#bfbfbf;">
+                <div style="height:450px;">
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbottomtable.css?v=2534"/>
+                    <style type="text/css">
+                        @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+                        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+                    </style>
+                    <!------------------------------------- bottom menu ------------------------------------->
+                    <div class="absolute1">
+                        <div class="bottomtable1">
+                            □ GIẢI PHÁP<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFor" class="link">Giao nhận (CloFor)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloTra" class="link">Thông tin hàng
+                                hóa (CloTra)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloSyn" class="link">Đồng bộ lên saver
+                                ảo (CloSyn)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFil" class="link">Khai AFR (CloFil)</a><br/>
+                        </div>
+                        <div class="bottomtable2">
+                            □ DỊCH VỤ<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#DataInputService" class="link">Nhập
+                                liệu (CloSor)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#Development SF Service" class="link">Tư vấn cài đặt
+                                Salesforce</a><br/>
+                        </div>
+                        <div class="bottomtable3">
+                            □ GIÁ<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Solution List Price" class="link">Bảng giá gói giải
+                                pháp</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Service List Price" class="link">Bảng giá dịch
+                                vụ </a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#How to pay" class="link"> Cách thanh toán</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Legal information" class="link">Thông tin pháp lý</a>
+                        </div>
+                        <div class="bottomtable4">
+                            □ ƯU ĐIỂM<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cost Competitive" class="link">Chi phí cạnh
+                                tranh</a>
+                            <br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Speed and Flexibility" class="link">Nhanh và dễ tùy
+                                biến</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Accessibility" class="link">Dễ sử dụng/ Bảo mật/
+                                Sao
+                                lưu</a> <br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Real Time Performance" class="link">Hoạt động theo
+                                thời
+                                gian thật</a> <br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cargo Process" class="link">Lệnh giao hàng</a>
+                        </div>
+                        <div class="bottomtable5">
+                            □ TẢI DÙNG THỬ<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Trial" class="link">Dùng thử</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Appexchange" class="link">AppExchange</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Code download" class="link">Tải dữ liệu</a><br/>
+                        </div>
+                        <div class="bottomtable6">
+                            □ LIÊN LẠC VỚI CHÚNG TÔI<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Customer Support" class="link">Chăm sóc khách
+                                hàng</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Partner Support" class="link">Hỗ trợ đối
+                                tác</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Service" class="link">Yêu cầu giải
+                                pháp
+                                hay dịch vụ</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Hearing Sheet" class="link">Phiếu khảo sát khách
+                                hàng</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#FAQ" class="link">FAQ</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Technical issue" class="link">Yêu cầu
+                                về
+                                các vấn đề kỹ thuật</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Server Status" class="link">Tình trạng hoạt động
+                                của
+                                server</a><br/>
+                        </div>
+                        <div class="bottomtable7">
+                            □ VỀ CHÚNG TÔI<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Greetings" class="link">Greetings</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Our team" class="link">Các thành viên của công
+                                ty</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Japan Headquater" class="link">Japan
+                                Headquater</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Vietnam Office" class="link">Vietnam Office</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Korea Office" class="link">Korea Office</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Career in AFR" class="link">Cơ hội nghề nghiệp với
+                                AFR</a><br/>
+                        </div>
+                    </div>
+                    <!------------------------------------- bottom menu end ------------------------------------->
+                </div>
+            </div>
+            <div id="footer" style="background-color:#bfbfbf;">
+                <div style="background-color:#948F8F;">
+                    <meta charset="utf-8"/>
+                    <meta name="description" content="AFR Solutions Homepage"/>
+                    <title>AFR Solutions Homepage</title>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRmenu.css?v=306"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRlogo.css?v=260"/>
+                    <style type="text/css">
+                        #textcenter {
+                            text-align: center;
+                            color: white;
+                            font-weight: bold;
+                            background-color: gray;
+                        }
+                    </style>
+                    <div id="textcenter">
+                        <br/>
+                        3-6-20, HIGASHI-OI, SHINAGAWA-KU, TOKYO<br/>
+                        Tel : 036-868-7838<br/>
+                        ⓒ&nbsp;2015. AFR SOLUTIONS CO., LTD all rights reserved.<br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </apex:outputPanel>
+    <!-- ====== JAPANESE ============ -->
+    <apex:outputPanel rendered="{!language = 'ja'}">
+        <div id="AFRSolutions">
+            <div id="header" style="height:626px;">
+                <div>
+                    <meta charset="utf-8"/>
+                    <title>AFR Solutions</title>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRmenu.css?v=306"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRlogo.css?v=260"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRmainpage.css?v=183"/>
+                    <link rel="shortcut icon"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/logoicon.ico?v=2"/>
+                    <style type="text/css">
+                        #textcenter {
+                            text-align: center;
+                            color: white;
+                            font-weight: bold;
+                            background-color: gray;
+                        }
+                    </style>
+                    <style>
+                        /* ------------------------------------ image style --------------------------------------------*/
+
+                        .payZone img:hover {
+                            /* 위로 올리기
+                            background:#000;
+                            -moz-transform: translate3d(0, -100%, 0); /* position elements past bottom of layout */
+                            -webkit-transform: translate3d(0, -20%, 0);
+                            transform: translate3d(0, -20%, 0);
+                            -moz-transition: all 0.5s;
+                            -webkit-transition: all 0.5s;
+                            transition: all 0.5s;
+
+                        }
+                    </style>
+                    <!--------------------------------------- logo body ------------------------------------>
+                    <div id="logo">
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution?lang=ja"> <img
+                                src="https://afrs-developer-edition.ap6.force.com/afr/s/afrlogo.jpg?v=1"
+                                style="width:300px; height:100px;"/></a>
+                    </div>
+                    <div class="moveleft">
+                        <div class="payZone" style="">
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution?lang=vi"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Vietnam.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution?lang=en"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/America.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution?lang=ja"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Japan.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution?lang=ko"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Korea.png?v=1"
+                                    style="width:30px"/></a>
+                        </div>
+                    </div>
+                    <!--------------------------------------- slide menu body ------------------------------------>
+                    <div id="topMenu">
+                        <ul>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution" class="menuLink">ソリューション</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFor" class="submenuLink longLink">クラウドフォワーディング(CloFor)</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloTra" class="submenuLink longLink">トラッキングサービス(CloTra)</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloSyn" class="submenuLink longLink">クラウドシン(CloSyn)</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFil" class="submenuLink longLink">AFRファイリング(CloFil)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService" class="menuLink">サービス</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#DataInputService"
+                                           class="submenuLink longLink">データ入力サービス</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#Development SF Service"
+                                           class="submenuLink longLink">Salesforceの導入コンサルティングと開発</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice" class="menuLink">価格</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Solution List Price"
+                                           class="submenuLink longLink">ソリューション価格表</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Service List Price"
+                                           class="submenuLink longLink">サービス価格表</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#How to pay" class="submenuLink longLink">お支払い方法</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Legal information"
+                                           class="submenuLink longLink">法的情報</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength" class="menuLink">特長</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cost Competitive"
+                                           class="submenuLink longLink">競争力あるコスト</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Speed and Flexibility"
+                                           class="submenuLink longLink">スピードと柔軟性</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Accessibility"
+                                           class="submenuLink longLink">アクセシビリティ/セキュリティ/バックアップ</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Real Time Performance"
+                                           class="submenuLink longLink">リアルタイムなパフォーマンス</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cargo Process"
+                                           class="submenuLink longLink">カーゴプロセス</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown" class="menuLink">トライアル/ダウンロード</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Trial" class="submenuLink longLink">トライアル</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Appexchange"
+                                           class="submenuLink longLink">AppExchange</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Data download"
+                                           class="submenuLink longLink">データダウンロード</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs" class="menuLink">コンタクト</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Customer Support"
+                                           class="submenuLink longLink">カスタマーサポート</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Partner Support"
+                                           class="submenuLink longLink">パートナーサポート</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Service"
+                                           class="submenuLink longLink">ソリューションに関するお問い合わせ</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Hearing Sheet"
+                                           class="submenuLink longLink">ヒアリング・シート</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#FAQ" class="submenuLink longLink">FAQとパブリックソリューション</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Technical issue"
+                                           class="submenuLink longLink">技術的な問題に関するお問い合わせ</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Server Status"
+                                           class="submenuLink longLink">サーバーステータス</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs" class="menuLink">会社概要</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Greetings" class="submenuLink longLink">ご挨拶</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Our team" class="submenuLink longLink">社員紹介</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Japan Headquater"
+                                           class="submenuLink longLink">日本本社</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Vietnam Office"
+                                           class="submenuLink longLink">ベトナム支社</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Korea Office"
+                                           class="submenuLink longLink">韓国支社</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Career in AFR"
+                                           class="submenuLink longLink">AFRで働く</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mainimage">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/solutions.jpg?v=1" height="400px;"
+                             width="1400px;"/>
+                    </div>
+                </div>
+            </div>
+            <div style="overflow:hidden;height:6500px;">
+                <div style="height:4800px;">
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRtitle.css?v=174"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbody.css?v=1812"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3line.css?v=101"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3linecontent.css?v=943"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3linetitle.css?v=815"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRline.css?v=220"/>
+                    <style type="text/css">
+                        @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+                        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+                        #orangeline {
+                            margin: 0.5px;
+                            text-align: center;
+                        }
+
+                        body {
+                            overflow-x: hidden
+                        }
+                    </style>
+                    <!---------------------- Cloud forwarding solutions start ------------------------------------>
+                    <!-------- title --------------->
+                    <div class="wrap">
+                        <br/>
+                        <a name="CloFor">CloFor(クラウドフォワーディングソリューション)</a>
+                        <br/>
+                    </div>
+                    <div class="orangeline">
+                    </div>
+                    <!-------- body --------------->
+                    <br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        <a name="Greetings">ご挨拶</a>
+                    </div>
+                    <div class="bodybodyj">
+                        <br/>
+                        AFRソリューションズ株式会社のホームページへようこそ!<br/>
+                        フレイトフォワーディング(NVOCC、混載業務、国際物流、その他呼び方は何であれ)が果たす役割は、過去のいかなる時期よりも増して重大となっています。 <br/>
+                        今日の広汎な世界規模のネットワークや急速に変化するグローバルな環境の下で、顧客は今までよりも迅速な配送や、今までよりも低い価格でよりよいサービスを受けることを望んでいます。<br/>
+                        そして、フォワーディング業界が成熟した市場へと変化しつつある中で、フォワーダーの数は速いテンポで増加し、競争はますます激しくなりつつあります。 <br/>
+                        私たちの使命は、サービス、効率、パフォーマンスの向上を目指すフォワーダーに、私たちのクラウドフォワーディングソリューションを提供することにあります。 <br/>
+                        ・クラウドフォワーディングソリューションは、フォワーディングの業務やドキュメント・オペレーションの全体をカバーします。 <br/>
+                        ・SalesforceのCRM(顧客関係管理)機能を用い、顧客マネジメントとフォワーディングマネジメントをワンストップで行うことのできるソリューションです。<br/>
+                        ・入力は一度行うだけで、様々な言語で、様々なテンプレートを出力することが出来ます。 <br/>
+                    </div>
+                    <br/><br/>
+                    <!---------------------- Application Concepts 1st table start ------------------------------------>
+                    <!------------------------------- Application Concepts's 1st line start----------------------------------->
+                    <!-------- Application Concepts's first line image--------------->
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        <a name="Application Concepts">アプリケーションの機能</a>
+                    </div>
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/forwarding.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/consol.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/invoice.jpg?v=1"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <br/>
+                    <!-------- Application Concepts's 1st line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitlej">
+                            フォワーディング書類マネジメント
+                        </div>
+                        <div class="threelinetitlej">
+                            混載/グループ輸送　マネジメント
+                        </div>
+                        <div class="threelinetitlej">
+                            請求書と入金管理
+                        </div>
+                    </div>
+                    <!-------- Application Concepts's 1st line content--------------->
+                    <div class="threelinecontent" style="margin-bottom:30px;">
+                        <div class="threelinebodyj">
+                            貴社のドキュメント・チームを効率よく管理できる、ワンタイム・インプット形式のアプリケーションです<br/>
+                            ・ハウスブッキング情報<br/>
+                            ・案件ステータス更新<br/>
+                            ・ハウスBL毎のプロフィット分析<br/>
+                            ・三国貿易 /トランジット情報 <br/>
+                            ・CY/CFS 倉庫データ<br/>
+                            ・使用する国の言語での書類発行、印刷 <br/>
+                            ・輸入関連書類:A/N,D/O,デビットノート,クレジットノート,請求書<br/>
+                            ・輸出関連書類:S/I, フレイトメモ,請求書,ドラフト B/L,オリジナル B/L,WAYBILL,デビットノート,クレジットノート<br/>
+                            <br/>
+                        </div>
+                        <div class="threelinebodyj">
+                            混載/グループ輸送のマスターB/Lや、個々のハウスB/Lを管理するアプリケーションです<br/>
+                            ・マスターブッキング情報<br/>
+                            ・ハウスB/L案件への自動データコピー<br/>
+                            ・マスターB/LのコストをハウスB/L案件へ自動按分<br/>
+                            ・マスターB/L毎にプロフィット分析(混載やグループ輸送)<br/>
+                            ・書類印刷:コンテナロードプラン(CLP)発行や、デバン依頼書など<br/>
+                            <br/>
+                        </div>
+                        <div class="threelinebodyj">
+                            顧客やパートナー、その他の関係会社に対する、複数の言語での請求書を発行するアプリケーションです<br/>
+                            ・複数の言語による請求書<br/>
+                            ・デビット/クレジットの集計表<br/>
+                            ・税率管理<br/>
+                            ・入金残高管理<br/>
+                            ・支払残高管理<br/>
+                            <br/>
+                        </div>
+                    </div>
+                    <!------------------------------- Application Concepts's 1st line end----------------------------------->
+                    <!------------------------------- Application Concepts's 2nd line start----------------------------------->
+                    <!-------- Application Concepts's first line image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/costdown.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/CC.png?v=3"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/delivery.jpg?v=1"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <!-------- Application Concepts's 2nd line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitlej">
+                            コストおよびプロフィット/ロス マネジメント<br/>
+                        </div>
+                        <div class="threelinetitlej">
+                            通関マネジメント<br/>
+                        </div>
+                        <div class="threelinetitlej">
+                            引取&amp;配送マネジメント <br/>
+                        </div>
+                    </div>
+                    <!-------- Application Concepts's 2nd line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebodyj">
+                            案件の粗利を計算し、損失が発生した際には業務チームにお知らせします<br/>
+                            ・ハウスB/L毎のプロフィット分析<br/>
+                            ・混載やグループ輸送のマスターB/L毎のプロフィット分析<br/>
+                            ・粗利がマイナスの案件の自動お知らせ<br/>
+                        </div>
+                        <div class="threelinebodyj">
+                            フォワーディング書類マネジメントの中の、通関に関する情報を管理するセクションです<br/>
+                            ・通関依頼情報<br/>
+                            ・通関許可情報<br/>
+                            ・通関業者<br/>
+                            ・書類印刷:通関業者への申告依頼フォーム<br/>
+                        </div>
+                        <div class="threelinebodyj">
+                            フォワーディング書類マネジメントの中の配送情報を管理するセクションです<br/>
+                            ・配送/ドレー業者<br/>
+                            ・引取場所<br/>
+                            ・トラック<br/>
+                            ・書類印刷:配送業者への依頼フォーム<br/>
+                        </div>
+                    </div>
+                    <!------------------------------- Application Concepts's 2nd line end----------------------------------->
+                    <!------------------------------- Application Concepts's 3rd line start----------------------------------->
+                    <!--------  Application Concepts's 3rd line image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/account.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/docshare.jpg?v=2"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/servicemaster.jpg?v=2"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <!--------  Application Concepts's 3rd line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitlej">
+                            経理マネジメント<br/>
+                        </div>
+                        <div class="threelinetitlej">
+                            ウェブ上での書類共有<br/>
+                        </div>
+                        <div class="threelinetitlej">
+                            サービスマスターマネジメント<br/>
+                        </div>
+                    </div>
+                    <!--------  Application Concepts's 3rd line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebodyj">
+                            銀行口座の入出金額に合わせ、一括して入金/支払処理を実行<br/>
+                            ・顧客からの入金管理(日付、金額、振込人、入金口座など) <br/>
+                            ・業者への支払管理(日付、金額、出金口座など)<br/>
+                            ・経理システムへのデータアップロードのためのレポートダウンロード <br/>
+                        </div>
+                        <div class="threelinebodyj">
+                            業務で使われるあらゆる書類を、オンラインで見られるようウェブ形式に変換します。<br/>
+                            ・メールに添付するのではなく、受取人に暗号化されたURLを送ることによってコンテンツが何回見られたか、ダウンロードされたかを確認可能<br/>
+                        </div>
+                        <div class="threelinebodyj">
+                            請求書発行のための、登録済みのサービスのリストを管理します。<br/>
+                            ・業者情報<br/>
+                            　・支出(コスト)情報 <br/>
+                            ・販売情報 <br/>
+                            ・サービスカテゴリー <br/>
+                            ・税分類 <br/>
+                        </div>
+                    </div>
+                    <!-------------------------------  Application Concepts's 3rd line end----------------------------------->
+                    <!-------------------------------  Application Concepts's 4th line start----------------------------------->
+                    <!-------- Application Concepts's 4th line image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/smartphone.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/exchange.jpg?v=2"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/quotation.jpg?v=1"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <!-------- Application Concepts's 4th line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitlej">
+                            スマートフォン/タブレット アクセシビリティ<br/>
+                        </div>
+                        <div class="threelinetitlej">
+                            為替マネジメント<br/>
+                        </div>
+                        <div class="threelinetitlej">
+                            見積マネジメント<br/>
+                        </div>
+                    </div>
+                    <!-------- Application Concepts's 4th line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebodyj">
+                            Apple AppstoreやGoogle Play storeからSalesforce
+                            1アプリをインストールし、CloForから全てのデータにアクセスすることが出来ます。<br/>
+                        </div>
+                        <div class="threelinebodyj">
+                            標準為替レートでは、予め定められた期間の中での、一般的な為替レートを管理します。 <br/>
+                            非標準為替レートでは、特定の顧客やパートナー専用の為替レートを管理します。 <br/>
+                            ・為替レートの有効性と有効期間 <br/>
+                            ・ハウスB/LやマスターB/L案件へ、対応する為替レートの自動同期<br/>
+                        </div>
+                        <div class="threelinebodyj">
+                            顧客やパートナー向けの見積書の発行<br/>
+                            ・プロフィット分析 <br/>
+                            ・様々な言語、通貨によるテンプレート <br/>
+                        </div>
+                    </div>
+                    <!------------------------------- Application Concepts's 4th line end----------------------------------->
+                    <!---------------------- Application Concepts end ------------------------------------>
+                    <div class="grayline">
+                    </div>
+                    <!-------- CloSync--------------->
+                    <div class="wrap"><br/>
+                        <a name="CloSyn">CloSyn(クラウドシンク)</a>
+                        <br/>
+                    </div>
+                    <div class="orangeline">
+                    </div>
+                    <br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        CloSynとは<br/>
+                    </div>
+                    <div class="bodybody">
+                        <br/>
+                        CloSynとは、貴社の本社と、向け地側のパートナーとの間でデータを共有し、同期させる技術のことです。<br/>
+                        CloSynを使えば、貴社の本社と向け地側のパートナーとの間でブッキング情報を共有するために、プレアラート書類を送る必要がなくなります。<br/>
+                        積み地に貴社の営業所があり、向け地に貴社の本社がある場合を考えてみてください。クリックするだけでデータを本社に送信することが出来ます。<br/>
+                        向け地側の本社がもう一度データ入力を行う必要が無くなり、様々な利益が生まれます。コスト削減、データ入力時のヒューマンエラーの回避、迅速さなどです。
+                        CloSynを使用する際は、向け地側のフォワーダーもCloForを使うか、その会社のシステムの必要に応じて私たちがインターフェースを開発いたします。<br/>
+                        <br/><br/>
+                    </div>
+                    <br/>
+
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/datasync.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/datasync2.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/datasync3.jpg?v=1"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <!-------- CloSync 1st line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            CloForとCloForとのブッキング情報の同期<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            CloForとCloForとのデビット/クレジット情報の同期<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            CloForとその他のフォワーディングシステムとのブッキング情報の同期<br/>
+                        </div>
+                    </div>
+                    <!-------- CloSync 1st line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            CloForへのブッキング情報入力と、パートナー決定の後、データ同期ボタンをクリックしてください。<br/>
+                            プレアラート情報が貴社の本社のCloForあるいは貴社の海外代理店へ送信されます。
+                            <br/>
+                        </div>
+                        <div class="threelinebody">
+                            CloForへのデビット(海外との精算)データ入力と、パートナー決定の後、データ同期ボタンを押してください。<br/>
+                            デビットデータが貴社の本社のCloForあるいは貴社の海外代理店へ送信されます。<br/>
+                        </div>
+                        <div class="threelinebody">
+                            もし貴社の本社や海外パートナーが別のフォワーディングシステムを使っている場合は、データ同期を可能にするインターフェースを開発いたします。<br/>
+                        </div>
+                    </div>
+                    <!-------------------------------CloSync 1st line end----------------------------------->
+                    <!------------------------------- CloSync end----------------------------------->
+                    <div class="grayline">
+                    </div>
+                    <!----------------------Homepage & Cargo Tracking Service start ------------------------------------>
+                    <!------------------------------- CloTra(Cloud Cargo Tracking Service) 1st line start----------------------------------->
+                    <!-------- CloTra(Cloud Cargo Tracking Service) 1st line image--------------->
+                    <div class="wrap"><br/>
+                        <a name="CloTra">CloTra(クラウドカーゴトラッキングサービス)</a>
+                        <br/>
+                    </div>
+                    <div class="orangeline"></div>
+                    <br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        CloTraとは
+                        <br/>
+                    </div>
+                    <div class="bodybodyj">
+                        <br/>
+                        CloTraとはクラウドカーゴトラッキングシステム (Cloud Cargo Tracking System)のことです。
+                        CloTraは貴社の顧客や海外パートナーに対し、メールやホームページを通してリアルタイムの貨物追跡情報を提供します。<br/>
+                        CloTraはCloForとは別に契約が必要なオプションのサービスです。<br/>
+                        CloTraは4つの部分から構成されます。<br/>
+                        ・カーゴトラッキングメール: CloTraは貴社の顧客やパートナーに状況を連絡するメールを送ります。<br/>
+                        ・カーゴトラッキングウェブサイト: 貴社の顧客やパートナーが貨物のステータスを把握するために専用のサイトにアクセスします。<br/>
+                        ・カスタマーポータル(私たちとのサービス利用契約と、Salesforceとのサービス利用契約が必要です)<br/>
+                        ・パートナーポータル(私たちとのサービス利用契約と、Salesforceとのサービス利用契約が必要です) <br/>
+                    </div>
+                    <br/><br/>
+
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/realtime.jpg?v=2"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/tracking.jpg?v=2"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/customerportal.png?v=2"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <!-------- CloTra(Cloud Cargo Tracking Service) 1st line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitlej">
+                            カーゴトラッキングメール<br/>
+                        </div>
+                        <div class="threelinetitlej">
+                            カーゴトラッキングウェブサイト<br/>
+                        </div>
+                        <div class="threelinetitlej">
+                            カスタマーポータルおよびパートナーポータル<br/>
+                        </div>
+                    </div>
+                    <!-------- CloTra(Cloud Cargo Tracking Service) 1st line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebodyj">
+                            貨物のステータスがメールで送られます。<br/>
+                            ・定型化されたメールテンプレート(国内の顧客に対しては自国の言語を、海外パートナーに対しては英語をお選びください)<br/>
+                            ・ステータスが変更された際はリアルタイムで連絡されます。(ステータス変更がメール送信と連動しています)<br/>
+                        </div>
+                        <div class="threelinebodyj">
+                            貴社の既存のホームページにカーゴトラッキングリンクを埋め込みます。案件番号を知っている方は誰でもアクセスし、貨物のステータスを確認できます。<br/>
+                        </div>
+                        <div class="threelinebodyj">
+                            CloTraは貴社の業務チームが入力した全ての情報を蓄積します。 <br/>
+                            ・カスタマーポータルでは、貴社の顧客がログインして貨物のデータの履歴にアクセスしたり、関係するデータの全てを確認することができます。<br/>
+                            ・パートナーポータルでは、貴社のパートナーがログインし、貨物のデータの履歴にアクセスしたり、関係するデータの全てを確認することができます。<br/>
+                        </div>
+                    </div>
+                    <!------------------------------- CloTra(Cloud Cargo Tracking Service) 1st line end----------------------------------->
+                    <!------------------------------- CloTra(Cloud Cargo Tracking Service) end----------------------------------->
+                    <div class="grayline">
+                    </div>
+                    <!------------------------------- CloFil(Cloud AFR Filling System) start----------------------------------->
+                    <!------------------------------- CloFil(Cloud AFR Filling System)1st line start----------------------------------->
+                    <!-------- CloFil(Cloud AFR Filling System)--------------->
+                    <div class="wrap"><br/>
+                        <a name="CloFil">CloFil(クラウドAFRファイリングシステム)</a>
+                        <br/>
+                    </div>
+                    <div class="orangeline">
+                    </div>
+                    <br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        CloFilとは<br/>
+                    </div>
+                    <div class="bodybodyj">
+                        CloFilとは、AFR(出港前報告制度)のためのクラウドファイリングのことを意味します。<br/>
+                        CloFilはクラウドシステムですが、CloForやCloTraとは別のプラットフォームの上に成り立っています。<br/>
+                        CloFilでは貨物や船会社の情報をCloFilシステムに入力することが必要となります。<br/>
+                        ##近い将来のうちにCloForからAFRファイリングを行うことが出来るようになる見込みです。<br/>
+                        <a href="http://afr-eng.plism.com" class="hyperlink">PLISMページへ</a><br/>
+                    </div>
+                    <br/><br/>
+
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/plism.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/cost2.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/onestop.jpg?v=1"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <!-------- CloFil(Cloud AFR Filling System) 1st line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitlej">
+                            AFRファイリングのサービスプロバイダとして認証を取得(KLNETのPLISM)<br/>
+                        </div>
+                        <div class="threelinetitlej">
+                            競争力あるコスト<br/>
+                        </div>
+                        <div class="threelinetitlej">
+                            ワンストップのサービスおよびサポート<br/>
+                        </div>
+                    </div>
+                    <!-------- CloFil(Cloud AFR Filling System) 1st line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebodyj">
+                            私たちはKLNETのグローバルパートナーであり、KLNETのPLISMサービスをCloFilブランドとして提供します。<br/>
+                        </div>
+                        <div class="threelinebodyj">
+                            設定のための初期費用は一切必要ありません。月毎のファイリング件数に応じた料金だけが請求されます。<br/>
+                        </div>
+                        <div class="threelinebodyj">
+                            私たちのチームが貴社に代わってNACCSからレポートIDを取得し、アカウントを作成し、利用のためのセットアップを行います。<br/>
+                        </div>
+                    </div>
+                    <!-------------------------------CloFil(Cloud AFR Filling System) 1st line end----------------------------------->
+                    <!------------------------------- CloFil(Cloud AFR Filling System) end----------------------------------->
+                </div>
+            </div>
+            <div style="background-color:#bfbfbf;height:450px;">
+                <div>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbottomtable.css?v=2534"/>
+                    <style type="text/css">
+                        @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+                        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+                    </style>
+                    <!--------------------- bottome menu------------------->
+                    <div class="absolute1">
+                        <div class="bottomtable1">
+                            □ ソリューション<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFor"
+                               class="link">クラウドフォワーディング(CloFor)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloTra"
+                               class="link">トラッキングサービス(CloTra)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloSyn" class="link">クラウドシンク(CloSync)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFil" class="link">AFRファイリング(CloFil)</a><br/>
+                        </div>
+                        <div class="bottomtable2">
+                            □ サービス<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#DataInputService"
+                               class="link">データ入力サービス</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#Development SF Service" class="link">Salesforceの導入
+                                <div style="margin-bottom:-20px;">コンサルティングと開発</div>
+                            </a><br/>
+                        </div>
+                        <div class="bottomtable3">
+                            □ 価格<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Solution List Price" class="link hover">ソリューション価格表</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Service List Price" class="link">サービス価格表</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#How to pay" class="link">お支払い方法</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Legal information" class="link">法的情報</a>
+                        </div>
+                        <div class="bottomtable4">
+                            □ 特長<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cost Competitive"
+                               class="link">競争力あるコスト</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Speed and Flexibility"
+                               class="link">スピードと柔軟性</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Accessibility"
+                               class="link">アクセシビリティ/セキュリティ/バックアップ</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Real Time Performance"
+                               class="link">リアルタイムなパフォーマンス</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cargo Process" class="link">カーゴプロセス</a>
+                        </div>
+                        <div class="bottomtable5">
+                            □ トライアル/ダウンロード<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Trial" class="link" style="text-indent:-100px">トライアル</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Appexchange" class="link">AppExchange</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Data download" class="link">データダウンロード</a><br/>
+                        </div>
+                        <div class="bottomtable6">
+                            □ コンタクト<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Customer Support"
+                               class="link">カスタマーサポート</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Partner Support"
+                               class="link">パートナーサポート</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Solutions or Services" class="link">ソリューションに関するお問い合わせ</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Hearing Sheet" class="link">ヒアリング・シート</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#FAQ and Public Solutions" class="link">FAQとパブリックソリューション</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Technical Issue"
+                               class="link">技術的な問題に関するお問い合わせ</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Server Status" class="link">サーバーステータス</a><br/>
+                        </div>
+                        <div class="bottomtable7">
+                            □ 会社概要<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Greetings" class="link">ご挨拶</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Our team" class="link">社員紹介</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Japan Headquater" class="link">日本本社</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Vietnam Office" class="link">ベトナム支社</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Korea Office" class="link">韓国支社</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Career in AFR" class="link">AFRで働く</a>
+                        </div>
+                    </div>
+                    <!--------------------- bottome menu end------------------->
+                </div>
+            </div>
+            <div id="footer" style="height:64px;background-color:#bfbfbf;">
+                <div style="background-color:#948F8F;">
+                    <meta charset="utf-8"/>
+                    <meta name="description" content="AFRソリューションズ株式会社 ホームページ"/>
+                    <title>AFRソリューションズ株式会社 ホームページ</title>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRmenu.css?v=306"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRlogo.css?v=260"/>
+                    <style type="text/css">
+                        #textcenter {
+                            text-align: center;
+                            color: white;
+                            font-weight: bold;
+                            background-color: gray;
+                        }
+                    </style>
+                    <div id="textcenter">
+                        <br/>
+                        3-6-20, HIGASHI-OI, SHINAGAWA-KU, TOKYO<br/>
+                        Tel : 036-868-7838<br/>
+                        ⓒ&nbsp;2015. AFR SOLUTIONS CO., LTD all rights reserved.<br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </apex:outputPanel>
+    <!-- =========== KOREAN =============-->
+    <apex:outputPanel rendered="{!language = 'ko'}">
+        <div id="AFRSolutions">
+            <div id="header" style="height:628px;">
+                <div>
+                    <meta charset="utf-8"/>
+                    <title>AFR Solutions</title>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRmenu.css?v=306"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRlogo.css?v=260"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbody.css?v=1812"/>
+                    <link rel="shortcut icon"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/logoicon.ico?v=2"/>
+                    <style type="text/css">
+                        #textcenter {
+                            text-align: center;
+                            color: white;
+                            font-weight: bold;
+                            background-color: gray;
+                        }
+
+                        @import url(//fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+                    </style>
+                    <style>
+                        /* ------------------------------------ image style --------------------------------------------*/
+
+                        .payZone img:hover {
+                            /* 위로 올리기
+                            background:#000;
+                            -moz-transform: translate3d(0, -100%, 0); /* position elements past bottom of layout */
+                            -webkit-transform: translate3d(0, -20%, 0);
+                            transform: translate3d(0, -20%, 0);
+                            -moz-transition: all 0.5s;
+                            -webkit-transition: all 0.5s;
+                            -ms-transition: all 0.5s;
+                            transition: all 0.5s;
+
+                        }
+                    </style>
+                    <!--------------------------------------- logo body ------------------------------------>
+                    <div id="logo">
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution?lang=ko"> <img
+                                src="https://afrs-developer-edition.ap6.force.com/afr/s/afrlogo.jpg?v=1"
+                                style="width:300px; height:100px;"/></a>
+                    </div>
+                    <div class="moveleft">
+                        <div class="payZone" style="">
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution?lang=vi"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Vietnam.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution?lang=en"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/America.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution?lang=ja"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Japan.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution?lang=ko"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Korea.png?v=1"
+                                    style="width:30px"/></a>
+                        </div>
+                    </div>
+                    <!--------------------------------------- slide menu body ------------------------------------>
+                    <div id="topMenu">
+                        <ul>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution" class="menuLink">솔루션</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFor" class="submenuLink longLink">클라우드
+                                        포워딩(CloFor)</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloTra" class="submenuLink longLink">트래킹
+                                        서비스(CloTra)</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloSyn" class="submenuLink longLink">데이터동기화
+                                        서비스(CloSyn)</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFil" class="submenuLink longLink">AFR
+                                        Filling(CloFil)</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService" class="menuLink">서비스</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#DataInputService"
+                                           class="submenuLink longLink">데이터 입력 서비스</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#Development SF Service"
+                                           class="submenuLink longLink">Salesforce 도입컨설팅과 개발</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice" class="menuLink">가격</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Solution List Price"
+                                           class="submenuLink longLink">솔루션 가격</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Service List Price"
+                                           class="submenuLink longLink">서비스 가격</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#How to pay"
+                                           class="submenuLink longLink">지불방법</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Legal information"
+                                           class="submenuLink longLink">법률정보</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength" class="menuLink">특징</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cost Competitive"
+                                           class="submenuLink longLink">가격 경쟁력</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Speed and Flexibility"
+                                           class="submenuLink longLink">신속함, 유연성</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Accessibility"
+                                           class="submenuLink longLink">접근성<br/>/보안/백업</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Real Time Performance"
+                                           class="submenuLink longLink">리얼타임 퍼포먼스</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cargo Process"
+                                           class="submenuLink longLink">화물정보처리</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown" class="menuLink">체험판/다운로드</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Trial"
+                                           class="submenuLink longLink">체험판</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Appexchange"
+                                           class="submenuLink longLink">AppExchange</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Data download"
+                                           class="submenuLink longLink">다운로드</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs" class="menuLink">문의사항</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Customer Support"
+                                           class="submenuLink longLink">고객지원</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Partner Support"
+                                           class="submenuLink longLink">파트너지원</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Solutions or Services"
+                                           class="submenuLink longLink">솔루션/서비스 지원</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Hearing Sheet"
+                                           class="submenuLink longLink">설문조사</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#FAQ and Public Solutions"
+                                           class="submenuLink longLink">FAQ</a></li>
+                                    <li>
+                                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Technical Issue"
+                                           class="submenuLink longLink">기술지원</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Server Status"
+                                           class="submenuLink longLink">서버현황확인 지원</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs" class="menuLink">회사소개</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Greetings" class="submenuLink longLink">인사의
+                                        말</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Our team" class="submenuLink longLink">담당자
+                                        소개</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Japan Headquater"
+                                           class="submenuLink longLink">일본 본사</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Vietnam Office"
+                                           class="submenuLink longLink">베트남 지사</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Korea Office"
+                                           class="submenuLink longLink">한국
+                                        지사</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Career in AFR"
+                                           class="submenuLink longLink">AFR
+                                        채용정보</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mainimage">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/solutions.jpg?v=1" height="400px;"
+                             width="1400px;"/>
+                    </div>
+                </div>
+            </div>
+            <div style="overflow:hidden;height:6500px;">
+                <div style="height:4800px;">
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRtitle.css?v=174"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbody.css?v=1812"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3line.css?v=101"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3linecontent.css?v=943"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3linetitle.css?v=815"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRline.css?v=220"/>
+                    <style type="text/css">
+                        @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+                        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+                        #orangeline {
+                            margin: 0.5px;
+                            text-align: center;
+                        }
+
+                        .grayback {
+                            background-color: #E5DED9;
+                        }
+
+                        body {
+                            overflow-x: hidden
+                        }
+                    </style>
+                    <div class="grayline">
+                    </div>
+                    <!---------------------- Cloud forwarding solutions start ------------------------------------>
+                    <!-------- title --------------->
+                    <div class="wrapk">
+                        <br/>
+                        <a name="CloFor">CloFor(클라우드 포워딩)</a>
+                        <br/>
+                    </div>
+                    <div class="orangeline">
+                    </div>
+                    <!-------- body --------------->
+                    <br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        <a name="Greetings">인사의 말씀</a>
+                    </div>
+                    <div class="bodybody">
+                        <br/>
+                        AFR Solutions Co., LTD.!에 오신 것을 환영합니다!<br/>
+                        Freight forwarding의 역할(NVOCC, Consolidator, International Logistics,등)은 더욱더 그 중요성이 커지고 있습니다.
+                        <br/>
+                        지금 세계는 빠르게 변하는 글로벌 환경으로 인해, 고객들은 더욱 빠른 서비스와 배달을 저렴한 가격에 원하고 있습니다.<br/>
+                        그리고 포워딩 산업은 빠르게 증가하는 포워딩 업체들로 인해 포화상태가 될 것입니다.<br/>
+                        저희의 미션은 서비스의 효율,퍼포먼스의 향상을 원하시는 모든 고객분들께 저희의 Cloud-Forwarding solution을 제공하는
+                        것입니다.<br/><br/>
+                        ・Cloud-Forwarding solution은 모든 포워딩업무와, 서류업무를 처리할 수 있습니다. <br/><br/>
+                        ・고객관리, 포워딩업무를 위해, Salesforce의 CRM서비스를 바탕으로 하는 One-Stop-Solutions을 제공합니다. <br/><br/>
+                        ・단 한번의 데이터입력만을 필요로 합니다.<br/><br/>
+                        ・글로벌 업무에 필요한 다양한 언어를 지원하는 템플렛을 지원합니다.<br/><br/>
+                        ・고객님께서 가지고 계산 스마트폰, 테블렛PC는 비지니스를 효율적으로 도와주는 강력한 장비가 될 것입니다.<br/><br/>
+                        <br/>
+                        귀사의 빠른 성장을 지원하는 저희 솔루션을 경험해보시기 바랍니다!
+                    </div>
+                    <br/>
+                    <!---------------------- Application Concepts 1st table start ------------------------------------>
+                    <!------------------------------- Application Concepts's 1st line start----------------------------------->
+                    <!-------- Application Concepts's first line image--------------->
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        <a name="Application Concepts">어플리케이션 기능</a>
+                    </div>
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/forwarding.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/consol.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/invoice.jpg?v=1"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <br/>
+                    <!-------- Application Concepts's 1st line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            포워딩 서류 관리
+                        </div>
+                        <div class="threelinetitle">
+                            콘솔/혼재화물 관리
+                        </div>
+                        <div class="threelinetitle">
+                            청구서, 입금관리
+                        </div>
+                    </div>
+                    <!-------- Application Concepts's 1st line content--------------->
+                    <div class="threelinecontent" style="margin-bottom:30px;">
+                        <div class="threelinebody">
+                            귀사의 서류관리를 효율적으로 관리하는, one-time형식의 어플리케이션입니다.<br/>
+                            ・HOUSE BOOKING 정보<br/>
+                            ・화물 상태 관리<br/>
+                            ・각 HOUSE B/L 당 이익관리<br/>
+                            ・삼자무역/TRANSIT 관리 <br/>
+                            ・CY/CFS 창고관리<br/>
+                            ・국가별 언어를 지원하는 서류사용 <br/>
+                            ・수입관련서류:A/N,D/O,DEBIT NOTE,CREDIT NOTE,INVOICE<br/>
+                            ・수출관련서류:S/I, FREIGHT MEMO,INVOICE,DRIFT B/L,ORIGINAL B/L,WAYBILL,DEBIT NOTE,CREDIT
+                            NOTE<br/>
+                            <br/>
+                        </div>
+                        <div class="threelinebody">
+                            HOUSE B/L 과 콘솔/혼재수송의 MASTER B/L 을 따로 관리할 수 있는 어플리케이션입니다.<br/>
+                            ・MASTER BOOKING 정보<br/>
+                            ・HOUSE B/L 안건으로 자동 데이터복사<br/>
+                            ・MOUSE B/L 비용을 자동으로 HOUSE B/L 안건으로 자동 분배. SHIPMENT<br/>
+                            ・각 MASTER B/L 당 비용분석(콘솔안건, 혼재수송안건)<br/>
+                            ・서류출력:CONTAINER LOAD PLAN(CLP) 발행, DEVANNING 요청 서류 등<br/>
+                            <br/>
+                        </div>
+                        <div class="threelinebody">
+                            고객,파트너,그 외 관련회사들의 댜앙한 언어를 지원하는 청구서를 사용할 수 있습니다.<br/>
+                            ・국가별 언어지원 청구서<br/>
+                            ・DEBIT-CREDIT 집계표<br/>
+                            ・세금관리<br/>
+                            ・입금잔고관리<br/>
+                            ・출금잔고관리<br/>
+                            <br/>
+                        </div>
+                    </div>
+                    <!------------------------------- Application Concepts's 1st line end----------------------------------->
+                    <!------------------------------- Application Concepts's 2nd line start----------------------------------->
+                    <!-------- Application Concepts's first line image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/costdown.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/CC.png?v=3"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/delivery.jpg?v=1"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <!-------- Application Concepts's 2nd line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            비용의 이익/손실 관리<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            통관관리<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            PICKUP &amp; DELIVERY 관리<br/>
+                        </div>
+                    </div>
+                    <!-------- Application Concepts's 2nd line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            안건의 이익을 계산하고, 손실이 발생하는 경우 관련 정보가 업무팀에게 전송됩니다.<br/>
+                            ・HOUSE B/L 당 이익계산<br/>
+                            ・각 콘솔,혼재수송의 MASTER B/L 당 이익 분석<br/>
+                            ・손실발생 시 자동메일알림<br/>
+                        </div>
+                        <div class="threelinebody">
+                            포워딩 서류 관리 중 통관에 관련된 정보를 관리할 수 있습니다.<br/>
+                            ・통관의뢰정보<br/>
+                            ・통과허가정보<br/>
+                            ・통관업자정보<br/>
+                            ・서류출력: 통관업자에게 신고의뢰서류 전송<br/>
+                        </div>
+                        <div class="threelinebody">
+                            포워딩 서류 관리 중 배송에 관련된 정보를 관리할 수 있습니다.<br/>
+                            ・트럭/컨테이너 운송 업자 정보<br/>
+                            ・PICKUP 정보<br/>
+                            ・트럭 정보<br/>
+                            ・서류출력: 배송업자에게 의뢰서류 전송<br/>
+                        </div>
+                    </div>
+                    <!------------------------------- Application Concepts's 2nd line end----------------------------------->
+                    <!------------------------------- Application Concepts's 3rd line start----------------------------------->
+                    <!--------  Application Concepts's 3rd line image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/account.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/docshare.jpg?v=2"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/servicemaster.jpg?v=2"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <!--------  Application Concepts's 3rd line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            회계관리<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            웹 기반 서류관리<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            SERVICE MASTER 관리<br/>
+                        </div>
+                    </div>
+                    <!--------  Application Concepts's 3rd line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            은행계좌와 동기화 된 one-time 입금/지불관리<br/>
+                            ・고객으로부터의 입금관리(날짜,금액,입금자명,입금계좌 등)<br/>
+                            ・업자 지불관리(날짜, 금액, 출금계좌 등)<br/>
+                            ・회계시스템에 업로드 할 수 있는 레포트 다운로드 <br/>
+                        </div>
+                        <div class="threelinebody">
+                            귀사에서 사용하는 모든 서류를 온라인에서 사용할 수 있도록 웹 형식으로 사용합니다.<br/>
+                            ・메일로 첨부하는 것이 아닌, 상대방에게 암호화된 URL을 보냄으로써, 확인횟수, 다운로드 여부 등의 확인가능 <br/>
+                        </div>
+                        <div class="threelinebody">
+                            청구서발행을 위한 등록완료된 서비스의 리스트를 관리합니다.<br/>
+                            ・업자정보<br/>
+                            ・지출(코스트)정보 <br/>
+                            ・판매정보 <br/>
+                            ・서비스 카테고리 <br/>
+                            ・세금 <br/>
+                        </div>
+                    </div>
+                    <!-------------------------------  Application Concepts's 3rd line end----------------------------------->
+                    <!-------------------------------  Application Concepts's 4th line start----------------------------------->
+                    <!-------- Application Concepts's 4th line image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/smartphone.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/exchange.jpg?v=2"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/quotation.jpg?v=1"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <!-------- Application Concepts's 4th line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            스마트폰/테블렛 접근성<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            환율관리<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            견적서 관리<br/>
+                        </div>
+                    </div>
+                    <!-------- Application Concepts's 4th line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            Apple App Store, Google Play Store에서 다운로드 후 CloFor의 모든 데이터에 접속 할 수 있습니다.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            표준환율에서는 특정기간 동안의 일반적인 환율을 관리합니다. 비표준환율에서는 특정 고객,파트너 전용의 환율을 관리합니다. <br/>
+                            ・환율의 유효성과 유효기간<br/>
+                            ・HOUSE B/L AND MASTER B/L 안건에 대응하는 환율을 자동으로 동기화.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            고객, 파트너에게 견적서 발행<br/>
+                            ・이익 분석 <br/>
+                            ・국가별 언어, 통화제공 <br/>
+                        </div>
+                    </div>
+                    <!------------------------------- Application Concepts's 4th line end----------------------------------->
+                    <!---------------------- Application Concepts end ------------------------------------>
+                    <div class="grayline">
+                    </div>
+                    <!-------- CloSync--------------->
+                    <div class="wrap"><br/>
+                        <a name="CloSyn">CloSyn(Cloud Syn)</a>
+                        <br/>
+                    </div>
+                    <div class="orangeline">
+                    </div>
+                    <br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        CloSyn 란?<br/>
+                    </div>
+                    <div class="bodybody">
+                        <br/>
+                        CloSyn는 목적지 항구에 있는 본사/파트너와의 데이터 공유를 도와주는 데이터 동기화 서비스입니다.<br/>
+                        CloSyn 서비스를 사용하신다면, 귀사의 본사와 도착항의 파트너와 Booking 정보를 공유할 때, Pre-Alert 서류를 전송할 필요가 없어집니다.<br/>
+                        상상해보세요! 출발항에 있는 지사에서 도착항의 본사에 클릭 한번으로 데이터를 전송할 수 있습니다.<br/>
+                        귀사의 본사는 더 이상 데이터 입력을 다시 할 필요가 없으며, 코스트절감, 데이터입력 시 인적오류의 감소, 신속한 업무처리 등의 이득을 볼 수 있습니다.
+                        CloSyn 사용하기 위해서는, 도착항의 파트너도 CloFor을 사용하거나, 해당회사의 시스템에 맞는 인터페이스를 개발할 필요가 있습니다.<br/>
+                        <br/><br/>
+                    </div>
+                    <br/>
+
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/datasync.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/datasync2.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/datasync3.jpg?v=1"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <!-------- CloSync 1st line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            CloFor 간의 Booking 정보동기화<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            CloFor 간의 Debit/Credit 정보동기화<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            CloFor, 타 포워딩 시스템과의 Booking 정보동기화<br/>
+                        </div>
+                    </div>
+                    <!-------- CloSync 1st line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            CloFor에 Booking 정보입력과 파트너 결정 후, 데이터 동기버튼을 클릭해주십시오.<br/>
+                            Pre-alert 정보는 귀사의 본사에 있는 CloFor에 보내지거나, 해외대리점에 전송됩니다.
+                            <br/>
+                        </div>
+                        <div class="threelinebody">
+                            CloFor에서 Debit 정보입력 후, 파트너가 결정이 되면 '정보동기화' 버튼을 눌러주십시오..<br/>
+                            Debit 정보가 귀사의 본사에 있는 CloFor에 전송되거나, 해외대리점에 전송됩니다.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            귀사의 본사, 해외 파트너가 다른 포워딩 시스템을 사용하고 있다면, 정보동기화를 위한 새로운 인터페이스의 개발도 가능합니다.<br/>
+                        </div>
+                    </div>
+                    <!-------------------------------CloSync 1st line end----------------------------------->
+                    <!------------------------------- CloSync end----------------------------------->
+                    <div class="grayline">
+                    </div>
+                    <!----------------------Homepage & Cargo Tracking Service start ------------------------------------>
+                    <!------------------------------- CloTra(Cloud Cargo Tracking Service) 1st line start----------------------------------->
+                    <!-------- CloTra(Cloud Cargo Tracking Service) 1st line image--------------->
+                    <div class="wrapk"><br/>
+                        <a name="CloTra">CloTra(트래킹 서비스)</a>
+                        <br/>
+                    </div>
+                    <div class="orangeline"></div>
+                    <br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        CloTra 란?
+                    </div>
+                    <div class="bodybody">
+                        <br/>
+                        CloTra 란 Cloud Cargo Tracking System의 의미입니다.<br/>
+                        CloTra는 귀사의 고객,해외 파트너에 대해 메일,홈페이지를 통해서 리얼타임의 화물추적정보를 제공합니다.
+                        CloTra는 CloFor이랑은 다른 계약이 필요한 옵션서비스 입니다.
+                        <br/>
+                        CloTra는 다음의 4가지 특징을 가지고 있습니다.<br/>
+                        ・Email Cargo 추적: CloTra는 귀사의 고객, 파트너에게 현재화물상황에 대한 메일을 발송합니다.<br/>
+                        ・Cargo Tracking 웹사이트: 귀사의 고객, 파트너는 화물의 상태를 파악하기 위한 전용의 사이트에 접속할 수 있습니다.<br/>
+                        ・고객 포털(저희회사와의 계약과, Salesforce의 계약이 필요합니다.)<br/>
+                        ・파트너 포털(저희회사와의 계약과, Salesforce의 계약이 필요합니다.)<br/>
+                        <br/>
+                    </div>
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/realtime.jpg?v=2"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/tracking.jpg?v=2"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/customerportal.png?v=2"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <!-------- CloTra(Cloud Cargo Tracking Service) 1st line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            Email Cargo 추적<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Cargo Tracking 웹사이트<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            고객 포털과 파트너 포털<br/>
+                        </div>
+                    </div>
+                    <!-------- CloTra(Cloud Cargo Tracking Service) 1st line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            화물의 스테이터스를 메일로 전송합니다.<br/>
+                            ・표준화 된 메일템플렛(국내고객에게는 자국의 언어를, 해외파트너에게는 영어로 발송합니다.)<br/>
+                            ・스테이터스가 변경되었을 경우, 리얼타임으로 메일을 발송합니다.(스테이터스의 변경이 메일의 발송과 연동되어 있습니다.)<br/>
+                        </div>
+                        <div class="threelinebody">
+                            귀사의 기존 홈페이지에 화물추적기능을 삽입합니다. 안건번호를 알고 계시다면 누구나 접속가능하며, 화물의 스테이터스를 확인할 수 있습니다.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            CloTra는 귀사의 업무팀이 입력한 모든 정보를 축적합니다.<br/>
+                            ・고객 포털은 귀사의 고객이 로그인한 화물의 데이터이력에 접속, 관련된 데이터를 모두 확인할 수 있습니다.<br/>
+                            ・파트너 포털은 귀사의 파트너가 로그인해서 화물의 데이터이력에 접속, 관련된 데이터를 모두 확인할 수 있습니다.<br/>
+                        </div>
+                    </div>
+                    <!------------------------------- CloTra(Cloud Cargo Tracking Service) 1st line end----------------------------------->
+                    <!------------------------------- CloTra(Cloud Cargo Tracking Service) end----------------------------------->
+                    <div class="grayline">
+                    </div>
+                    <!------------------------------- CloFil(Cloud AFR Filling System) start----------------------------------->
+                    <!------------------------------- CloFil(Cloud AFR Filling System)1st line start----------------------------------->
+                    <!-------- CloFil(Cloud AFR Filling System)--------------->
+                    <div class="wrapk"><br/>
+                        <a name="CloFil">CloFil(Cloud AFR Filling System)</a>
+                        <br/>
+                    </div>
+                    <div class="orangeline">
+                    </div>
+                    <br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        CloFil 란?<br/>
+                    </div>
+                    <div class="bodybody">
+                        <br/>
+                        CloFil이란 AFR(출항전보고제도)를 위한 Cloud Filing을 의미합니다.<br/>
+                        CloFil은 CloFor, CloTra과는 다른 플랫폼에서 사용할 수 있습니다.<br/>
+                        CloFil은 화물, 선사의 정보를 CLoFil에 입력하는 것이 필요합니다. <br/>
+                        ##빠른 시일내에 CloFor에서 AFR Filing이 가능합니다..<br/>
+                        <a href="http://afr-eng.plism.com" class="hyperlink">PLISM PAGE로 접속</a><br/>
+                    </div>
+                    <br/>
+
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/plism.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/cost2.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/onestop.jpg?v=1"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <!-------- CloFil(Cloud AFR Filling System) 1st line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            AFR Filing서비스 프로바이더로서 인증획득(PLISM by KLNET)<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            가격 경쟁력<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            One-Stop 서비스와 고객지원<br/>
+                        </div>
+                    </div>
+                    <!-------- CloFil(Cloud AFR Filling System) 1st line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            자사는 KLNET과 파트너 관계에 있으며, KLNET의 PLISM서비스를 CloFil의 브랜드이름으로 제공합니다.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            설정을 위한 초기비용이 일체 필요하지 않습니다. 매월 Filing 횟수에 대한 비용만 청구됩니다.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            자사의 팀이 귀사의 NACCS REPORT ID를 획득, 계정을 생성해 사용하실 수 있도록 서비스를 제공하고 있습니다.<br/>
+                        </div>
+                    </div>
+                    <!-------------------------------CloFil(Cloud AFR Filling System) 1st line end----------------------------------->
+                    <!------------------------------- CloFil(Cloud AFR Filling System) end----------------------------------->
+                </div>
+            </div>
+            <div style="background-color:#bfbfbf;height:400px;">
+                <div>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbottomtable.css?v=2534"/>
+                    <meta charset="utf-8"/>
+                    <style type="text/css">
+                        @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+                        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+                        html, body {
+                            width: 100%;
+                            height: 100%
+                        }
+
+                        body {
+                            margin: 0;
+                            padding: 0;
+                        }
+                    </style>
+                    <!------------------------------ bottom menu end --------------------------------->
+                    <div class="absolute1">
+                        <div class="bottomtable1">
+                            □ 솔루션<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFor" class="link">클라우드 포워딩(CloFor)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloTra" class="link">트래킹 서비스(CloTra)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloSyn" class="link">데이터동기화
+                                서비스(CloSyn)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFil" class="link">AFR
+                                Filling(CloFil)</a><br/>
+                        </div>
+                        <div class="bottomtable2">
+                            □ 서비스<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#DataInputService" class="link">데이터 입력
+                                서비스</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#Development SF Service" class="link">Salesforce
+                                도입컨설팅과
+                                개발</a><br/>
+                        </div>
+                        <div class="bottomtable3">
+                            □ 가격<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Solution List Price" class="link hover">솔루션
+                                가격</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Service List Price" class="link">서비스 가격</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#How to pay" class="link">지불방법</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Legal information" class="link">법률정보</a>
+                        </div>
+                        <div class="bottomtable4">
+                            □ 특징<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cost Competitive" class="link">가격 경쟁력</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Speed and Flexibility" class="link">신속함,
+                                유연성</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Accessibility" class="link">접근성/보안/백업</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Real Time Performance" class="link">리얼타임
+                                퍼포먼스</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cargo Process" class="link">화물정보처리</a>
+                        </div>
+                        <div class="bottomtable5">
+                            □ 체험판/다운로드<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Trial" class="link"
+                               style="text-indent:-100px">체험판</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Appexchange" class="link">AppExchange</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Data download" class="link">다운로드</a><br/>
+                        </div>
+                        <div class="bottomtable6">
+                            □ 문의사항<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Customer Support" class="link">고객지원</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Partner Support" class="link">파트너지원</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Solutions or Services" class="link">솔루션/서비스
+                                지원</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Hearing Sheet" class="link">설문조사</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#FAQ and Public Solutions"
+                               class="link">FAQ</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Technical Issue"
+                               class="link">기술지원</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Server Status" class="link">서버현황확인 지원</a><br/>
+                        </div>
+                        <div class="bottomtable7">
+                            □ About Us<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Greetings" class="link">인사의 말</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Our team" class="link">담당자 소개</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Japan Headquater" class="link">일본 본사</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Vietnam Office" class="link">베트남 지사</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Korea Office" class="link">한국 지사</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Career in AFR" class="link">AFR 채용정보</a><br/>
+                        </div>
+                    </div>
+                    <!------------------------------ bottom menu end --------------------------------->
+                </div>
+            </div>
+            <div id="footer" style="height:64px;background-color:#bfbfbf;">
+                <div style="background-color:#948F8F;">
+                    <meta name="description" content="AFR Solutions Homepage" charset="utf-8"/>
+                    <title>AFR Solutions Homepage</title>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRmenu.css?v=306"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRlogo.css?v=260"/>
+                    <style type="text/css">
+                        #textcenter {
+                            text-align: center;
+                            color: white;
+                            font-weight: bold;
+                            background-color: gray;
+                        }
+                    </style>
+                    <div id="textcenter">
+                        <br/>
+                        3-6-20, HIGASHI-OI, SHINAGAWA-KU, TOKYO<br/>
+                        Tel : 036-868-7838<br/>
+                        ⓒ&nbsp;2015. AFR SOLUTIONS CO., LTD all rights reserved.<br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </apex:outputPanel>
+</apex:page>

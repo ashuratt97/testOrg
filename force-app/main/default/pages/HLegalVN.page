@@ -1,0 +1,79 @@
+<apex:page showHeader="false" sidebar="false" docType="html-5.0">
+    <head>
+        <title>
+            legal </title>
+        <script type="text/javascript">
+            //<![CDATA[
+            try {
+                (function () {
+                    var w = self, l, p, o;
+                    if (w && top) {
+                        for (; w !== top && (p = w.parent) && p !== w && (o = p.location) && o.protocol === (l = w.location).protocol && (o.host === l.host || (p.document && p.document.domain === w.document.domain)); w = p);
+                        if (w !== top)throw "";
+                    }
+                    ({
+                        f: function () {
+                            document.documentElement ? document.documentElement.style.display = "" : (!this.a && (this.a = 10), this.a < 1E5 && (window.sfdcRetryShowWindow = this) && setTimeout("sfdcRetryShowWindow.f()", this.a), this.a *= 2)
+                        }
+                    }.f())
+                })();
+            } catch (e) {
+                if (top !== self)top.location = location; else throw e;
+            }//]]></script>
+        <link href="https://afrs-developer-edition.ap6.force.com/afr/s/SiteStyleSheet?v=64" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="https://afrs-developer-edition.ap6.force.com/afr/s/sfsites/assets/Scripts/jquery/jquery.js?r=1.201606172351470929">
+        </script>
+        <script type="text/javascript"
+                src="https://afrs-developer-edition.ap6.force.com/afr/s/sfsites/assets/Scripts/Runtime/PicassoRuntime.js?r=1.201606172351470929">
+        </script>
+    </head>
+    <body itemid="body">
+    <div id="legal">
+        <div id="header">
+            &nbsp;      
+        </div>
+        <div id="content" style="overflow:hidden;">
+            <div>
+                1.  Hợp đồng &amp; Điều kiện<br/>
+                Hợp đồng khách hàng và điều kiện về sản phẩm và dịch vụ cho người dùng<br/>
+                <br/>
+                2.  Bảo mật thông tin<br/>
+                Tuyên bố về tính bảo mật<br/>
+                Các cam kết của chúng tôi về sự bảo mật thông tin<br/>
+                2.1.    Thu thập thông tin<br/>
+                •   Khi bạn yêu cầu thêm thông tin hoặc đăng kí trên trang Web Afr-solutions.com, Công ty sẽ yêu cầu bạn cung cấp thông tin liên lạc cơ bản.<br/>
+                •   Khi bạn mua ứng dụng Afr-solutions hoặc các dịch vụ, Công ty sẽ yêu cầu bạn cung cấp thông tin cho việc lập hóa đơn.<br/>
+                •   Khi bạn đăng kí hoặc tham dự sự kiện hợp tác, Công ty sẽ yêu cầu bạn cung cấp thông tin liên lạc, thông tin cho việc lập hóa đơn, và thông tin việc tham <br/>gia các sự kiện của bạn trên Web sites Afr-solutions.com<br/>
+                •   Salesforce.com sử dụng công nghệ Internet phổ biến như cookies và Web beacons để duy trì sự tương tác giữa website của Công ty và emails.<br/>
+                2.2 Sử dụng thông tin<br/>
+                •   Afr-solutions.com sử dụng việc thu thập thông tin để cung cấp cho bạn các dịch vụ bạn yêu cầu.<br/>
+                •   Afr-solutions.com sử dụng việc thu thập thông tin để cung cấp cho bạn thêm các thông tin về Dịch vụ Công ty, đối tác, chương trình quảng cáo, và các sự kiện.<br/>
+                •   Afr-solutions.com sử dụng việc thu thập thông tin để cải thiện dịch vụ và Website của công ty.<br/>
+                •   Nếu không được miêu tả đầy đủ trong tuyên bổ Bảo mật thông tin, Afr-solutions không chia sẻ, bán hoặc trao đổi thông tin cá nhân cho bên thứ ba vì mục đích quảng cáo. Salesforce.com có thể chia sẻ thông tin thu thập được với các công ty khác là đại diện của Salesforce.com<br/>
+                          2.3 Dữ liệu khách hàng:<br/>
+                •   Khách hàng của Afr-solutions.com có thể nộp dữ liệu điện tử hoặc thông tin tới bộ phận dịch vụ của Công ty<br/>
+                •   Afr-solutions.com sẽ không xem xét, chia sẻ, phân phối hoặc tham khảo bất kì dữ liệu khách hàng nào ngoại trừ Bản Hợp Đồng Quản Lý Dịch Vụ trên Afr-solutions.com, hoặc có thể được yêu cầu bởi luật pháp. Theo như Bản Hợp Đồng Quản Lý Dịch Vụ, Afr-solutions.com có thể truy cập vào Dữ liệu khách hàng  chỉ với mục đích cung cấp dịch vụ, ngăn chặn các vấn đề liên quan đến dịch vụ hoặc công nghệ, hỗ trợ kết nối với khách hàng, hoặc có thể được yêu cầu bởi luật pháp.<br/>
+                2.4 Quyền ưu tiên giao tiếp<br/>
+                •   Mỗi email từ Afr-solutions.com có các hướng dẫn lựa chọn nhận email thông tin từ công ty.<br/>
+                •   Nếu bạn cung cấp thông tin liên lạc tại Afr-solutions.com, bạn có thể quản lý Công ty sử dụng thông tin của bạn bằng cách truy cập vào Trung Tâm chọn lựa của chúng tôi<br/>
+                •   Bạn có thể quản lý các hóa đơn và các liên lạc gián tiếp bằng cách hủy email đăng kí tới Afr-solutions.com<br/>
+                2.5 Làm thế nào để liên lạc với chúng tôi<br/>
+                Để biết thêm thông tin về Afr-solutions.com, vui lòng liên lạc tới Info@Afr-solutions.com<br/>
+                3.  Tài sản sở hữu trí tuệ<br/>
+                Thông báo tới Afr-solutions.com các trường hợp vi phạm bản quyền.<br/>
+                Thông tin về thương hiệu, bản quyền…<br/>
+                ⇨   Thương hiệu, CloFor, CloTra, CloFil, CloSrc, CloSyn<br/>
+                <br/>    
+                Tổng kết lại quy trình<br/>
+                1.  Nếu ai tin rằng các sản phẩm trên website Salesforce.com vi phạm bản quyền của họ, xin vui lòng gửi cho chúng tôi một thông báo được miêu tả như bên dưới.<br/>
+                Chúng tôi sẽ nỗ lực xóa bỏa các sản phẩm được cho là vi phạm bản quyền này.<br/>
+                2.  Chúng tôi sẽ cố gắng thông báo với người dùng về sản phẩm được cho là vi phạm bản quyền này. Người dùng có quyền yêu cầu sản phẩm này kích hoạt trở lại.<br/>
+                Nếu họ không có yêu cầu, chúng tôi có thể kích hoạt sản phẩm này trở lại. Cho đến khi hai đối tác tham gia yêu cầu hoặc toàn án chúng tôi xóa bỏ nó.<br/>
+            </div>
+        </div>
+        <div id="footer">
+            &nbsp;      
+        </div>
+    </div>
+    </body>
+</apex:page>

@@ -1,0 +1,2506 @@
+<apex:page controller="PageController" showHeader="false" sidebar="false" docType="html-5.0">
+    <head>
+        <apex:stylesheet value="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
+        <apex:includeScript value="https://code.jquery.com/jquery-1.9.1.js"/>
+        <apex:includeScript value="https://code.jquery.com/ui/1.10.3/jquery-ui.js"/>
+        <script type="text/javascript">
+            j$ = jQuery.noConflict();
+            j$(document).ready(function () {
+                var label = j$("label[id$='afr_language']").text();
+
+                j$("a[class*='ink']").each(function () {
+                    var link_href = j$(this).attr('href');
+                    var pattern = new RegExp(/[#]/);
+
+                    if (pattern.test(link_href)) {
+                        link_href = link_href.replace('#', '?lang=' + label + '#');
+                    } else {
+                        link_href = link_href + '?lang=' + label;
+                    }
+
+                    j$(this).attr('href', link_href);
+                });
+            });
+        </script>
+    </head>
+    <apex:outputLabel style="display:none;" id="afr_language" value="{!language}"/>
+    <apex:outputPanel rendered="{!language = 'en'}">
+        <div id="AFRSolutions">
+            <div id="header" style="height:621px;">
+                <div>
+                    <meta charset="utf-8"/>
+                    <title>AFR Solutions</title>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRmenu.css?v=306"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRlogo.css?v=260"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbody.css?v=1812"/>
+                    <link rel="shortcut icon"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/logoicon.ico?v=2"/>
+                    <style type="text/css">
+                        #textcenter {
+                            text-align: center;
+                            color: white;
+                            font-weight: bold;
+                            background-color: gray;
+                        }
+
+                        @import url(//fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+                    </style>
+                    <style>
+                        /* ------------------------------------ image style --------------------------------------------*/
+
+                        .payZone img:hover {
+                            /* 위로 올리기
+                            background:#000;
+                            -moz-transform: translate3d(0, -100%, 0); /* position elements past bottom of layout */
+                            -webkit-transform: translate3d(0, -20%, 0);
+                            transform: translate3d(0, -20%, 0);
+                            -moz-transition: all 0.5s;
+                            -webkit-transition: all 0.5s;
+                            -ms-transition: all 0.5s;
+                            transition: all 0.5s;
+
+                        }
+                    </style>
+                    <!--------------------------------------- logo body ------------------------------------>
+                    <div id="logo">
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength?lang=en"> <img
+                                src="https://afrs-developer-edition.ap6.force.com/afr/s/afrlogo.jpg?v=1"
+                                style="width:300px; height:100px;"/></a>
+                    </div>
+                    <div class="moveleft">
+                        <div class="payZone" style="">
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength?lang=vi"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Vietnam.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength?lang=en"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/America.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength?lang=ja"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Japan.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength?lang=ko"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Korea.png?v=1"
+                                    style="width:30px"/></a>
+                        </div>
+                    </div>
+                    <!--------------------------------------- slide menu body ------------------------------------>
+                    <div id="topMenu">
+                        <ul>
+                            <li class="topMenuLi"><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution" class="menuLink">Solution</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFor"
+                                           class="submenuLink longLink">Cloud Forwarding(CloFor)</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloTra"
+                                           class="submenuLink longLink">Cloud Tracking(CloTra)</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloSyn"
+                                           class="submenuLink longLink">Cloud Syn(CloSyn)</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFil"
+                                           class="submenuLink longLink">AFR Filling(CloFil)</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi"><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService"
+                                                     class="menuLink">Service</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#DataInputService"
+                                           class="submenuLink longLink">Data Input Service</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#Development SF Service"
+                                           class="submenuLink longLink">Salesforce Implementation Consulting</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi"><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice" class="menuLink">Price</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Solution List Price"
+                                           class="submenuLink longLink">Solution List Price</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Service List Price"
+                                           class="submenuLink longLink">Service List Price</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#How to pay"
+                                           class="submenuLink longLink">How to pay?</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Legal information"
+                                           class="submenuLink longLink">Legal information</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi"><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength" class="menuLink">Strength</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cost Competitive"
+                                           class="submenuLink longLink">Cost Competitive</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Speed and Flexibility"
+                                           class="submenuLink longLink">Speed and Flexibility</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Accessibility"
+                                           class="submenuLink longLink">Accessibility<br/>/Security/Backup</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Real Time Performance"
+                                           class="submenuLink longLink">Real Time Performance</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cargo Process"
+                                           class="submenuLink longLink">Cargo Process</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi"><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown"
+                                                     class="menuLink">Trial/Download</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Trial"
+                                           class="submenuLink longLink">Trial</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Appexchange" class="submenuLink longLink">AppExchange</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Data download"
+                                           class="submenuLink longLink">Data download</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi"><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs" class="menuLink">Contact us</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Customer Support"
+                                           class="submenuLink longLink">Customer Support</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Partner Support"
+                                           class="submenuLink longLink">Partner Support</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Solutions"
+                                           class="submenuLink longLink">Inquiry for Solutions</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Hearing Sheet"
+                                           class="submenuLink longLink">Hearing Sheet</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#FAQ &amp; Our Solutions"
+                                           class="submenuLink longLink">FAQ &amp; Our Solutions</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Technical Issue"
+                                           class="submenuLink longLink">Inquiry for Technical Issue</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Server Status"
+                                           class="submenuLink longLink">Server Status</a></li>
+                                </ul>
+                            </li>
+                            <li></li>
+                            <li>|</li>
+                            <li class="topMenuLi"><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs" class="menuLink">About Us</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Greetings" class="submenuLink longLink">Greetings</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Our team" class="submenuLink longLink">Our
+                                        team</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Japan Headquater"
+                                           class="submenuLink longLink">Japan Headquater</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Vietnam Office"
+                                           class="submenuLink longLink">Vietnam Office</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Korea Office" class="submenuLink longLink">Korea
+                                        Office</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Career in AFR" class="submenuLink longLink">Career
+                                        in AFR</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mainimage">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/uservoice.jpg?v=1" height="400px;"
+                             width="1400px;"/>
+                    </div>
+                </div>
+            </div>
+            <div style="overflow:hidden;height:6800px;">
+                <div style="height:3000px;">
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRtitle.css?v=174"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbody.css?v=1812"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3line.css?v=101"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3linecontent.css?v=943"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3linetitle.css?v=815"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRline.css?v=220"/>
+                    <style type="text/css">
+                        @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+                        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+                        #orangeline {
+                            margin: 0.5px;
+                            text-align: center;
+                        }
+
+                        body {
+                            overflow-x: hidden
+                        }
+                    </style>
+                    <!---------------------- Cost Competitive start ------------------------------------>
+                    <!-------- title --------------->
+                    <div class="wrap">
+                        <br/>
+                        <a name="Cost Competitive">Cost Competitive</a>
+                    </div>
+                    <div class="orangeline">
+                    </div>
+                    <!-------- body --------------->
+                    <br/><br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        Cost Competitive
+                        <br/><br/>
+                    </div>
+                    <div class="bodybody">
+                        You will get the following benefits by using our CloFor services.<br/>
+                        ・You will have access to every forwarding operating function with reasonable setup fee and license fee payment only. No
+                        additional IT investment required.<br/>
+                        ・Reduction in labor cost for headquarter by focusing on crucial tasks and outsourcing trivial
+                        tasks to offshore <br/>
+                        ・All-In-One Package Solution: Forwarding Operation, Sales, Groupware, Invoicing, Receivables,
+                        Payables, Email, and Message <br/>
+                        <br/><br/>
+                    </div>
+                    <!------------------------------- Cost Competitive line start----------------------------------->
+                    <!-------- Cost Competitive line image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/noserver.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/outsourcing.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/packagesolution.jpg?v=1"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <!-------- Cost Competitive line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            No separate investment on IT installation<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Labor cost reduction with productive allocation of tasks<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            All-in-One Package Solution<br/>
+                        </div>
+                    </div>
+                    <!-------- Cost Competitive line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            ・Low initial implementation costs: no hardware and software charges<br/>
+                            ・Affordable License Fee<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・No more need Forwarding Operator in every city. Centralize Operation Team in one
+                            location.<br/>
+                            ・We(Offshore Business Outsourcing Company) do the outsourcing process on behalf of your
+                            company.<br/>
+                            ・Increase productivity in your company. Experience cost-cut by streamlineing business and IT
+                            processes.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・Our CloFor functions include Forwarding Operation, Sales Management(Mgmt), Groupware,
+                            Invoicing Mgmt, Receivables Mgmt, Payables Mgmt, Email, Message, etc.<br/>
+                            ・You can communicate with the outside of your company to share Cargo Tracking information
+                            via CloTra.<br/>
+                            ・Cargo Tracking Email Service<br/>
+                            ・Cargo Tracking Website<br/>
+                        </div>
+                    </div>
+                    <!------------------------------- Cost Competitive line end----------------------------------->
+                    <div class="grayline">
+                    </div>
+        
+         
+                    <!------------------------------- cargo processing line start----------------------------------->
+                    <!-------- title --------------->
+                    <br/>
+
+                    <div class="wrap">
+                        <a name="Cargo Process">Cargo Process</a>
+                        <br/>
+                    </div>
+                    <div class="orangeline">
+                    </div>
+                    <!-------- body --------------->
+                    <br/><br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        Export<br/><br/>
+                    </div>
+                    <div class="bodybody">
+                        As you know a lot of forwarding company use excel program to process task.But excel has
+                        limitation handle with your task.
+                        <a href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR-SolutionsDisadvantageofExcel.pdf?v=1"
+                           class="hyperlink">(See detail of task with excel)</a><br/>
+                        But our CloFor, is very useful to take your task. Your operation team could complete the one
+                        export, import and onsolidation shipment shipment within 1~2 hours from creating to closing
+                        with CloFor.
+                    </div>
+                    <!-------- Export image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/export.png?v=1"
+                             style="margin-left:50px; width:900px; height:350px;"/>
+                    </div>
+                    <!-------- Export title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            Step1. Input data<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Step2. Analysis Profit and Issue Document<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Step3. Manage Account<br/>
+                        </div>
+                    </div>
+                    <!-------- Export content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            ・Before input data, just copy another record<br/>
+                            ・Input cargo all of information one page.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・CloFor support profit anlaysis, so you can confirm profit in realtime<br/>
+                            ・Based input data, print all of docunemt like Check B/L, Freight memo. You can issue all
+                            docunemts with one button<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・After you issued document, manage your receiving and payable.<br/>
+                            ・If all process is completed, you can lock document to prevent edit completed document.
+                            <br/>
+                        </div>
+                    </div>
+                    <br/><br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        Import<br/><br/>
+                    </div>
+                    <!-------- Import image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/import.png?v=1"
+                             style="margin:-80px 0 0 50px; width:900px; height:350px;"/>
+                    </div>
+                    <!-------- Import title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            Step1. Input data<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Step2. Analysis Profit and Issue Document<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Step3. Manage Account<br/>
+                        </div>
+                    </div>
+                    <!-------- Import content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            ・Before input data, just copy another record<br/>
+                            ・Input cargo all of information one page.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・CloFor support profit anlaysis, so you can confirm profit in realtime<br/>
+                            ・Based input data, print all of docunemt like Arrival Notice, Delivery Order. You can issue
+                            all docunemts with one button<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・After you issued document, manage your receiving and payable.<br/>
+                            ・If all process is completed, you can lock document to prevent edit completed document.
+                            <br/>
+                        </div>
+                    </div>
+                    <br/>
+
+                    
+                </div>
+            </div>
+            <div style="background-color:#bfbfbf;height:400px;">
+                <div>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbottomtable.css?v=2534"/>
+                    <meta charset="utf-8"/>
+                    <meta http-equiv="X-UA-Compatible" content="IE=9,chrome=1"/>
+                    <style type="text/css">
+                        @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+                        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+                        html, body {
+                            width: 100%;
+                            height: 100%
+                        }
+
+                        body {
+                            margin: 0;
+                            padding: 0;
+                        }
+                    </style>
+                    <!--------------------------------------------------- bottom menu ------------------------------------------------->
+                    <div class="absolute1">
+                        <div class="bottomtable1"> □ Solution<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#loFor" class="link">Cloud
+                                Forwarding(CloFor)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#loTra" class="link">Tracking
+                                Service(CloTra)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#loSyn" class="link">Cloud
+                                Syn(CloSyn)</a><br/> <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#loFil"
+                                                        class="link">AFR Filling(CloFil)</a><br/></div>
+                        <div class="bottomtable2"> □ Service<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#DataInputService" class="link">Data Input
+                                Service(CloSor)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#Development SF Service" class="link">Salesforce
+                                Implementation <br/>
+
+                                <div style="margin-bottom:-20px;">Consulting</div>
+                            </a><br/></div>
+                        <div class="bottomtable3"> □ Price<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#Solution List Price" class="link hover">Solution
+                                List Price</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#Service List Price" class="link">Service List
+                                Price</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#How to pay" class="link">How to pay?</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#Legal Information" class="link">Legal
+                                Information</a><br/></div>
+                        <div class="bottomtable4"> □ Strength<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cost Competitive" class="link">Cost
+                                Competitive</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Speed and Flexibility" class="link">Speed
+                                and Flexibility</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Accessibility" class="link">Accessibility/Security/Backup</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Real Time Performance" class="link">Real
+                                Time Performance</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cargo Process" class="link">Cargo
+                                Process</a></div>
+                        <div class="bottomtable5"> □ Trail/Download<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Trial" class="link" style="text-indent:-100px">Trial</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Appexchange" class="link">AppExchange</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Data download" class="link">Data download</a><br/>
+                        </div>
+                        <div class="bottomtable6"> □ Contact us<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Customer Support" class="link">Customer
+                                Support</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Partner Support" class="link">Partner
+                                Support</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Solutions" class="link">Inquiry for
+                                Solutions</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Hearing Sheet" class="link">Hearing Sheet</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#FAQ &amp; Our Solutions" class="link">FAQ &amp;
+                                Our Solutions</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Technical Issue" class="link">Inquiry
+                                for Technical Issue</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Server Status" class="link">Server Status</a><br/>
+                        </div>
+                        <div class="bottomtable7"> □ About Us<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Greetings" class="link">Greetings</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Our team" class="link">Our team</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Japan Headquater" class="link">Japan
+                                Headquater</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Vietnam Office" class="link">Vietnam Office</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Korea Office" class="link">Korea Office</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Career in AFR" class="link">Career in AFR</a></div>
+                    </div>
+                </div>
+            </div>
+            <!--------------------------------------------------- bottom menu end ------------------------------------------------->
+            <div id="footer" style="height:64px;background-color:#bfbfbf;">
+                <div style="background-color:#948F8F;">
+                    <meta charset="utf-8"/>
+                    <meta name="description" content="AFR Solutions Homepage"/>
+                    <title>AFR Solutions Homepage</title>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRmenu.css?v=306"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRlogo.css?v=260"/>
+                    <style type="text/css">
+                        #textcenter {
+                            text-align: center;
+                            color: white;
+                            font-weight: bold;
+                            background-color: gray;
+                        }
+                    </style>
+                    <div id="textcenter">
+                        <br/>
+                        3-6-20, HIGASHI-OI, SHINAGAWA-KU, TOKYO<br/>
+                        Tel : 036-868-7838<br/>
+                        ⓒ&nbsp;2015. AFR SOLUTIONS CO., LTD all rights reserved.<br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </apex:outputPanel>
+    <!-- Vietnamese -->
+    <apex:outputPanel rendered="{!language = 'vi'}">
+        <div id="AFRSolutions">
+            <div id="header" style="height:623px;">
+                <div>
+                    <meta charset="utf-8"/>
+                    <title>AFR Solutions</title>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRmenu.css?v=306"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRlogo.css?v=260"/>
+                    <link rel="shortcut icon"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/logoicon.ico?v=2"/>
+                    <style type="text/css">
+                        #textcenter {
+                            text-align: center;
+                            color: white;
+                            font-weight: bold;
+                            background-color: gray;
+                        }
+                    </style>
+                    <style>
+                        /* ------------------------------------ image style --------------------------------------------*/
+
+                        .payZone img:hover {
+                            /* 위로 올리기
+                            background:#000;
+                            -moz-transform: translate3d(0, -100%, 0); /* position elements past bottom of layout */
+                            -webkit-transform: translate3d(0, -20%, 0);
+                            transform: translate3d(0, -20%, 0);
+                            -moz-transition: all 0.5s;
+                            -webkit-transition: all 0.5s;
+                            transition: all 0.5s;
+
+                        }
+                    </style>
+                    <!--------------------------------------- logo body ------------------------------------>
+                    <div id="logo">
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength?lang=vi"> <img
+                                src="https://afrs-developer-edition.ap6.force.com/afr/s/afrlogo.jpg?v=1"
+                                style="width:300px; height:100px;"/></a>
+                    </div>
+                    <div class="moveleft">
+                        <div class="payZone" style="">
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength?lang=vi"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Vietnam.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength?lang=en"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/America.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength?lang=ja"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Japan.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength?lang=ko"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Korea.png?v=1"
+                                    style="width:30px"/></a>
+                        </div>
+                    </div>
+                    <!--------------------------------------- slide menu body ------------------------------------>
+                    <div id="topMenu">
+                        <ul>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution" class="menuLink">GIẢI PHÁP ĐIỆN TOÁN ĐÁM
+                                    MÂY</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFor" class="submenuLink longLink">Giao
+                                        nhận(CloFor)</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloTra" class="submenuLink longLink">Thông
+                                        tin hàng hóa(CloTra)</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloSyn" class="submenuLink longLink">Đồng
+                                        bộ hóa dữ liệu (CloSyn)</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFil" class="submenuLink longLink">Khai
+                                        AFR(CloFil)</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService" class="menuLink">DỊCH VỤ</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#DataInputService"
+                                           class="submenuLink longLink">Nhập liệu(CloSor)</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#Development SF Service"
+                                           class="submenuLink longLink">Tư vấn cài đặt Salesforce</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice" class="menuLink">GÍA</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Solution List Price"
+                                           class="submenuLink longLink">Bảng giá gói giải pháp</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Service List Price"
+                                           class="submenuLink longLink">Bảng giá dịch vụ </a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#How to pay" class="submenuLink longLink">
+                                        Cách
+                                        thanh toán</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Legal information"
+                                           class="submenuLink longLink">Thông tin pháp lý</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength" class="menuLink">ƯU ĐIỂM</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cost Competitive"
+                                           class="submenuLink longLink">Chi phí cạnh tranh</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Speed and Flexibility"
+                                           class="submenuLink longLink">Nhanh và dể tùy biến</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Accessibility"
+                                           class="submenuLink longLink">Dể sử dụng/ Bảo mật/ Sao lưu</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Real Time Performance"
+                                           class="submenuLink longLink">Hoạt động theo thời gian thật</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cargo Process"
+                                           class="submenuLink longLink">Lệnh giao hàng</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown" class="menuLink">TẢI DÙNG THỬ</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Trial" class="submenuLink longLink">Bản
+                                        dùng thử </a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Appexchange"
+                                           class="submenuLink longLink">AppExchange</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Data download"
+                                           class="submenuLink longLink">Tải dữ liệu</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs" class="menuLink">LIÊN LẠC VỚI CHÚNG
+                                    TÔI </a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Customer Support"
+                                           class="submenuLink longLink">Chăm sóc khách hàng</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Partner Support"
+                                           class="submenuLink longLink">Hổ trợ đối tác</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Service"
+                                           class="submenuLink longLink">Yêu cầu Giải pháp hay dịch vụ</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Hearing Sheet"
+                                           class="submenuLink longLink">Phiếu khảo sát khách hàng</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#FAQ"
+                                           class="submenuLink longLink">FAQ</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Technical issue"
+                                           class="submenuLink longLink">Yêu cầu về các vấn đề kỷ thuật</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Server Status"
+                                           class="submenuLink longLink">Tình trạng hoạt động của server</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs" class="menuLink">VỀ CHÚNG TÔI</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Greetings" class="submenuLink longLink">Greetings</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Our team" class="submenuLink longLink">các
+                                        thành viên của công ty</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Japan Headquater"
+                                           class="submenuLink longLink">Japan Headquater</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Vietnam Office"
+                                           class="submenuLink longLink">Vietnam Office</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Korea Office"
+                                           class="submenuLink longLink">Korea
+                                        Office</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Career in AFR"
+                                           class="submenuLink longLink">Cơ
+                                        hội nghề nghiệp với AFR</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mainimage">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/uservoice.jpg?v=1" height="400px;"
+                             width="1400px;"/>
+                    </div>
+                </div>
+            </div>
+            <div style="overflow:hidden;height:6850px;">
+                <div style="height:3000px;">
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRtitle.css?v=174"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbody.css?v=1812"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3line.css?v=101"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3linecontent.css?v=943"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3linetitle.css?v=815"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRline.css?v=220"/>
+                    <!---------------------- Cost Competitive start ------------------------------------>
+                    <!-------- title --------------->
+                    <div class="wrap">
+                        <br/>
+                        <a name="Cost Competitive">Chi phí cạnh tranh </a>
+                    </div>
+                    <div class="orangeline">
+                    </div>
+                    <!-------- body --------------->
+                    <br/><br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        Chi phí cạnh tranh
+                        <br/><br/>
+                    </div>
+                    <div class="bodybody">
+                        Có nhiều nhận xét tốt về việc tối ưu hóa chi phí khi sử dụng gói giải pháp CloFor của chúng
+                        tôi.Đó là các lợi ích có sẵn đầu tiên.<br/>
+                        
+                       ・Bạn sẽ thao tác được gần như toàn bộ chức năng vận hành, quản lý công việc giao nhận với chi 
+                       phí hợp lý chỉ cho việc thiết lập  và bản quyền. Không cần thêm chi phí đầu tư về công nghệ thông tin.
+                        
+                         <br/>
+                        ・Tiết kiệm chi phí nhân công bằng việc thuê dịch vụ gia công nhập liệu từ ngoại quốc và có thể
+                        tập trung thời gian vào những nhiệm vụ chủ yếu hơn. <br/>
+                        ・Tất cả trong một gói giải pháp(Điều hành Forwarding+ Bán dịch vụ+ Nhóm phần mềm tương tác+ Hóa
+                        đơn phải thu+ Hóa đơn phải trả+ Email+ tin nhắn). <br/>
+                        <br/><br/>
+                    </div>
+                    <!------------------------------- Cost Competitive line start----------------------------------->
+                    <!-------- Cost Competitive line image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/noserver.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/outsourcing.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/packagesolution.jpg?v=1"
+                             style="width:300px; height:200px;"/></div>
+                    <!-------- Cost Competitive line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            Không tốn nhiều chi phí đầu tư cho công nghệ thông tin <br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Quản trị chi phí nhân sự một cách kinh tế nhất bằng việc thuê gia công nhập liệu từ nước
+                            ngoài <br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Tất cả trong một giải pháp <br/>
+                        </div>
+                    </div>
+                    <!-------- Cost Competitive line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            ・Chi phí thành lập ban đầu thấp: Không cần saver, phần mềm, do đó không phát sinh chi phí
+                            lắp đặt, bảo trì <br/>
+                            ・Phí bản quyền cạnh tranh <br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・Không cần văn phòng điều hành forwarding tại các thành phố, các ban điều hành được tập
+                            trung một chổ.<br/>
+                            ・Sử dụng lao động hiệu quả tại các nơi chi phí đắt đỏ (bằng cách sử dụng giải pháp nhập liệu
+                            gia công của chúng tôi).<br/>
+                            ・Tăng hiệu quả kinh doanh với ít nhân sự.Qúi Công ty sẽ tối ưu hóa chi phí bằng cách quản lý
+                            kinh doanh linh hoạt và ứng dụng công nghệ thông tin.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            Chức năng gói giải pháp CloFor gồm điều hành forwarding,quản lý kinh doanh,tương tác
+                            nhóm,hóa đơn,thu chi,email,tin nhắn và các chức năng hữu ích được tích hợp.<br/>
+                            Chức năng gói giải pháp CloFor cũng bao gồm là công cụ liên lạc với đối tác nước ngoài để
+                            kiểm trao đổi thông tin về tình trạng hàng hóa.<br/>
+                            –Chức năng kiểm tra tình trạng lô hàng bằng email <br/>
+                            - Chức năng kiểm tra tình trạng lô hàng bằng Web-site<br/>
+                        </div>
+                    </div>
+                    <!------------------------------- Cost Competitive line end----------------------------------->
+                    <div class="grayline">
+                    </div>
+                    <!---------------------- Speed and Flexibility start ------------------------------------>
+                    <!-------- title --------------->
+                    <!------------------------------- Speed and Flexibility line start----------------------------------->
+                    <!-------- Speed and Flexibility 1st line image--------------->
+                    <div class="wrap">
+                        <br/>
+                        <a name="Speed and Flexibility">Nhanh và dễ tùy biến </a>
+                        <br/>
+                    </div>
+                    <div class="orangeline">
+                    </div>
+                    <!-------- body --------------->
+                    <br/><br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        Nhanh và linh động <br/><br/>
+                    </div>
+                    <div class="bodybody">
+                        Có nhiều đánh giá cao về hiệu quả về thời gian và chi phí linh động khi sử dụng gói dịch vụ
+                        CloFor của chúng tôi.<br/>
+                        ・Nhanh <br/>
+                        ・Tùy biến các biểu mẫu, qui trình tại một ứng dụng <br/>
+                        ・Hổ trợ đa ngôn ngữ <br/>
+                        <br/><br/>
+                    </div>
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/speed.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/cost.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/locallan.jpg?v=1"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <!-------- Speed and Flexibility line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            Nhanh<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Tùy biến các biểu mẫu, qui trình tại một ứng dụng <br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Hỗ trợ đa ngôn ngữ <br/>
+                        </div>
+                    </div>
+                    <!-------- Speed and Flexibility line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            ・Khi sử dụng công nghệ điện toán đám mây thì không cần mua và lắp ráp phần cứng và tùy theo
+                            nhu cầu sử dụng người dùng có thể tăng thêm và giảm xuống gói quản lý công nghệ thông tin
+                            của mình một cách nhanh chóng và kinh tế dựa theo yêu cầu của người dùng.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・Điều hành cùng với các biểu mẫu thường hay sử dụng được tích hợp trong giải pháp Cloud
+                            forwarding system. Với vài cú nhấp chuột, các biểu mẫu sẽ được sẵng sàng sử dụng <br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・Hổ trợ Tiếng Nhật/Anh/Việt/Hàn Quốc và các ngôn ngử khác theo như Salesforce <br/>
+                        </div>
+                    </div>
+                    <!------------------------------- Speed and Flexibility line end----------------------------------->
+                    <div class="grayline">
+                    </div>
+                    <!------------------------------- Accessibility/Availability/Security/Backup line start----------------------------------->
+                    <!-------- title --------------->
+                    <br/>
+
+                    <div class="wrap">
+                        <a name="Accessibility">Dễ sử dụng/ Bảo mật/ Sao lưu</a>
+                        <br/>
+                    </div>
+                    <div class="orangeline">
+                    </div>
+                    <!-------- body --------------->
+                    <br/><br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        Dễ sử dụng/Luôn sẵn sàng/Bảo mật cao /Sao lưu được<br/><br/>
+                    </div>
+                    <div class="bodybody">
+                        Sau khi sử dụng gói giải pháp CloFor của chúng tôi, các tiêu chí về: Dễ sử dụng/ sẵn sàng/ Bảo
+                        mật cao/ Sao lưu luôn được đánh giá rất cao.<br/>
+                        ・Thao tác từ ở bất cứ đâu <br/>
+                        ・Luôn sẵn sàng/Bảo mật cao/Sao lưu được <br/>
+                        ・Quản trị toàn kho dữ liệu <br/>
+                    </div>
+                    <!--------Accessibility/Availability/Security/Backup image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/accessany.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/security2.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/management2.jpg?v=1"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <!-------- Accessibility/Availability/Security/Backup line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            Thao tác ở khắp nơi <br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Bảo mật cao/Tính sẵn sàng/Dể sao lưu <br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Quản trị toàn kho dữ liệu <br/>
+                        </div>
+                    </div>
+                    <!-------- Accessibility/Availability/Security/Backup line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            ・Thao tác ở mọi nơi với các thiết bị(Smartphone,tablet, PC...) <br/>
+                            ・Ứng dụng Salesforce 1,phiên bản smartphone đã có sẵn trên hệ điều hành: IOS trên App store,
+                            ANDROID trên Play store.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・Dữ liệu của bạn được bảo mật bởi Salesforce <br/>
+                            ・Salesforce sử dụng nhiều hình thúc bảo mật đảm bảo dữ liệu của bạn chỉ được truy cập với
+                            các thành viên mà bạn đã gán quyền cho phép truy cập <br/>
+                            ・Dữ liệu của bạn không thể được khai thác bởi đối thủ <br/>
+                            ・Về các qui định quyền riêng tư,vui lòng tham khảo chính sách quyền riêng tư cũng như các
+                            điều kiện qui định cùng thỏa thuận sử dụng <br/>
+                            ・Dữ liệu được sao lưu theo nền tảng thời gian thật được qui định bởi Salesforce và được đồng
+                            bộ đến các trung tâm nước ngoài <br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・Tập trung quản lý khách hàng,người liên lạc, hợp đồng, lịch sử trao đổi <br/>
+                            ・Bạn có thể quản lý tốt lịch sử giao dịch về: email, các cuộc gọi,lịch trình,việc cần làm và
+                            các phương tiện hữu hiệu khác <br/>
+                        </div>
+                    </div>
+                    <!------------------------------- Accessibility/Availability/Security/Backup line end----------------------------------->
+                    <div class="grayline">
+                    </div>
+                    <!------------------------------- Real Time Performance line start----------------------------------->
+                    <!-------- title --------------->
+                    <br/>
+
+                    <div class="wrap">
+                        <a name="Real Time Performance">Thời gian hoạt động hiệu quả cao </a>
+                        <br/>
+                    </div>
+                    <div class="orangeline">
+                    </div>
+                    <!-------- body --------------->
+                    <br/><br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        Thời gian hoạt động hiệu quả cao <br/><br/>
+                    </div>
+                    <div class="bodybody">
+                        Có rất nhiều ưu điểm về hiệu quả sử dụng thời gian khi áp dụng gói giải pháp CloFor của chúng
+                        tôi.<br/>
+                        ・Biểu đồ về việc sử dụng thời gian thực tế một cách hiệu quả <br/>
+                        ・Hiệu suất sử dụng thời gian thực tế một cách hiệu quả <br/>
+                        ・Thời gian thực tế để kiểm tra tình trạng hàng hóa một cách hiệu quả.<br/>
+                    </div>
+                    <!-------- Real Time Performance image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/realtimedash.jpg?v=2"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/realtimereport.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/realtimetracking.jpg?v=1"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <!-------- Real Time Performance 2nd line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            Biểu đồ theo thời gian thực tế hoạt động<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Hiệu suất thời gian thực tế hoạt động.<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Thời gian thực tế để kiểm tra tình trạng hàng hóa.<br/>
+                        </div>
+                    </div>
+                    <!-------- Real Time Performance line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            ・Giúp bạn thấy các thông tin phức tạp một cách rõ ràng <br/>
+                            ・Giúp bạn đưa ra quyết định đúng đắn theo thời gian thực tế dựa trên biểu đồ báo cáo
+                            <br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・Báo kết quả xếp hạng của: nhóm, đội, cá nhân theo thời gian thực tế hoạt động. <br/>
+                            ・Báo cáo hiệu suất thời gian thực tế hoạt động minh họa bằng biểu đồ. <br/>
+                            ・Báo cáo hiệu suất thời gian thực tế hoạt động theo ngày/tháng/quí/năm. <br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・Tự động gửi email cập nhật tình trạng hàng hóa cho khách hàng bằng ngôn ngữ địa phương theo
+                            định dạng các biểu mẫu email có sẵn<br/>
+                            ・Tự động gửi các biểu mẫu email bằng tiếng anh để thông báo tình trạng lô hàng cho đối tác
+                            <br/>
+                        </div>
+                    </div>
+                    <div class="grayline">
+                    </div>
+                    <!------------------------------- cargo processing line start----------------------------------->
+                    <!-------- title --------------->
+                    <br/>
+
+                    <div class="wrap">
+                        <a name="Cargo Process">Quy trình một lô hàng</a>
+                        <br/>
+                    </div>
+                    <div class="orangeline">
+                    </div>
+                    <!-------- body --------------->
+                    <br/><br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        Export<br/><br/>
+                    </div>
+                    <div class="bodybody">
+                        Nhiều công ty forwarding sử dụng chương trình excel để xử lý các quy trình.Nhưng excel có những
+                        hạn chế để giải quyết các nhiệm vụ của bạn.
+                        <a href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR-SolutionsDisadvantageofExcel.pdf?v=1"
+                           class="hyperlink">(Xem thêm chi tiết về chức năng của excel)</a><br/>
+                        Nhưng CloFor của chúng tôi thì rất hữu ích để thực hiện các công việc của bạn . Quá trình hoạt
+                        động của bạn có thể hoàn thành các lô hàng xuất, nhập và hàng ghép trong vòng 1 đến 2 tiếng từ
+                        sau khi tạo xong đơn hàng với Clofor
+                    </div>
+                    <!-------- Export image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/exportvn.png"
+                             style="margin-left:50px; width:900px; height:350px;"/>
+                    </div>
+                    <!-------- Export title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            Bước 1. Nhập dữ liệu<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Bước 2. Phân tích lợi nhuận và phát hành các tài liệu <br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Bước 3. Quản trị kế toán<br/>
+                        </div>
+                    </div>
+                    <!-------- Export content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            ・Trước khi nhập dữ liệu, chỉ sao chép các ghi chú khác.<br/>
+                            ・Nhập tất cả thông tin của một lô hàng trên một trang.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・CloFor hỗ trợ phân tích lợi nhuận, vì vậy bạn có thể biết chính xác lợi nhuận tại thời điểm
+                            thực tế.<br/>
+                            ・Dựa trên việc nhập dữ liệu chúng ta có thể in tất cả tài liệu như kiểm tra B/L, sổ ghi nhớ
+                            hàng hóa. Bạn có thể phát hành các tài liệu chỉ với một nút click chuột.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・Sau khi bạn phát hành các tài liệu, bạn sẽ quản trị các tài khoản phải thu và phải trả.
+                            <br/>
+                            ・ Nếu tất cả quá trình hoàn tất, bạn có thể khóa tài liệu để ngăn ngừa các chỉnh sửa.
+                            <br/>
+                        </div>
+                    </div>
+                    <br/><br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        Import<br/><br/>
+                    </div>
+                    <!-------- Import image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/importvn.png"
+                             style="margin:-80px 0 0 50px; width:900px; height:350px;"/>
+                    </div>
+                    <!-------- Import title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            Bước 1. Nhập dữ liệu<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Bước 2. Phân tích lợi nhuận và phát hành các tài liệu.<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Bước 3. Quản trị kế toán.<br/>
+                        </div>
+                    </div>
+                    <!-------- Import content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            ・Trước khi nhập dữ liệu, chỉ cần sao chép các ghi chú khác. <br/>
+                            ・Nhập tất cả các thông tin của một lô hàng trên một trang.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・CloFor hỗ trợ phân tích lợi nhuận, vì vậy bạn có thể biết chính xác lợi nhuận tại thời điểm
+                            thực tế.<br/>
+                            ・Dựa trên việc nhập dữ liệu, chúng ta có thể in tất cả các tài liệu như: Giấy báo hàng đến,
+                            Lệnh giao hàng... Bạn có thể phát hành các tài liệu chỉ với một nút click chuột.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・Sau khi phát hành các tài liệu, bạn sẽ quản trị các tài khoản phải thu, phải trả.<br/>
+                            ・Nếu tất cả quá trình đều hoàn tất, bạn có thể khóa tài liệu để ngăn ngừa việc chỉnh sửa.
+                            <br/>
+                        </div>
+                    </div>
+                    <br/><br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        Sự gom hàng<br/><br/>
+                    </div>
+                    <!-------- Export image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/consolvn.png"
+                             style="margin:-80px 0 0 50px; width:900px; height:350px;"/>
+                    </div>
+                    <!-------- Export title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            Bước 1. Nhập dữ liệu. <br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Bước 2. Tạo H B/L và kết nối<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Bước 3. Phát hành các tài liệu và quản trị kế toán. <br/>
+                        </div>
+                    </div>
+                    <!-------- Export content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            ・Trước khi nhập dữ liệu chỉ cần sao chép các ghi chú khác.<br/>
+                            ・Nhập tất cả các thông tin lô hàng trên một trang.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・Tạo các chừng từ H B/L cho việc gom hàng.<br/>
+                            ・Chỉ cần một cú click chuột bạn có thể copy các dữ liệu giống nhau như:ETA,POL vào H
+                            B/L.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・Bạn có thể phân bổ chi phí vào mỗi H B/L chỉ bằng một cú click chuột.<br/>
+                            ・Sau đó các tài liệu được phát hành và phân tích lợi nhuận của lô hàng.<br/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="background-color:#bfbfbf;height:450px;">
+                <div style="height:450px;">
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbottomtable.css?v=2534"/>
+                    <style type="text/css">
+                        @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+                        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+                    </style>
+                    <!------------------------------------- bottom menu ------------------------------------->
+                    <div class="absolute1">
+                        <div class="bottomtable1">
+                            □ GIẢI PHÁP<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFor" class="link">Giao nhận(CloFor)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloTra" class="link">Thông tin hàng hóa(CloTra)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloSyn" class="link">Đồng bộ lên saver
+                                ảo(CloSyn)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFil" class="link">Khai AFR(CloFil)</a><br/>
+                        </div>
+                        <div class="bottomtable2">
+                            □ DỊCH VỤ<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#DataInputService" class="link">Nhập liệu(CloSor)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#Development SF Service" class="link">Tư vấn cài đặt
+                                Salesforce</a><br/>
+                        </div>
+                        <div class="bottomtable3">
+                            □ GÍA<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Solution List Price" class="link">Bảng giá gói giải
+                                pháp</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Service List Price" class="link">Bảng giá dịch vụ </a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#How to pay" class="link"> Cách thanh toán</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Legal information" class="link">Thông tin pháp lý</a>
+                        </div>
+                        <div class="bottomtable4">
+                            □ ĐƯU ĐIỂM<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cost Competitive" class="link">Chi phí cạnh
+                                tranh</a> <br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Speed and Flexibility" class="link">Nhanh và dể tùy
+                                biến</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Accessibility" class="link">Dể sử dụng/ Bảo mật/
+                                Sao lưu</a> <br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Real Time Performance" class="link">Hoạt động theo
+                                thời gian thật</a> <br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cargo Process" class="link">Lệnh giao hàng</a>
+                        </div>
+                        <div class="bottomtable5">
+                            □ TẢI DÙNG THỬ<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Trial" class="link">dùng thử</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Appexchange" class="link">AppExchange</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Code download" class="link">Tải dữ
+                                liệu</a><br/>
+                        </div>
+                        <div class="bottomtable6">
+                            □ LIÊN LẠC VỚI CHÚNG TÔI<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Customer Support" class="link">Chăm sóc khách
+                                hàng</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Partner Support" class="link">Hổ trợ đối
+                                tác</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Service" class="link">Yêu cầu Giải
+                                pháp hay dịch vụ</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Hearing Sheet" class="link">Phiếu khảo sát khách
+                                hàng</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#FAQ" class="link">FAQ</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Technical issue" class="link">Yêu cầu
+                                về các vấn đề kỷ thuật</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Server Status" class="link">Tình trạng hoạt động
+                                của server</a><br/>
+                        </div>
+                        <div class="bottomtable7">
+                            □ VỀ CHÚNG TÔI<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Greetings" class="link">Greetings</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Our team" class="link">các thành viên của công
+                                ty</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Japan Headquater" class="link">Japan
+                                Headquater</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Vietnam Office" class="link">Vietnam
+                                Office</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Korea Office" class="link">Korea Office</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Career in AFR" class="link">Cơ hội nghề nghiệp với
+                                AFR</a><br/>
+                        </div>
+                    </div>
+                    <!------------------------------------- bottom menu end ------------------------------------->
+                </div>
+            </div>
+            <div id="footer" style="height:64px;background-color:#bfbfbf;">
+                <div style="background-color:#948F8F;">
+                    <meta charset="utf-8"/>
+                    <meta name="description" content="AFR Solutions Homepage"/>
+                    <title>AFR Solutions Homepage</title>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRmenu.css?v=306"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRlogo.css?v=260"/>
+                    <style type="text/css">
+                        #textcenter {
+                            text-align: center;
+                            color: white;
+                            font-weight: bold;
+                            background-color: gray;
+                        }
+                    </style>
+                    <div id="textcenter">
+                        <br/>
+                        3-6-20, HIGASHI-OI, SHINAGAWA-KU, TOKYO<br/>
+                        Tel : 036-868-7838<br/>
+                        ⓒ&nbsp;2015. AFR SOLUTIONS CO., LTD all rights reserved.<br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </apex:outputPanel>
+    <!-- Japanese -->
+    <apex:outputPanel rendered="{!language = 'ja'}">
+        <div id="AFRSolutions">
+            <div id="header" style="height:625px;">
+                <div>
+                    <meta charset="utf-8"/>
+                    <title>AFR Solutions</title>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRmenu.css?v=306"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRlogo.css?v=260"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRmainpage.css?v=183"/>
+                    <link rel="shortcut icon"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/logoicon.ico?v=2"/>
+                    <style type="text/css">
+                        #textcenter {
+                            text-align: center;
+                            color: white;
+                            font-weight: bold;
+                            background-color: gray;
+                        }
+                    </style>
+                    <style>
+                        /* ------------------------------------ image style --------------------------------------------*/
+
+                        .payZone img:hover {
+                            /* 위로 올리기
+                            background:#000;
+                            -moz-transform: translate3d(0, -100%, 0); /* position elements past bottom of layout */
+                            -webkit-transform: translate3d(0, -20%, 0);
+                            transform: translate3d(0, -20%, 0);
+                            -moz-transition: all 0.5s;
+                            -webkit-transition: all 0.5s;
+                            transition: all 0.5s;
+
+                        }
+                    </style>
+                    <!--------------------------------------- logo body ------------------------------------>
+                    <div id="logo">
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength?lang=ja"> <img
+                                src="https://afrs-developer-edition.ap6.force.com/afr/s/afrlogo.jpg?v=1"
+                                style="width:300px; height:100px;"/></a>
+                    </div>
+                    <div class="moveleft">
+                        <div class="payZone" style="">
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength?lang=vi"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Vietnam.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength?lang=en"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/America.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength?lang=ja"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Japan.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength?lang=ko"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Korea.png?v=1"
+                                    style="width:30px"/></a>
+                        </div>
+                    </div>
+                    <!--------------------------------------- slide menu body ------------------------------------>
+                    <div id="topMenu">
+                        <ul>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution" class="menuLink">ソリューション</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFor" class="submenuLink longLink">クラウドフォワーディング(CloFor)</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloTra" class="submenuLink longLink">トラッキングサービス(CloTra)</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloSyn" class="submenuLink longLink">クラウドシン(CloSyn)</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFil" class="submenuLink longLink">AFRファイリング(CloFil)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService" class="menuLink">サービス</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#DataInputService"
+                                           class="submenuLink longLink">データ入力サービス</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#Development SF Service"
+                                           class="submenuLink longLink">Salesforceの導入コンサルティングと開発</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice" class="menuLink">価格</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Solution List Price"
+                                           class="submenuLink longLink">ソリューション価格表</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Service List Price"
+                                           class="submenuLink longLink">サービス価格表</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#How to pay" class="submenuLink longLink">お支払い方法</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Legal information"
+                                           class="submenuLink longLink">法的情報</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength" class="menuLink">特長</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cost Competitive"
+                                           class="submenuLink longLink">競争力あるコスト</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Speed and Flexibility"
+                                           class="submenuLink longLink">スピードと柔軟性</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Accessibility"
+                                           class="submenuLink longLink">アクセシビリティ/セキュリティ/バックアップ</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Real Time Performance"
+                                           class="submenuLink longLink">リアルタイムなパフォーマンス</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cargo Process"
+                                           class="submenuLink longLink">カーゴプロセス</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown" class="menuLink">トライアル/ダウンロード</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Trial" class="submenuLink longLink">トライアル</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Appexchange"
+                                           class="submenuLink longLink">AppExchange</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Data download"
+                                           class="submenuLink longLink">データダウンロード</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs" class="menuLink">コンタクト</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Customer Support"
+                                           class="submenuLink longLink">カスタマーサポート</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Partner Support"
+                                           class="submenuLink longLink">パートナーサポート</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Service"
+                                           class="submenuLink longLink">ソリューションに関するお問い合わせ</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Hearing Sheet"
+                                           class="submenuLink longLink">ヒアリング・シート</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#FAQ" class="submenuLink longLink">FAQとパブリックソリューション</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Technical issue"
+                                           class="submenuLink longLink">技術的な問題に関するお問い合わせ</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Server Status"
+                                           class="submenuLink longLink">サーバーステータス</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs" class="menuLink">会社概要</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Greetings" class="submenuLink longLink">ご挨拶</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Our team" class="submenuLink longLink">社員紹介</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Japan Headquater"
+                                           class="submenuLink longLink">日本本社</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Vietnam Office"
+                                           class="submenuLink longLink">ベトナム支社</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Korea Office"
+                                           class="submenuLink longLink">韓国支社</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Career in AFR"
+                                           class="submenuLink longLink">AFRで働く</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mainimage">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/uservoice.jpg?v=1" height="400px;"
+                             width="1400px;"/>
+                    </div>
+                </div>
+            </div>
+            <div style="overflow:hidden;height:6850px;">
+                <div>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRtitle.css?v=174"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbody.css?v=1812"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3line.css?v=101"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3linecontent.css?v=943"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3linetitle.css?v=815"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRline.css?v=220"/>
+                    <!---------------------- Cost Competitive start ------------------------------------>
+                    <!-------- title --------------->
+                    <div class="wrap">
+                        <br/>
+                        <a name="Cost Competitive">お客様の声</a>
+                    </div>
+                    <div class="orangeline">
+                    </div>
+                    <!-------- body --------------->
+                    <br/><br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                       フォワーディングデータ入力サービス(CloSor)　-SMJ株式会社(日本)
+                        <br/><br/>
+                    </div>
+                    <div class="bodybodyj">
+                        SMJ株式会社は日本・東京に拠点をおくフレートフォワーダーです。主に中国・韓国・ベトナムや東南アジアの国々からの輸入貨物・輸出貨物を取り扱い、<br/>
+                        梱包、配送、通関、海上/航空輸送など、物流に付随する業務を一貫して引き受けます。中国からの貨物の入港当日引取が可能なRDS(Rapid Delivery Service)や、<br/>
+                        顧客の視点に合わせた小回りの利くサービスに定評があります。<br/>
+                        ・ AFRソリューションズへの委託業務<br/>
+　　　　　　　　　　　　　　　-海上・航空 輸入 H B/L データ入力（FCL/LCL）<br/>
+　　　　　　　　　　　　　　　-海上・航空 輸入 H B/L 請求データ入力<br/>
+　　　　　　　　　　　　　　　-海上 輸入 M/BLデータ入力（混載）<br/>
+　　　　　　　　　　　　　　　-海上 輸入 M/BL　仕入データ入力及びH B/Lへの費用按分（混載）<br/>
+　　　　　　　　　　　　　　　-海上 輸入 A/N, D/O作成及び送付（混載）<br/>
+　　　　　　　　　　　　　　　-航空輸入 BB依頼書作成及び送付<br/>
+<br/>　　　　　　　　　　　AFRソリューションズを利用したことによるメリット<br/>
+                        
+                        <br/><br/>
+                    </div>
+                    <!------------------------------- Cost Competitive line start----------------------------------->
+                    <!-------- Cost Competitive line image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/noserver.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/outsourcing.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/packagesolution.jpg?v=1"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <!-------- Cost Competitive line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitlej">
+                            人件費削減<br/>
+                        </div>
+                        <div class="threelinetitlej">
+                            時間割り当ての効率化<br/>
+                        </div>
+                        <div class="threelinetitlej">
+                            サービス品質強化 <br/>
+                        </div>
+                    </div>
+                    <!-------- Cost Competitive line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebodyj">
+                            AFRソリューションズのデータ入力サービスの活用により、フォワーディング業務における人件費を60%削減することに成功しました。また、
+                            -常に繁忙期に備えて人数を確保しておきましたが、最小限の必要な人数を採用することで、オペレーターの人数を2名減らすことができました。<br/>
+                            -案件登録した分だけを支払することで、1件を処理するコストを大幅に削減できました。<br/>
+                            -残業や祝日勤務も大幅に減り、コスト削減につながりました。<br/>
+                            
+                        </div>
+                        <div class="threelinebodyj">
+                            データセンターによりデータ入力することで、日本の社員が行う業務における単純作業の割合を減らし、付加価値が高い業務へ集中させることができるようになりました。<br/>
+                            
+                        </div>
+                        <div class="threelinebodyj">
+                            -サービス継続性：ベトナムデータ入力サービスは日本の休日・祝日も稼動しているので、いつでも業務対応ができるようになりました。<br/>
+                            -サービススピード：H 　B/Lデータ入力は4時間以内など、目標を定めることで、業務のスピードも申し分ありません。<br/>
+                            -正確性：承認プロセスを利用し、1次レビューはAFR社内で行われています。レビューをすることで、データ入力の正確さも弊社が要求する基準を満たすものでした。<br/>
+                            –カーゴトラッキングウェブサイト<br/>
+                        </div>
+                    </div>
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                       推薦
+                        <br/><br/>
+                    </div>  
+                    <div class="bodybodyj">  
+                     フォワーディング業界における信頼できるデータ入力サービスをお探しのフォワーディング業者様に、AFRソリューションズのデータ入力サービスをお勧めいたします。<br/>   
+                        
+                        
+                        
+                        
+                        
+                    </div>
+                    <!------------------------------- Cost Competitive line end----------------------------------->
+                    
+                    <!------------------------------- cargo processing line start----------------------------------->
+                    <!-------- title --------------->
+                    <br/>
+
+                    <div class="wrap">
+                        <a name="Cargo Process">カーゴ・プロセス</a>
+                        <br/>
+                    </div>
+                    <div class="orangeline">
+                    </div>
+                    <!-------- body --------------->
+                    <br/><br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        輸出<br/><br/>
+                    </div>
+                    <div class="bodybody">
+                        ご存知のように、多くの会社で業務を行うためにExcelが使用されています。ですが、Excelで課題をこなすのには限界があります。
+                        <a href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR-SolutionsDisadvantageofExcelJP.pdf?v=1"
+                           class="hyperlink">(Excelの問題点を見る)</a><br/>
+                        ですが、CloForは課題をこなすために大変役立ちます。CloForによって、オペレーションチームが輸出や輸入、混載の案件を作成し、完了させるまで1~2時間で済ませることができます。
+                    </div>
+                    <!-------- Export image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/exportjp.png?v=1"
+                             style="margin-left:50px; width:900px; height:350px;"/>
+                    </div>
+                    <!-------- Export title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            ステップ1. データ入力<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            ステップ2. プロフィット分析と書類発行<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            ステップ3. 経理情報入力<br/>
+                        </div>
+                    </div>
+                    <!-------- Export content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            ・データ入力の前に、別の案件をコピーします。<br/>
+                            ・一つのページの中に、貨物の全ての情報を入力します。<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・CloForがプロフィット分析を提供し、粗利をリアルタイムで確認することができます。<br/>
+                            ・入力されたデータに基づき、チェックB/Lやフレイトメモなどのあらゆる書類をボタン一つで印刷することができます。<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・書類を発行した後は、入金および支払の管理を行います。<br/>
+                            ・全ての作業が終了した後は、案件をロックし、案件の内容が変更されるのを防ぐことができます。 <br/>
+                        </div>
+                    </div>
+                    <br/><br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        輸入<br/><br/>
+                    </div>
+                    <!-------- Import image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/importjp.png?v=1"
+                             style="margin:-80px 0 0 50px; width:900px; height:350px;"/>
+                    </div>
+                    <!-------- Import title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            ステップ1. データ入力<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            ステップ2. プロフィット分析と書類発行<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            ステップ3. 経理情報入力<br/>
+                        </div>
+                    </div>
+                    <!-------- Import content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            ・データ入力の前に、別の案件をコピーします。<br/>
+                            ・一つのページの中に、貨物の全ての情報を入力します。<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・CloForがプロフィット分析を提供し、粗利をリアルタイムで確認することができます。<br/>
+                            ・入力されたデータに基づき、A/NやD/Oなどのあらゆる書類をボタン一つで印刷することができます<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・書類を発行した後は、入金および支払の管理を行います。<br/>
+                            ・全ての作業が終了した後は、案件をロックし、案件の内容が変更されるのを防ぐことができます <br/>
+                        </div>
+                    </div>
+                    <br/><br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        混載<br/><br/>
+                    </div>
+                    <!-------- Export image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/consoljp.png?v=1"
+                             style="margin:-80px 0 0 50px; width:900px; height:350px;"/>
+                    </div>
+                    <!-------- Export title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            ステップ1. データ入力<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            ステップ2. HB/L案件とリンクを作成する<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            ステップ3. 書類を発行し、経理情報を入力する<br/>
+                        </div>
+                    </div>
+                    <!-------- Export content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            ・データ入力の前に、別の案件をコピーします。<br/>
+                            ・全てのマスター貨物情報を一つのページに入力します。<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・混載の中のHB/L案件を作成します。<br/>
+                            ・クリック一つでETA, POLなどの共通の情報をHB/L案件にコピーすることができます。<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・CLPやデバン依頼書等の書類をボタン一つで発行できます。<br/>
+                            ・ボタン一つで混載の費用を各HB/L案件に按分することができます。按分後、混載全体での粗利を確認できます。<br/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="background-color:#bfbfbf;height:450px;">
+                <div>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbottomtable.css?v=2534"/>
+                    <style type="text/css">
+                        @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+                        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+                    </style>
+                    <!--------------------------- bottom menu ------------------------------->
+                    <div class="absolute1">
+                        <div class="bottomtable1">
+                            □ ソリューション<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFor"
+                               class="link">クラウドフォワーディング(CloFor)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloTra"
+                               class="link">トラッキングサービス(CloTra)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloSync" class="link">クラウドシンク(CloSync)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFil" class="link">AFRファイリング(CloFil)</a><br/>
+                        </div>
+                        <div class="bottomtable2">
+                            □ サービス<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#DataInputService"
+                               class="link">データ入力サービス</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#Development SF Service" class="link">Salesforceの導入
+                                <div style="margin-bottom:-20px;">コンサルティングと開発</div>
+                            </a><br/>
+                        </div>
+                        <div class="bottomtable3">
+                            □ 価格<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Solution List Price" class="link hover">ソリューション価格表</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Service List Price" class="link">サービス価格表</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#How to pay" class="link">お支払い方法</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Legal information" class="link">法的情報</a>
+                        </div>
+                        <div class="bottomtable4">
+                            □ 特長<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cost Competitive"
+                               class="link">競争力あるコスト</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Speed and Flexibility"
+                               class="link">スピードと柔軟性</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Accessibility"
+                               class="link">アクセシビリティ/セキュリティ/バックアップ</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Real Time Performance"
+                               class="link">リアルタイムなパフォーマンス</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cargo Process" class="link">カーゴプロセス</a>
+                        </div>
+                        <div class="bottomtable5">
+                            □ トライアル/ダウンロード<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Trial" class="link" style="text-indent:-100px">トライアル</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Appexchange" class="link">AppExchange</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Data download" class="link">データダウンロード</a><br/>
+                        </div>
+                        <div class="bottomtable6">
+                            □ コンタクト<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Customer Support"
+                               class="link">カスタマーサポート</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Partner Support"
+                               class="link">パートナーサポート</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Solutions or Services" class="link">ソリューションに関するお問い合わせ</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Hearing Sheet" class="link">ヒアリング・シート</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#FAQ and Public Solutions" class="link">FAQとパブリックソリューション</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Technical Issue"
+                               class="link">技術的な問題に関するお問い合わせ</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Server Status" class="link">サーバーステータス</a><br/>
+                        </div>
+                        <div class="bottomtable7">
+                            □ 会社概要<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Greetings" class="link">ご挨拶</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Our team" class="link">社員紹介</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Japan Headquater" class="link">日本本社</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Vietnam Office" class="link">ベトナム支社</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Korea Office" class="link">韓国支社</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Career in AFR" class="link">AFRで働く</a>
+                        </div>
+                    </div>
+                    <!--------------------------- bottom menu end ------------------------------->
+                </div>
+            </div>
+            <div id="footer" style="height:64px;background-color:#bfbfbf;">
+                <div style="background-color:#948F8F;">
+                    <meta charset="utf-8"/>
+                    <meta name="description" content="AFRソリューションズ株式会社 ホームページ"/>
+                    <title>AFRソリューションズ株式会社 ホームページ</title>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRmenu.css?v=306"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRlogo.css?v=260"/>
+                    <style type="text/css">
+                        #textcenter {
+                            text-align: center;
+                            color: white;
+                            font-weight: bold;
+                            background-color: gray;
+                        }
+                    </style>
+                    <div id="textcenter">
+                        <br/>
+                        3-6-20, HIGASHI-OI, SHINAGAWA-KU, TOKYO<br/>
+                        Tel : 036-868-7838<br/>
+                        ⓒ&nbsp;2015. AFR SOLUTIONS CO., LTD all rights reserved.<br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </apex:outputPanel>
+    <!-- Korean -->
+    <apex:outputPanel rendered="{!language = 'ko'}">
+        <div id="AFRSolutions">
+            <div id="header" style="height:621px;">
+                <div style="height:581px;">
+                    <meta charset="utf-8"/>
+                    <title>AFR Solutions</title>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRmenu.css?v=306"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRlogo.css?v=260"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbody.css?v=1812"/>
+                    <link rel="shortcut icon"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/logoicon.ico?v=2"/>
+                    <style type="text/css">
+                        #textcenter {
+                            text-align: center;
+                            color: white;
+                            font-weight: bold;
+                            background-color: gray;
+                        }
+
+                        @import url(//fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+                    </style>
+                    <style>
+                        /* ------------------------------------ image style --------------------------------------------*/
+
+                        .payZone img:hover {
+                            /* 위로 올리기
+                            background:#000;
+                            -moz-transform: translate3d(0, -100%, 0); /* position elements past bottom of layout */
+                            -webkit-transform: translate3d(0, -20%, 0);
+                            transform: translate3d(0, -20%, 0);
+                            -moz-transition: all 0.5s;
+                            -webkit-transition: all 0.5s;
+                            -ms-transition: all 0.5s;
+                            transition: all 0.5s;
+
+                        }
+                    </style>
+                    <!--------------------------------------- logo body ------------------------------------>
+                    <div id="logo">
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength?lang=ko"> <img
+                                src="https://afrs-developer-edition.ap6.force.com/afr/s/afrlogo.jpg?v=1"
+                                style="width:300px; height:100px;"/></a>
+                    </div>
+                    <div class="moveleft">
+                        <div class="payZone" style="">
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength?lang=vi"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Vietnam.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength?lang=en"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/America.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength?lang=ja"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Japan.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength?lang=ko"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Korea.png?v=1"
+                                    style="width:30px"/></a>
+                        </div>
+                    </div>
+                    <!--------------------------------------- slide menu body ------------------------------------>
+                    <div id="topMenu">
+                        <ul>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution" class="menuLink">솔루션</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFor" class="submenuLink longLink">클라우드
+                                        포워딩(CloFor)</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloTra" class="submenuLink longLink">트래킹
+                                        서비스(CloTra)</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloSyn" class="submenuLink longLink">데이터동기화
+                                        서비스(CloSyn)</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFil" class="submenuLink longLink">AFR
+                                        Filling(CloFil)</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService" class="menuLink">서비스</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#DataInputService"
+                                           class="submenuLink longLink">데이터 입력 서비스</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#Development SF Service"
+                                           class="submenuLink longLink">Salesforce 도입컨설팅과 개발</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice" class="menuLink">가격</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Solution List Price"
+                                           class="submenuLink longLink">솔루션 가격</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Service List Price"
+                                           class="submenuLink longLink">서비스 가격</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#How to pay"
+                                           class="submenuLink longLink">지불방법</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Legal information"
+                                           class="submenuLink longLink">법률정보</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength" class="menuLink">특징</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cost Competitive"
+                                           class="submenuLink longLink">가격 경쟁력</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Speed and Flexibility"
+                                           class="submenuLink longLink">신속함, 유연성</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Accessibility"
+                                           class="submenuLink longLink">접근성<br/>/보안/백업</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Real Time Performance"
+                                           class="submenuLink longLink">리얼타임 퍼포먼스</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cargo Process"
+                                           class="submenuLink longLink">화물정보처리</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown" class="menuLink">체험판/다운로드</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Trial"
+                                           class="submenuLink longLink">체험판</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Appexchange"
+                                           class="submenuLink longLink">AppExchange</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Data download"
+                                           class="submenuLink longLink">다운로드</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs" class="menuLink">문의사항</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Customer Support"
+                                           class="submenuLink longLink">고객지원</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Partner Support"
+                                           class="submenuLink longLink">파트너지원</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Solutions or Services"
+                                           class="submenuLink longLink">솔루션/서비스 지원</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Hearing Sheet"
+                                           class="submenuLink longLink">설문조사</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#FAQ and Public Solutions"
+                                           class="submenuLink longLink">FAQ</a></li>
+                                    <li>
+                                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Technical Issue"
+                                           class="submenuLink longLink">기술지원</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Server Status"
+                                           class="submenuLink longLink">서버현황확인 지원</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs" class="menuLink">회사소개</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Greetings" class="submenuLink longLink">인사의
+                                        말</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Our team" class="submenuLink longLink">담당자
+                                        소개</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Japan Headquater"
+                                           class="submenuLink longLink">일본 본사</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Vietnam Office"
+                                           class="submenuLink longLink">베트남 지사</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Korea Office"
+                                           class="submenuLink longLink">한국
+                                        지사</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Career in AFR"
+                                           class="submenuLink longLink">AFR
+                                        채용정보</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mainimage">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/uservoice.jpg?v=1" height="400px;"
+                             width="1400px;"/>
+                    </div>
+                </div>
+            </div>
+            <div style="overflow:hidden;height:6850px;">
+                <div style="height:3000px;">
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRtitle.css?v=174"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbody.css?v=1812"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3line.css?v=101"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3linecontent.css?v=943"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3linetitle.css?v=815"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRline.css?v=220"/>
+                    <style type="text/css">
+                        @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+                        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+                        #orangeline {
+                            margin: 0.5px;
+                            text-align: center;
+                        }
+
+                        body {
+                            overflow-x: hidden
+                        }
+                    </style>
+                    <!---------------------- Cost Competitive start ------------------------------------>
+                    <!-------- title --------------->
+                    <div class="wrapk">
+                        <br/>
+                        <a name="Cost Competitive">가격 경쟁력</a>
+                    </div>
+                    <div class="orangeline">
+                    </div>
+                    <!-------- body --------------->
+                    <br/><br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        가격 경쟁력
+                        <br/><br/>
+                    </div>
+                    <div class="bodybody">
+                        저희 서비스 CloFor(Cloud Package Solution)를 사용하실 경우, 가격적인 면에 있어서 큰 메리트를 느끼실 수 있습니다. 그리고 저희 서비스는 아래와
+                        같은 특징을 가지고 있습니다.<br/>
+                        ・특별한 IT투자가 필요하지 않습니다. 초기셋업 비용과 라이센스 비용만 지불하시면, 모든 포워딩 업무의 기능을 가진 플랫폼에 접속하실 수 있습니다.<br/>
+                        ・오퍼레이션 기능을 본사에 집중, 단순작업은 해외의 아웃소싱에 맡김으로 인해, 본사의 인건비 절약이 가능합니다.<br/>
+                        ・포워딩 업무, 영업, 그룹웨어, 청구서발행, 입금관리, 지불관리, Email, 메세지 등 모든 기능을 갖춘 All-In-One Package
+                        Solution입니다.<br/>
+                        <br/><br/>
+                    </div>
+                    <!------------------------------- Cost Competitive line start----------------------------------->
+                    <!-------- Cost Competitive line image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/noserver.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/outsourcing.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/packagesolution.jpg?v=1"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <!-------- Cost Competitive line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            IT설비투자의 불필요<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            경제적인 조직형태, 단순업무의 해외아웃소싱에 의한 인건비 절약<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            All-In-One 패키지 솔루션<br/>
+                        </div>
+                    </div>
+                    <!-------- Cost Competitive line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            ・낮은 초기비용: 하드웨어, 소프트웨어의 비용이 들지 않기 때문에 초기 인프라 비용을 절감할 수 있습니다.<br/>
+                            ・경쟁력 있는 라이센스 가격설정<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・모든 도시에 오퍼레이터를 배치할 필요가 없어집니다. 오퍼레이션 팀을 한 장소에 집중하는 것이 가능합니다.<br/>
+                            ・인건비가 비싼 본사에서 종업원수를 줄이고, 저희회사에 아웃소싱을 맡겨주십시오. 저희회사가 해외의 비지니스 아웃소싱의 업무를 대신 진행합니다.<br/>
+                            ・보다 적은 인원으로, 아웃소싱을 늘리고, 생산성을 향상합니다. 비지니스와 IT작업을 능률화하고, 비용절감을 할 수 있습니다.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・CloFor의 기능 중 포워딩업무, 영업관리, 그룹웨어, 청구서관리, 입금관리, 지불관리, Email, 메세지 등 강력한 도구를 가지고 있습니다.<br/>
+                            ・CloTra의 기능 중 화물추적정보를 공유하기 위한 외부와의 커뮤니케이션이 준비되어 있습니다.<br/>
+                            ・화물추적 Email 서비스<br/>
+                            ・화물추적 웹 사이트<br/>
+                        </div>
+                    </div>
+                    <!------------------------------- Cost Competitive line end----------------------------------->
+                    <div class="grayline">
+                    </div>
+                    <!---------------------- Speed and Flexibility start ------------------------------------>
+                    <!-------- title --------------->
+                    <!------------------------------- Speed and Flexibility line start----------------------------------->
+                    <!-------- Speed and Flexibility 1st line image--------------->
+                    <div class="wrapk">
+                        <br/>
+                        <a name="Speed and Flexibility">신속함, 유연성</a>
+                        <br/>
+                    </div>
+                    <div class="orangeline">
+                    </div>
+                    <!-------- body --------------->
+                    <br/><br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        신속함, 유연성<br/><br/>
+                    </div>
+                    <div class="bodybody">
+                        CloFor(Cloud Package Solution)은 신속함, 유연성의 면에서도 높은 수준을 느끼실 수 있습니다.<br/>
+                        ・신속성<br/>
+                        ・개량가능한 표준프로세스와 템플렛<br/>
+                        ・현지 언어 지원<br/>
+                        <a href="https://afrs-developer-edition.ap6.force.com/afr/s/test.pdf?v=1">ddd</a>
+                        <br/><br/>
+                    </div>
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/speed.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/changable.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/locallan.jpg?v=1"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <!-------- Speed and Flexibility line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            신속성<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            개량가능한 표준프로세스와 템플렛<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            현지 언어 지원<br/>
+                        </div>
+                    </div>
+                    <!-------- Speed and Flexibility line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            ・Cloud Computing을 사용하실 경우, 하드웨어를 구입하시거나, 셋업을 하실 필요가 없어집니다. 개별적인 니즈에 맞춰, 신속하게 규모를 확대하거나, 축소하는
+                            것이 가능합니다.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・프로세스와 템플렛은 클라우드 포워딩에 포함하는 것이 가능합니다. 클릭 한번으로 간단하게 서류템플렛을 사용하는 것이 가능합니다.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・일본어,영어,베트남어,한국어 등 Salesforce가 지원하는 다양한 국가의 언어를 지원합니다.<br/>
+                        </div>
+                    </div>
+                    <!------------------------------- Speed and Flexibility line end----------------------------------->
+                    <div class="grayline">
+                    </div>
+                    <!------------------------------- Accessibility/Availability/Security/Backup line start----------------------------------->
+                    <!-------- title --------------->
+                    <br/>
+
+                    <div class="wrapk">
+                        <a name="Accessibility">접근성/보안/백업</a>
+                        <br/>
+                    </div>
+                    <div class="orangeline">
+                    </div>
+                    <!-------- body --------------->
+                    <br/><br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        접근성/보안/백업<br/><br/>
+                    </div>
+                    <div class="bodybody">
+                        CloFor(Cloud Package Solution)은 보안/가용성/백업 면에서도 높은 수준을 느끼실 수 있습니다.<br/>
+                        ・언제어디서나 접속가능<br/>
+                        ・보안/가용성/백업<br/>
+                        ・이력관리<br/>
+                    </div>
+                    <!--------Accessibility/Availability/Security/Backup image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/accessany.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/security2.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/management2.jpg?v=1"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <!-------- Accessibility/Availability/Security/Backup line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            언제어디서나 접속가능<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            보안/가용성/백업<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            이력관리<br/>
+                        </div>
+                    </div>
+                    <!-------- Accessibility/Availability/Security/Backup line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            ・스마트폰, 타블렛, PC등을 통해서 언제 어디서나 접속이 가능합니다.<br/>
+                            ・Salesforce 1(스마트폰 어플리케이션)은 iPhone Appstore, Google Playstore등에서 다운로드 할 수 있습니다.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・데이터는 Salesforce에 의해서 보호됩니다.<br/>
+                            ・Salesforce는 데이터 보안을 위해서 다양한 방법들을 사용합니다. 그리고 등록이 완료된 사용자만이 데이터에 접속할 수 있습니다.<br/>
+                            ・귀사의 경쟁사는 절대로 데이터에 접속할 수 없습니다.<br/>
+                            ・데이터의 보안성에 관해서는 Privacy Statement, 사용규약을 참조해 주십시오. <br/>
+                            ・데이터는 Salesforce에 의해서 리얼타임으로 백업되고, 해외센터에서도 저장된 데이터가 반영됩니다.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・거래처, 담당자의 커뮤니케이션 이력을 한번에 관리하는 것이 가능합니다. <br/>
+                            ・매일이력, 전화이력, 스케줄예정을 관리합니다. 그 외에도 편리한 다양한 도구들을 사용할 수 있습니다.<br/>
+                        </div>
+                    </div>
+                    <!------------------------------- Accessibility/Availability/Security/Backup line end----------------------------------->
+                    <div class="grayline">
+                    </div>
+                    <!------------------------------- Real Time Performance line start----------------------------------->
+                    <!-------- title --------------->
+                    <br/>
+
+                    <div class="wrapk">
+                        <a name="Real Time Performance">리얼타임 퍼포먼스</a>
+                        <br/>
+                    </div>
+                    <div class="orangeline">
+                    </div>
+                    <!-------- body --------------->
+                    <br/><br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        리얼타임 퍼포먼스<br/><br/>
+                    </div>
+                    <div class="bodybody">
+                        CloFor(Cloud Package Solution)은 리얼타임 퍼포먼스의 면에서도 높은 수준을 느끼실 수 있습니다.<br/>
+                        ・리얼타임 대쉬보드<br/>
+                        ・리얼타임 퍼포먼스 보고서<br/>
+                        ・리얼타임 화물추적 Email<br/>
+                    </div>
+                    <!-------- Real Time Performance image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/realtimedash.jpg?v=2"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/realtimereport.jpg?v=1"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/realtimetracking.jpg?v=1"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <!-------- Real Time Performance 2nd line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            실시간 대쉬보드<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            실시간 퍼포먼스 보고서<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            실시간임 화물추적 Email<br/>
+                        </div>
+                    </div>
+                    <!-------- Real Time Performance line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            ・복잡한 정보를 시각화 합니다.<br/>
+                            ・레포트에 의해서 정보를 실시간으로 수집, 올바른 판단을 할 수 있도록 지원합니다.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・회사기준, 팀 기준, 개별스탭기준의 실적레포트를 실시간임으로 작성할 수 있습니다.<br/>
+                            ・레포트는 실시간으로 실적에 관련된 데이터를 그래프로 제공합니다.<br/>
+                            ・년간/분기별/월별/일별의 퍼포먼스를 실시간으로 파악할 수 있습니다.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・귀사의 고객에 대응해, 귀사의 국가의 언어로 자동으로 화물스테이터스 메일을 발송합니다.<br/>
+                            ・귀사의 파트너에 대응해, 영어로 자동으로 화물스테이터스 메일을 발송합니다.<br/>
+                        </div>
+                    </div>
+                    <div class="grayline">
+                    </div>
+                    <!------------------------------- cargo processing line start----------------------------------->
+                    <!-------- title --------------->
+                    <br/>
+
+                    <div class="wrapk">
+                        <a name="Cargo Process">화물정보처리</a>
+                        <br/>
+                    </div>
+                    <div class="orangeline">
+                    </div>
+                    <!-------- body --------------->
+                    <br/><br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        수출<br/><br/>
+                    </div>
+                    <div class="bodybody">
+                        아시다시피, 많은 포워딩 회사들은 업무처리를 위해서 엑셀을 많이 사용합니다.하지만 엑셀은 포워딩 업무를 진행하는데 많은 한계점이 있습니다.
+                        <a href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR-SolutionsDisadvantageofExcelKR.pdf?v=1"
+                           class="hyperlink">(엑셀의 한계점 자세히보기)</a><br/>
+                        CloFor에서는 포워딩업무에 필요한 다양한 기능들을 지원하고 있어, 매우 편리하게 업무를 진행할 수 있습니다. 귀사의 수입,수출, 콘솔 담당자들은 1~2시간
+                        이내에<br/>
+                        하나의 화물을 처리할 수 있습니다.
+                    </div>
+                    <!-------- Export image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/exportk.png?v=3"
+                             style="margin-left:50px; width:900px; height:350px;"/>
+                    </div>
+                    <!-------- Export title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            Step1. 데이터 입력<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Step2. 수익성 분석 및 서류발행<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Step3. 비용관리<br/>
+                        </div>
+                    </div>
+                    <!-------- Export content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            ・데이터를 입력하기 전, 전에 사용하시던 서류를 복사합니다.<br/>
+                            ・모든 화물 데이터를 단 한페이지에 입력할 수 있습니다.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・CloFor는 수익성 분석을 지원하며, 화물에 대한 승인요청을 할 수 있습니다.<br/>
+                            ・입력된 데이터를 바탕으로, Check B/L, Freight memo와 같은 모든 관련 서류를 버튼 하나로 인쇄할 수 있습니다.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・서류 발행 후, 비용관리를 할 수 있습니다.<br/>
+                            ・모든 과정이 끝나면, 입력방지를 위해 서류잠금 기능을 사용할 수 있습니다.<br/>
+                        </div>
+                    </div>
+                    <br/><br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        수입<br/><br/>
+                    </div>
+                    <!-------- Import image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/importk.png?v=2"
+                             style="margin:-80px 0 0 50px; width:900px; height:350px;"/>
+                    </div>
+                    <!-------- Import title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            Step1. 데이터 입력<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Step2. 수익성 분석 및 서류발행<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Step3. 비용관리<br/>
+                        </div>
+                    </div>
+                    <!-------- Import content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            ・데이터를 입력하기 전, 전에 사용하시던 서류를 복사합니다.<br/>
+                            ・모든 화물 데이터를 단 한페이지에 입력할 수 있습니다.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・CloFor는 수익성 분석을 지원하며, 화물에 대한 승인요청을 할 수 있습니다.<br/>
+                            ・입력된 데이터를 바탕으로, Arrival Notice, Delivery Order과 같은 모든 관련 서류를 버튼 하나로 인쇄할 수 있습니다.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・서류 발행 후, 비용관리를 할 수 있습니다.<br/>
+                            ・모든 과정이 끝나면, 입력방지를 위해 서류잠금 기능을 사용할 수 있습니다.<br/>
+                        </div>
+                    </div>
+                    <br/><br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        콘솔화물<br/><br/>
+                    </div>
+                    <!-------- Export image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/consolk.png?v=2"
+                             style="margin:-80px 0 0 50px; width:900px; height:350px;"/>
+                    </div>
+                    <!-------- Export title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            Step1. 데이터 입력<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Step2. H B/L생성 및 연결<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            Step3. 서류발행 및 비용관리<br/>
+                        </div>
+                    </div>
+                    <!-------- Export content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            ・데이터를 입력하기 전, 전에 사용하시던 서류를 복사합니다.<br/>
+                            ・모든 마스터 화물 데이터를 단 한페이지에 입력할 수 있습니다.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・콘솔화물용 H B/L 화물정보를 입력합니다.<br/>
+                            ・클릭 한 번으로 ETA,POL과 같은 동일 정보를 H B/L 화물정보에 입력할 수 있습니다.<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・클릭 한 번으로 비용배분 기능을 사용할 수 있습니다.<br/>
+                            ・서류발행 후 수익성 분석을 합니다.<br/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="background-color:#bfbfbf;height:400px;">
+                <div>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbottomtable.css?v=2534"/>
+                    <meta charset="utf-8"/>
+                    <style type="text/css">
+                        @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+                        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+                        html, body {
+                            width: 100%;
+                            height: 100%
+                        }
+
+                        body {
+                            margin: 0;
+                            padding: 0;
+                        }
+                    </style>
+                    <!------------------------------ bottom menu end --------------------------------->
+                    <div class="absolute1">
+                        <div class="bottomtable1">
+                            □ 솔루션<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFor" class="link">클라우드 포워딩(CloFor)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloTra" class="link">트래킹 서비스(CloTra)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloSyn" class="link">데이터동기화
+                                서비스(CloSyn)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFil" class="link">AFR
+                                Filling(CloFil)</a><br/>
+                        </div>
+                        <div class="bottomtable2">
+                            □ 서비스<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#DataInputService" class="link">데이터 입력
+                                서비스</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#Development SF Service" class="link">Salesforce
+                                도입컨설팅과 개발</a><br/>
+                        </div>
+                        <div class="bottomtable3">
+                            □ 가격<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Solution List Price" class="link hover">솔루션
+                                가격</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Service List Price" class="link">서비스 가격</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#How to pay" class="link">지불방법</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Legal information" class="link">법률정보</a>
+                        </div>
+                        <div class="bottomtable4">
+                            □ 특징<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cost Competitive" class="link">가격 경쟁력</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Speed and Flexibility" class="link">신속함,
+                                유연성</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Accessibility" class="link">접근성/보안/백업</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Real Time Performance" class="link">리얼타임
+                                퍼포먼스</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cargo Process" class="link">화물정보처리</a>
+                        </div>
+                        <div class="bottomtable5">
+                            □ 체험판/다운로드<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Trial" class="link"
+                               style="text-indent:-100px">체험판</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Appexchange" class="link">AppExchange</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Data download" class="link">다운로드</a><br/>
+                        </div>
+                        <div class="bottomtable6">
+                            □ 문의사항<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Customer Support" class="link">고객지원</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Partner Support" class="link">파트너지원</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Solutions or Services" class="link">솔루션/서비스
+                                지원</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Hearing Sheet" class="link">설문조사</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#FAQ and Public Solutions"
+                               class="link">FAQ</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Technical Issue"
+                               class="link">기술지원</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Server Status" class="link">서버현황확인 지원</a><br/>
+                        </div>
+                        <div class="bottomtable7">
+                            □ About Us<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Greetings" class="link">인사의 말</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Our team" class="link">담당자 소개</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Japan Headquater" class="link">일본 본사</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Vietnam Office" class="link">베트남 지사</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Korea Office" class="link">한국 지사</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Career in AFR" class="link">AFR 채용정보</a><br/>
+                        </div>
+                    </div>
+                    <!------------------------------ bottom menu end --------------------------------->
+                </div>
+            </div>
+            <div id="footer" style="height:64px;background-color:#bfbfbf;">
+                <div style="background-color:#948F8F;">
+                    <meta charset="utf-8"/>
+                    <meta name="description" content="AFR Solutions Homepage"/>
+                    <title>AFR Solutions Homepage</title>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRmenu.css?v=306"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRlogo.css?v=260"/>
+                    <style type="text/css">
+                        #textcenter {
+                            text-align: center;
+                            color: white;
+                            font-weight: bold;
+                            background-color: gray;
+                        }
+                    </style>
+                    <div id="textcenter">
+                        <br/>
+                        3-6-20, HIGASHI-OI, SHINAGAWA-KU, TOKYO<br/>
+                        Tel : 036-868-7838<br/>
+                        ⓒ&nbsp;2015. AFR SOLUTIONS CO., LTD all rights reserved.<br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </apex:outputPanel>
+</apex:page>

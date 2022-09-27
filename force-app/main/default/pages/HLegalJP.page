@@ -1,0 +1,75 @@
+<apex:page showHeader="false" sidebar="false" docType="html-5.0">
+    <head>
+        <title>
+            legal </title>
+        <script type="text/javascript">
+            //<![CDATA[
+            try {
+                (function () {
+                    var w = self, l, p, o;
+                    if (w && top) {
+                        for (; w !== top && (p = w.parent) && p !== w && (o = p.location) && o.protocol === (l = w.location).protocol && (o.host === l.host || (p.document && p.document.domain === w.document.domain)); w = p);
+                        if (w !== top)throw "";
+                    }
+                    ({
+                        f: function () {
+                            document.documentElement ? document.documentElement.style.display = "" : (!this.a && (this.a = 10), this.a < 1E5 && (window.sfdcRetryShowWindow = this) && setTimeout("sfdcRetryShowWindow.f()", this.a), this.a *= 2)
+                        }
+                    }.f())
+                })();
+            } catch (e) {
+                if (top !== self)top.location = location; else throw e;
+            }//]]></script>
+        <link href="https://afrs-developer-edition.ap6.force.com/afr/s/SiteStyleSheet?v=64" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="https://afrs-developer-edition.ap6.force.com/afr/s/sfsites/assets/Scripts/jquery/jquery.js?r=1.201606172351470929">
+        </script>
+        <script type="text/javascript"
+                src="https://afrs-developer-edition.ap6.force.com/afr/s/sfsites/assets/Scripts/Runtime/PicassoRuntime.js?r=1.201606172351470929">
+        </script>
+    </head>
+    <body itemid="body">
+    <div id="legal">
+        <div id="header">
+            &nbsp;      
+        </div>
+        <div id="content" style="overflow:hidden;">
+            <div>
+                1. 契約条件<br/>
+                商品やサービスに関する、お客様との契約および利用条件です。<br/>
+                マスターサブスクリプション契約<br/>
+                2.プライバシ－に関する声明<br/>
+                当社のプライバシー保護の取り組みに関する詳細<br/>
+                2.1　収集する情報<br/>
+                ・AFRソリューションズの Web サイトにおいて、お客様が追加情報や利用登録を希望される場合、当社はお客様の基本的な連絡先情報の提供をお願いします。<br/>
+                ・お客様がAFRソリューションズのアプリケーションまたはサービスを購入される場合、当社はお客様に請求先情報の提供をお願いします。<br/>
+                ・お客様が当社イベントに登録または参加される場合、当社はAFRソリューションズの Web サイト上で、お客様の基本的な連絡先情報、請求先情報、およびイベント参加に関する情報の提供をお願いします。<br/>
+                ・AFRソリューションズは、当社 Web サイトやメールでのやり取りを追跡する目的で、クッキーや Web ビーコンなどの一般的なインターネット技術を使用します。<br/>
+                2.2　情報の使用<br/>
+                ・AFRソリューションズは、収集した情報を、お客様からご要望いただいたサービスを提供する目的で使用します。<br/>
+                ・AFRソリューションズは、収集した情報を、当社のサービス、パートナー、プロモーション、およびイベントに関する追加情報を提供する目的で使用する場合があります。<br/>
+                ・AFRソリューションズは、収集した情報を、当社の Web サイトおよびサービスを改善する目的で使用する場合があります。<br/>
+                ・プライバシーに関する声明の全文に記載されていない限り、AFRソリューションズは第三者に対して、個人を特定可能な情報を第三者による販売促進の目的で共有、販売、貸与、または交換することはありません。AFRソリューションズは、収集した情報を、AFRソリューションズに代わってサービスを提供する他社と共有する場合があります<br/>
+                2.3　顧客データ<br/>
+                ・AFRソリューションズのお客様は、当社のサービスに対してデータまたは情報 (「顧客データ」) を電子的に提出する場合があります。<br/>
+                ・AFRソリューションズは、AFRソリューションズのマスターサブスクリプション契約に示された場合または法律で義務付けられる可能性がある場合を除き、そのような顧客データの見直し、共有、配布、および参照を行うことはありません。AFRソリューションズのマスターサブスクリプション契約に従って、AFRソリューションズは、お客様からのご要望によりカスタマーサポートに付随することがらについて、サービスの提供またはサービスや技術的な問題の回避・対応を行う目的に限り、あるいは、法律で義務付けられる可能性がある場合には、顧客データにアクセスする場合があります。<br/>
+                2.4　通信の設定<br/>
+                ・AFRソリューションズからお送りするマーケティング目的のすべてのメールには、当社からこれ以後のマーケティング目的のメールの受信を停止する方法の説明が含まれています。<br/>
+                ・お客様からAFRソリューションズに連絡先情報をご提供いただく場合、設定センターにアクセスしていただけば、お客様の情報の当社での利用方法についてお選びいただけます。<br/>
+                ・AFRソリューションズに配信停止のメールを送ることによって、マーケティングや業務以外のお知らせの受信を管理することが出来ます。<br/>
+                2.5お問い合わせ方法<br/>
+                AFRソリューションズの情報慣行の詳細につきましては、Info@Afr-solutions.comまでご連絡ください。<br/>
+                3.知的財産<br/>
+                AFRソリューションズに著作権侵害の報告を行う<br/>
+                商標、著作権などに関する情報<br/>
+                ==>商標;AFR, CloFor, CloTra, CloFil, CloSrc, CloSyn<br/>
+                手続きの概要<br/>
+                手続きの概要は以下の通りです。1. AFRソリューションズがホストとなっているウェブサイト上のマテリアルが、貴社の著作権を侵害していると思われる場合は、以下に記載してあるように、弊社に通知書を送付していただくことができます。弊社は著作権を侵害していると申し立てられた項目を削除し、使用不にするよう取り計らいます。<br/>
+                2.弊社は著作権を侵害していると思われるマテリアルを投稿したユーザーに対して、通知を行います。そのユーザーはマテリアルを再度有効にするよう要求する権利を持っています。もしそのユーザーが正当な形で要求した場合は、二者が共同して削除を依頼するか、法廷が弊社に削除を命ずるまで、弊社はそのマテリアルを再度有効にします。<br/>
+            </div>
+        </div>
+        <div id="footer">
+            &nbsp;      
+        </div>
+    </div>
+    </body>
+</apex:page>

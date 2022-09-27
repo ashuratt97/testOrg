@@ -1,0 +1,2757 @@
+<apex:page controller="PageController" showHeader="false" sidebar="false" docType="html-5.0">
+    <head>
+        <apex:stylesheet value="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
+        <apex:includeScript value="https://code.jquery.com/jquery-1.9.1.js"/>
+        <apex:includeScript value="https://code.jquery.com/ui/1.10.3/jquery-ui.js"/>
+        <script type="text/javascript">
+            j$ = jQuery.noConflict();
+            j$(document).ready(function () {
+                var label = j$("label[id$='afr_language']").text();
+
+                j$("a[class*='ink']").each(function () {
+                    var link_href = j$(this).attr('href');
+                    var pattern = new RegExp(/[#]/);
+
+                    if (pattern.test(link_href)) {
+                        link_href = link_href.replace('#', '?lang=' + label + '#');
+                    } else {
+                        link_href = link_href + '?lang=' + label;
+                    }
+
+                    j$(this).attr('href', link_href);
+                });
+            });
+        </script>
+    </head>
+    <apex:outputLabel style="display:none;" id="afr_language" value="{!language}"/>
+    <apex:outputPanel rendered="{!language = 'en'}">
+        <div id="AFRSolutions">
+            <div id="header" style="height:621px;">
+                <div>
+                    <meta charset="utf-8"/>
+                    <title>AFR Solutions</title>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRmenu.css?v=306"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRlogo.css?v=260"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbody.css?v=1812"/>
+                    <link rel="shortcut icon"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/logoicon.ico?v=2"/>
+                    <style type="text/css">
+                        #textcenter {
+                            text-align: center;
+                            color: white;
+                            font-weight: bold;
+                            background-color: gray;
+                        }
+
+                        @import url(//fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+                    </style>
+                    <style>
+                        /* ------------------------------------ image style --------------------------------------------*/
+
+                        .payZone img:hover {
+                            /* 위로 올리기
+                            background:#000;
+                            -moz-transform: translate3d(0, -100%, 0); /* position elements past bottom of layout */
+                            -webkit-transform: translate3d(0, -20%, 0);
+                            transform: translate3d(0, -20%, 0);
+                            -moz-transition: all 0.5s;
+                            -webkit-transition: all 0.5s;
+                            -ms-transition: all 0.5s;
+                            transition: all 0.5s;
+
+                        }
+                    </style>
+                    <!--------------------------------------- logo body ------------------------------------>
+                    <div id="logo">
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs?lang=en"> <img
+                                src="https://afrs-developer-edition.ap6.force.com/afr/s/afrlogo.jpg?v=1"
+                                style="width:300px; height:100px;"/></a>
+                    </div>
+                    <div class="moveleft">
+                        <div class="payZone" style="">
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs?lang=vi"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Vietnam.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs?lang=en"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/America.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs?lang=ja"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Japan.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs?lang=ko"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Korea.png?v=1"
+                                    style="width:30px"/></a>
+                        </div>
+                    </div>
+                    <!--------------------------------------- slide menu body ------------------------------------>
+                    <div id="topMenu">
+                        <ul>
+                            <li class="topMenuLi"><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution" class="menuLink">Solution</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFor"
+                                           class="submenuLink longLink">Cloud Forwarding(CloFor)</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloTra"
+                                           class="submenuLink longLink">Cloud Tracking(CloTra)</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloSyn"
+                                           class="submenuLink longLink">Cloud Syn(CloSyn)</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFil"
+                                           class="submenuLink longLink">AFR Filling(CloFil)</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi"><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService"
+                                                     class="menuLink">Service</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#DataInputService"
+                                           class="submenuLink longLink">Data Input Service</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#Development SF Service"
+                                           class="submenuLink longLink">Salesforce Implementation Consulting</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi"><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice" class="menuLink">Price</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Solution List Price"
+                                           class="submenuLink longLink">Solution List Price</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Service List Price"
+                                           class="submenuLink longLink">Service List Price</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#How to pay"
+                                           class="submenuLink longLink">How to pay?</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Legal information"
+                                           class="submenuLink longLink">Legal information</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi"><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength" class="menuLink">Strength</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cost Competitive"
+                                           class="submenuLink longLink">Cost Competitive</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Speed and Flexibility"
+                                           class="submenuLink longLink">Speed and Flexibility</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Accessibility"
+                                           class="submenuLink longLink">Accessibility<br/>/Security/Backup</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Real Time Performance"
+                                           class="submenuLink longLink">Real Time Performance</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cargo Process"
+                                           class="submenuLink longLink">Cargo Process</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi"><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown"
+                                                     class="menuLink">Trial/Download</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Trial"
+                                           class="submenuLink longLink">Trial</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Appexchange" class="submenuLink longLink">AppExchange</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Data download"
+                                           class="submenuLink longLink">Data download</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi"><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs" class="menuLink">Contact us</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Customer Support"
+                                           class="submenuLink longLink">Customer Support</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Partner Support"
+                                           class="submenuLink longLink">Partner Support</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Solutions"
+                                           class="submenuLink longLink">Inquiry for Solutions</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Hearing Sheet"
+                                           class="submenuLink longLink">Hearing Sheet</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#FAQ &amp; Our Solutions"
+                                           class="submenuLink longLink">FAQ &amp; Our Solutions</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Technical Issue"
+                                           class="submenuLink longLink">Inquiry for Technical Issue</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Server Status"
+                                           class="submenuLink longLink">Server Status</a></li>
+                                </ul>
+                            </li>
+                            <li></li>
+                            <li>|</li>
+                            <li class="topMenuLi"><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs" class="menuLink">About Us</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Greetings" class="submenuLink longLink">Greetings</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Our team" class="submenuLink longLink">Our
+                                        team</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Japan Headquater"
+                                           class="submenuLink longLink">Japan Headquater</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Vietnam Office"
+                                           class="submenuLink longLink">Vietnam Office</a></li>
+                               <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Career in AFR" class="submenuLink longLink">Career
+                                        in AFR</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mainimage">
+                    <img src="https://afrs-developer-edition.ap6.force.com/afr/s/aboutus.jpg?v=2" height="400px;"
+                         width="1400px;"/>
+                </div>
+            </div>
+            <div style="overflow:hidden;height:5881px;">
+                <div style="height:5500px;">
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRtitle.css?v=174"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbody.css?v=1812"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3line.css?v=101"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3linecontent.css?v=943"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3linetitle.css?v=815"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRline.css?v=220"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRtable.css?v=276"/>
+                    <style type="text/css">
+                        @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+                        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+                        #orangeline {
+                            margin: 0.5px;
+                            text-align: center;
+                        }
+
+                        body {
+                            overflow-x: hidden
+                        }
+
+                        <!--about us start------------------------------------>
+                    </style>
+                    <!-------- title --------------->
+                    <div class="wrap">
+                        <br/>
+                        <a name="Greetings">Greetings</a>
+                    </div>
+                    <div class="orangeline">
+                    </div>
+                    <!-------- body --------------->
+                    <br/><br/><br/><br/><br/>
+                    <!------------------------------------------------- Greetings start ------------------------------------------------------>
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        Greeting Message
+                    </div>
+                    <div class="bodybody">
+                        <br/>
+                        Welcome to the website of AFR Solutions Co., LTD.!
+                        AFR(Advanced FReight forwarding)solutions co.,LTD was established in Feb,2014.<br/>
+                        We aim to provide Comprehensive Cloud Freight Forwarding Package Solution to freight forwarders
+                        all around the world.<br/>
+                        We are a certified Global Partner of Salesforce and our Cloud Forwarding Package Solution is
+                        developed on Salesforce Platform.<br/>
+                        Our Cloud-based freight forwarding Package Solution on Salesforce platform can deliver
+                        transparency on performance,improve operational efficiency,end-to-end supply chain visibility
+                        and the speed and agility you need to maximize revenues and deliver market-leading customer
+                        service.<br/>
+                        <br/><br/>
+                        <!-------------------------------------------------  Greetings end ------------------------------------------------------>
+                        <div class="grayline">
+                            <br/>
+                        </div>
+                        <!------------------------------------------------- Our Team start ------------------------------------------------------>
+                        <!-------- title --------------->
+                        <div class="wrap">
+                            <br/><br/>
+                            <a name="Our team">Our Team Members</a>
+                        </div>
+                        <div class="orangeline"></div>
+                        <br/>
+                    </div>
+                    <!-------------------------------  Our Team's 1st line start----------------------------------->
+                    <!-------- Our Team's 1st line image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/Kwon1.jpg?v=3"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://c.ap2.content.force.com/servlet/servlet.ImageServer?id=01528000004N2tz&oid=00D28000000rCfy&lastMod=1497669190000"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://c.ap2.content.force.com/servlet/servlet.ImageServer?id=01528000004LMcV&oid=00D28000000rCfy&lastMod=1494576807000"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <!--------  Our Team's 1st line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            HYUKPEEL KWON (MANAGING DIRECTOR)<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            HOÀNG ANH HUY (CHIEF OF REPRESENTATIVE OFFICE)<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            LAM NGUYEN QUANG MINH(SENIOR CONSULTANT)<br/>
+                        </div>
+                    </div>
+                    <!-------- Our Team's 1st line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            Nationality: KOREAN<br/>
+                            Location : JAPAN HEADQUARTER<br/>
+                            Background : Over 10 years of business consulting and 5 years of freight forwading sales and
+                            managements in Japan<br/>
+                        </div>
+                        <div class="threelinebody">
+                            Nationality: VIETNAMESE<br/>
+                            Location : VIETNAM REP OFFICE<br/>
+                            Background : Over 10 years of Freight Forwarding in Operation, Sales and Marketing, Business Development Division in
+                            Vietnam<br/>
+                        </div>
+                        <div class="threelinebody">
+                            Nationality: VIETNAMESE<br/>
+                            Location : VIETNAM REP OFFICE<br/>
+                            Background : Over 2 years of freight forwarding operation experience<br/>
+                        </div>
+                    </div>
+                    <!------------------------------- Our Team's 1st line end----------------------------------->
+                    <!------------------------------- Our Team's 2nd line end----------------------------------->
+                    <!-------------------------------  Our Team's 2nd line start----------------------------------->
+                    <!-------- Our Team's first line image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/Khanh.jpg?v=3"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://c.ap2.content.force.com/servlet/servlet.ImageServer?id=01528000004N8EO&oid=00D28000000rCfy&lastMod=1497837575000"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        
+                    </div>
+                    <!--------  Our Team's 2nd line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            KHANH PHAM (Salesforce DEVELOPMENT MANAGER)<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            DAO MINH DUC (CONSULTANT EXECUTIVE)<br/>
+                        </div>
+                        <div class="threelinetitle">
+                           
+                        </div>
+                    </div>
+                    <!-------- Our Team's 2nd line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            Nationality: VIETNAMESE<br/>
+                            Location : VIETNAM REP OFFICE<br/>
+                            Background : Over 5 years of Salesforce development experience and over 10 years of Java
+                            development experience<br/>
+                        </div>
+                        <div class="threelinebody">
+                            Nationality: VIETNAMESE<br/>
+                            Location : VIETNAM REP OFFICE<br/>
+                            Background : Over 1 year of freight forwarding experience in Vietnam<br/>
+                        </div>
+                        <div class="threelinebody">
+                           
+                        </div>
+                    </div>
+                    <br/><br/>
+                    <!------------------------------- Our Team's 2nd line end----------------------------------->
+                    <div class="grayline">
+                    </div>
+                    <!---------------------- about us end ------------------------------------>
+                    <!----------------------  How to access JAPAN HEADQUARTER ------------------------------------>
+                    <!-------- title --------------->
+                    <div class="wrap">
+                        <br/>
+                        <a name="Japan Headquater">Japan Headquarter</a>
+                    </div>
+                    <div class="orangeline"></div>
+                    <!-------- title --------------->
+                    <br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        <a name="Company profile">About Japan Headquarter</a>
+                    </div>
+                    <div class="aboutusmap">
+                        ・Name : AFR Solutions Co., LTD<br/>
+                        ・Date of Establishment : 2014/02/21<br/>
+                        <br/>
+                        ・Founder : HYUKPEEL KWON<br/>
+                        <br/>
+                        ・Address　 : 3-6-20 3F, HIGASHI-OI, SHINAGAWA-KU, <br/>TOKYO<br/>
+                        <br/>
+                        ・Telephone No.　 :+81(0)3-6868-7838<br/>
+                        <br/>
+                        ・E-mail address: vietnam1@afr-solutions.com
+                        <br/>
+                        ・Like Us on: https://www.facebook.com/CloSCM/<br/>
+                        <br/>
+                        ・Services <br/>
+                        <blockquote>
+                            -System Development and Sales<br/>
+                            -System Maintenance Support<br/>
+                            -Labor Dispatch Business<br/>
+                            -Export/Import Trade and Trading Broker<br/>
+                            <br/>
+                        </blockquote>
+                    </div>
+                    <div class="aboutusmapimage">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d811.0059338085534!2d139.7392942291656!3d35.602481089182966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188a787d2bb4e b%3A0xa602ace1b2ee31d8!2s3+Chome-6-20+Higashi%C5%8Di%2C+Shinagawa-ku%2C+T%C5%8Dky%C5%8D-to+140-0011!5e0!3m2!1sen!2sjp!4v1455267165437"
+                                style="border:0" allowfullscreen="" frameborder="0" height="450" width="500"></iframe>
+                    </div>
+                    <!---------------------- how to access table start ------------------------------------>
+                    <div class="bodytitle">
+                        <br/><br/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        <a name="Company profile">Directions</a>
+                    </div>
+                    <div class="aboutustable">
+                        <table class="alltable">
+                            <!----------- title line ---------------->
+                            <tbody>
+                            <tr>
+                                <td class="tabletop">
+                                    Subway/Train Name<br/>
+                                </td>
+                                <td class="tabletop">
+                                    Station Name
+                                </td>
+                                <td class="tabletop">
+                                    Exit
+                                </td>
+                                <td class="tabletop">
+                                    Walking Time
+                                </td>
+                                <td class="tabletop">
+                                    Detail
+                                </td>
+                            </tr>
+                            <!----------- line 1 ---------------->
+                            <tr>
+                                <td class="intable">
+                                    keihin touhuku-sen<br/>（京浜東北線）
+                                </td>
+                                <td class="intable">
+                                    Oimachi Station
+                                </td>
+                                <td class="intable">
+                                    JR West Exit
+                                </td>
+                                <td class="intable">
+                                    10 Mins on foot
+                                </td>
+                                <td class="intable">
+                                </td>
+                            </tr>
+                            <!----------- line 2 ---------------->
+                            <tr>
+                                <td class="intable">
+                                    Toukyu Oimachi-sen<br/>(東急大井町線）
+                                </td>
+                                <td class="intable">
+                                    Oimachi Station
+                                </td>
+                                <td class="intable">
+                                </td>
+                                <td class="intable">
+                                    10 Mins on foot
+                                </td>
+                                <td class="intable">
+                                </td>
+                            </tr>
+                            <!----------- line 3 ---------------->
+                            <tr>
+                                <td class="intable">
+                                    Rinkai-sen<br/>（りんかい線）
+                                </td>
+                                <td class="intable">
+                                    Oimachi Station
+                                </td>
+                                <td class="intable">
+                                </td>
+                                <td class="intable">
+                                    10Mins on foot
+                                </td>
+                                <td class="intable">
+                                </td>
+                            </tr>
+                            <!----------- line 4 ---------------->
+                            <tr>
+                                <td class="intable">
+                                    Keikyu-sen（京急線）
+                                </td>
+                                <td class="intable">
+                                    Samezu Station or Tachi-gawa Station
+                                </td>
+                                <td class="intable">
+                                </td>
+                                <td class="intable">
+                                    5 Mins on foot
+                                </td>
+                                <td class="intable">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!---------------------- JAPAN HEADQUARTER table end ------------------------------------>
+                    <!---------------------- JAPAN HEADQUARTER end ------------------------------------>
+                    <br/><br/>
+
+                    <div class="grayline">
+                    </div>
+                    <!----------------------  How to access Vietnam REP office ------------------------------------>
+                    <!-------- title --------------->
+                    <div class="wrap">
+                        <br/>
+                        <a name="Vietnam Office">Vietnam Office</a>
+                    </div>
+                    <div class="orangeline"></div>
+                    <br/><br/>
+                    <!-------- title --------------->
+                    <br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        <a name="Company profile">About Vietnam REP Office</a>
+                    </div>
+                    <div class="aboutusmap">
+                        ・Name : AFR Solutions REP Office<br/>
+                        ・Date of Establishment : 2016/02/29<br/>
+                        <br/>
+                        ・Founder : HYUKPEEL KWON<br/>
+                        <br/>
+                        ・Address　 : 11th Floor, HAI AU BUILDING, 39B TRUONG SON STREET, WARD 4, TAN BINH DISTRICT, HO CHI MINH CITY,
+                        VIETNAM<br/>
+                        <br/>
+                        ・Telephone No.　 :+84932-123-966<br/>
+                        <br/>
+                        ・Email adress:vietnam1@afr-solutions.com, vietnam2@afr-solutions.com
+                        <br/>
+                        ・Like Us on: www.facebook.com/CloSCM<br/>
+                        <br/>
+                        ・Services <br/>
+                        <blockquote>
+                            -CloFor Marketing and Sales<br/>
+                            -Salesforce Development<br/>
+                            -Salesforce Maintenance Support<br/>
+                            -Forwarding Operation Process Outsourcing<br/>
+                            -Accounting/Payload Operation Process Outsourcing<br/>
+                        </blockquote>
+                    </div>
+                    <br/><br/>
+
+                    <div class="aboutusmapimage">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9321.058439654113!2d106.66265286308469!3d10.809602691415813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x39c6a032b072cee7!2sHai+Au+building!5e0!3m2!1sja!2sjp!4v1503091680872" 
+                         style="border:0" allowfullscreen="" frameborder="0" height="450" width="500"></iframe>
+</div>
+                    <!---------------------- Company profile table end ------------------------------------>
+                    <!---------------------- Company profile end ------------------------------------>
+                    <div class="grayline">
+                    </div>
+                    
+             
+                    
+                    <!---------------------- Company profile table end ------------------------------------>
+                    <!---------------------- Company profile end ------------------------------------>
+                    <div class="grayline">
+                    </div>
+                    <!----------------------Career in AFR start ------------------------------------>
+                    <!-------- title --------------->
+                    <div class="wrap">
+                        <br/>
+                        <a name="Career in AFR">Careers in AFR</a>
+                    </div>
+                    <div class="orangeline">
+                    </div>
+                    <!-------- body --------------->
+                    <br/><br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        your carrer made with AFR solutions.<br/><br/>
+                    </div>
+                    <div class="bodybody">
+                        AFR solutions Co.,LTD is Japan Based IT solution company. Also, our company is one of the
+                        certified global partners of Salesforce.com.<br/>
+                        Forwarding industry is getting bigger and becoming more competitive as the number of forwarders
+                        entering the market increases.<br/>
+                        Our solution, CloFor, provides customers with forwardring and document operation
+                        services.<br/>
+                        We are looking for highly ambitious and movtivated candidates to join us to face new challenges
+                        with us in a fast-paced world.<br/>
+                        To download more information, please click the links below.
+                        <br/>
+                    </div>
+                    <div class="bodybody">
+                        Open Position1: Forwarding Solution Consultant - Document Operation Experience<br/>
+                        <a href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR_SolutionsJOb_Description-Forwarding_Solutuion_ConsultantDoc_Operation_Experience_Vietnam.pdf?v=1"
+                           class="hyperlink">Download Here!</a>
+                    </div>
+                    <br/>
+
+                    <div class="bodybody">
+                        Open Position2: Forwarding Solution Consultant - Accounting Experience<br/>
+                        <a href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR_SolutionsJOb_Description-Forwarding_Solutuion_ConsultantAccounting_Experience_Vietnam.pdf?v=1"
+                           class="hyperlink">Download Here!</a>
+                    </div>
+                    <br/><br/>
+                    <!------------------------------- Career in AFR end----------------------------------->
+                    <!---------------------- Career in AFR end ------------------------------------>
+                </div>
+            </div>
+            <div style="background-color:#bfbfbf;height:400px;">
+                <div>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbottomtable.css?v=2534"/>
+                    <meta charset="utf-8"/>
+                    <meta http-equiv="X-UA-Compatible" content="IE=9,chrome=1"/>
+                    <style type="text/css">
+                        @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+                        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+                        html, body {
+                            width: 100%;
+                            height: 100%
+                        }
+
+                        body {
+                            margin: 0;
+                            padding: 0;
+                        }
+                    </style>
+                    <!--------------------------------------------------- bottom menu ------------------------------------------------->
+                    <div class="absolute1">
+                        <div class="bottomtable1"> □ Solution<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#loFor" class="link">Cloud
+                                Forwarding(CloFor)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#loTra" class="link">Tracking
+                                Service(CloTra)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#loSyn" class="link">Cloud
+                                Syn(CloSyn)</a><br/> <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#loFil"
+                                                        class="link">AFR Filling(CloFil)</a><br/></div>
+                        <div class="bottomtable2"> □ Service<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#DataInputService" class="link">Data Input
+                                Service(CloSor)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#Development SF Service" class="link">Salesforce
+                                Implementation <br/>
+
+                                <div style="margin-bottom:-20px;">Consulting</div>
+                            </a><br/></div>
+                        <div class="bottomtable3"> □ Price<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#Solution List Price" class="link hover">Solution
+                                List Price</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#Service List Price" class="link">Service List
+                                Price</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#How to pay" class="link">How to pay?</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#Legal Information" class="link">Legal
+                                Information</a><br/></div>
+                        <div class="bottomtable4"> □ Strength<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cost Competitive" class="link">Cost
+                                Competitive</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Speed and Flexibility" class="link">Speed
+                                and Flexibility</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Accessibility" class="link">Accessibility/Security/Backup</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Real Time Performance" class="link">Real
+                                Time Performance</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cargo Process" class="link">Cargo
+                                Process</a></div>
+                        <div class="bottomtable5"> □ Trail/Download<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Trial" class="link" style="text-indent:-100px">Trial</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Appexchange" class="link">AppExchange</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Data download" class="link">Data download</a><br/>
+                        </div>
+                        <div class="bottomtable6"> □ Contact us<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Customer Support" class="link">Customer
+                                Support</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Partner Support" class="link">Partner
+                                Support</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Solutions" class="link">Inquiry for
+                                Solutions</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Hearing Sheet" class="link">Hearing Sheet</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#FAQ &amp; Our Solutions" class="link">FAQ &amp;
+                                Our Solutions</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Technical Issue" class="link">Inquiry
+                                for Technical Issue</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Server Status" class="link">Server Status</a><br/>
+                        </div>
+                        <div class="bottomtable7"> □ About Us<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Greetings" class="link">Greetings</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Our team" class="link">Our team</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Japan Headquater" class="link">Japan
+                                Headquater</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Vietnam Office" class="link">Vietnam Office</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Career in AFR" class="link">Career in AFR</a></div>
+                    </div>
+                </div>
+            </div>
+            <!--------------------------------------------------- bottom menu end ------------------------------------------------->
+            <div id="footer" style="height:64px;background-color:#bfbfbf;">
+                <div style="background-color:#948F8F;">
+                    <meta charset="utf-8"/>
+                    <meta name="description" content="AFR Solutions Homepage"/>
+                    <title>AFR Solutions Homepage</title>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRmenu.css?v=306"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRlogo.css?v=260"/>
+                    <style type="text/css">
+                        #textcenter {
+                            text-align: center;
+                            color: white;
+                            font-weight: bold;
+                            background-color: gray;
+                        }
+                    </style>
+                    <div id="textcenter">
+                        <br/>
+                        3-6-20, HIGASHI-OI, SHINAGAWA-KU, TOKYO<br/>
+                        Tel : 036-868-7838<br/>
+                        ⓒ&nbsp;2015. AFR SOLUTIONS CO., LTD all rights reserved.<br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </apex:outputPanel>
+    <!-- Vietnamese -->
+    <apex:outputPanel rendered="{!language = 'vi'}">
+        <div id="AFRSolutions">
+            <div id="header" style="height:625px;">
+                <div>
+                    <meta charset="utf-8"/>
+                    <title>AFR Solutions</title>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRmenu.css?v=306"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRlogo.css?v=260"/>
+                    <link rel="shortcut icon"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/logoicon.ico?v=2"/>
+                    <style type="text/css">
+                        #textcenter {
+                            text-align: center;
+                            color: white;
+                            font-weight: bold;
+                            background-color: gray;
+                        }
+                    </style>
+                    <style>
+                        /* ------------------------------------ image style --------------------------------------------*/
+
+                        .payZone img:hover {
+                            /* 위로 올리기
+                            background:#000;
+                            -moz-transform: translate3d(0, -100%, 0); /* position elements past bottom of layout */
+                            -webkit-transform: translate3d(0, -20%, 0);
+                            transform: translate3d(0, -20%, 0);
+                            -moz-transition: all 0.5s;
+                            -webkit-transition: all 0.5s;
+                            transition: all 0.5s;
+
+                        }
+                    </style>
+                    <!--------------------------------------- logo body ------------------------------------>
+                    <div id="logo">
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs?lang=vi"> <img
+                                src="https://afrs-developer-edition.ap6.force.com/afr/s/afrlogo.jpg?v=1"
+                                style="width:300px; height:100px;"/></a>
+                    </div>
+                    <div class="moveleft">
+                        <div class="payZone" style="">
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs?lang=vi"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Vietnam.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs?lang=en"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/America.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs?lang=ja"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Japan.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs?lang=ko"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Korea.png?v=1"
+                                    style="width:30px"/></a>
+                        </div>
+                    </div>
+                    <!--------------------------------------- slide menu body ------------------------------------>
+                    <div id="topMenu">
+                        <ul>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution" class="menuLink">GIẢI PHÁP ĐIỆN TOÁN ĐÁM
+                                    MÂY</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFor" class="submenuLink longLink">Giao
+                                        nhận(CloFor)</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloTra" class="submenuLink longLink">Thông
+                                        tin hàng hóa(CloTra)</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloSyn" class="submenuLink longLink">Đồng
+                                        bộ hóa dữ liệu (CloSyn)</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFil" class="submenuLink longLink">Khai
+                                        AFR(CloFil)</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService" class="menuLink">DỊCH VỤ</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#DataInputService"
+                                           class="submenuLink longLink">Nhập liệu(CloSor)</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#Development SF Service"
+                                           class="submenuLink longLink">Tư vấn cài đặt Salesforce</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice" class="menuLink">GIÁ</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Solution List Price"
+                                           class="submenuLink longLink">Bảng giá gói giải pháp</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Service List Price"
+                                           class="submenuLink longLink">Bảng giá dịch vụ </a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#How to pay" class="submenuLink longLink">
+                                        Cách
+                                        thanh toán</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Legal information"
+                                           class="submenuLink longLink">Thông tin pháp lý</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength" class="menuLink">ƯU ĐIỂM</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cost Competitive"
+                                           class="submenuLink longLink">Chi phí cạnh tranh</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Speed and Flexibility"
+                                           class="submenuLink longLink">Nhanh và dễ tùy biến</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Accessibility"
+                                           class="submenuLink longLink">Dễ sử dụng/ Bảo mật/ Sao lưu</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Real Time Performance"
+                                           class="submenuLink longLink">Hoạt động theo thời gian thật</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cargo Process"
+                                           class="submenuLink longLink">Lệnh giao hàng</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown" class="menuLink">TẢI DÙNG THỬ</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Trial" class="submenuLink longLink">Bản
+                                        dùng thử </a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Appexchange"
+                                           class="submenuLink longLink">AppExchange</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Data download"
+                                           class="submenuLink longLink">Tải dữ liệu</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs" class="menuLink">LIÊN LẠC VỚI CHÚNG
+                                    TÔI </a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Customer Support"
+                                           class="submenuLink longLink">Chăm sóc khách hàng</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Partner Support"
+                                           class="submenuLink longLink">Hỗ trợ đối tác</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Service"
+                                           class="submenuLink longLink">Yêu cầu giải pháp hay dịch vụ</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Hearing Sheet"
+                                           class="submenuLink longLink">Phiếu khảo sát khách hàng</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#FAQ"
+                                           class="submenuLink longLink">FAQ</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Technical issue"
+                                           class="submenuLink longLink">Yêu cầu về các vấn đề kỹ thuật</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Server Status"
+                                           class="submenuLink longLink">Tình trạng hoạt động của server</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs" class="menuLink">VỀ CHÚNG TÔI</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Greetings" class="submenuLink longLink">Greetings</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Our team" class="submenuLink longLink">Các
+                                        thành viên của công ty</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Japan Headquater"
+                                           class="submenuLink longLink">Japan Headquater</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Vietnam Office"
+                                           class="submenuLink longLink">Vietnam Office</a></li>
+                                  
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Career in AFR"
+                                           class="submenuLink longLink">Cơ
+                                        hội nghề nghiệp với AFR</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mainimage">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/aboutus.jpg?v=2" height="400px;"
+                             width="1400px;"/>
+                    </div>
+                </div>
+            </div>
+            <div style="overflow:hidden;height:5940px;">
+                <div style="height:5500px;">
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRtitle.css?v=174"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbody.css?v=1812"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3line.css?v=101"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3linecontent.css?v=943"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3linetitle.css?v=815"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRline.css?v=220"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRtable.css?v=276"/>
+                    <style type="text/css">
+                        @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+                        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+                        #orangeline {
+                            margin: 0.5px;
+                            text-align: center;
+                        }
+
+                        body {
+                            overflow-x: hidden
+                        }
+                    </style>
+                    <!----------------------  about us start------------------------------------>
+                    <!-------- title --------------->
+                    <div class="wrap">
+                        <br/>
+                        <a name="Greetings">Greeting</a>
+                    </div>
+                    <div class="orangeline">
+                    </div>
+                    <!-------- body --------------->
+                    <br/><br/><br/><br/><br/>
+                    <!------------------------------------------------- Greetings start ------------------------------------------------------>
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        Greeting Message
+                    </div>
+                    <div class="bodybody">
+                        <br/>
+                        Chào mừng các bạn đã đến với trang thông tin của AFR Solutions Co., LTD.!
+                        AFR(Advanced Freight forwarding)solutions co.,LTD được thành lập vào tháng 2 năm 2014.<br/>
+                        Chúng tôi hướng đến việc cung cấp giải pháp ưu việt chọn gói về lĩnh vực giao nhận toàn
+                        cầu.<br/>
+                        Chúng tôi là đối tác quốc tế chính thức của Salesforce và giải pháp quản lý giao nhận bằng điện
+                        toán đám mây được xây dựng trên nền tảng của Salesforce.<br/>
+                        Gói giải pháp giao nhận bằng công nghệ điện toán đám mây trong nền tảng Salesforce của chúng tôi
+                        có thể mang đến một hiệu năng rõ ràng, nâng cao hiệu quả điều hành, thể hiện đầy đủ thông tin từ
+                        đầu đến cuối qui trình giao nhận quốc tế một cách nhanh nhất, và sẽ là điều mà bạn cần để tối
+                        đa hóa lợi nhuận cũng như dẫn đầu về dịch vụ.<br/>
+                        <br/><br/>
+                        <!-------------------------------------------------  Greetings end ------------------------------------------------------>
+                        <div class="grayline">
+                        </div>
+                        <!------------------------------------------------- Our Team start ------------------------------------------------------>
+                        <!-------- title --------------->
+                        <div class="wrap">
+                            <br/><br/>
+                            <a name="Our team">Các thành viên của công ty</a>
+                        </div>
+                        <div class="orangeline"></div>
+                        <br/>
+                    </div>
+                    <!-------------------------------  Our Team's 1st line start----------------------------------->
+                    <!-------- Our Team's 1st line image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/Kwon1.jpg?v=3"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://c.ap2.content.force.com/servlet/servlet.ImageServer?id=01528000004N2tz&oid=00D28000000rCfy&lastMod=1497669190000"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://c.ap2.content.force.com/servlet/servlet.ImageServer?id=01528000004LMcV&oid=00D28000000rCfy&lastMod=1494576807000"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <!--------  Our Team's 1st line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            HYUKPEEL KWON (TỔNG GIÁM ĐỐC)<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            HOÀNG ANH HUY (CHIEF OF REPRESENTATIVE OFFICE)<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            LÂM NGUYỄN QUANG MINH (CHUYÊN VIÊN TƯ VẤN)<br/>
+                        </div>
+                    </div>
+                    <!-------- Our Team's 1st line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            ・NATIONALITY: KOREAN<br/>
+                            ・LOCATION : JAPAN HEADQUARTER<br/>
+                            ・BACKGROUND : TRÊN MƯỜI NĂM KINH NGHIỆM VỀ TƯ VẤN KINH DOANH VÀ 5 NĂM KINH NGHIỆM VỀ QUẢN
+                            LÝ, KINH DOANH FORWADING Ở NHẬT <br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・NATIONALITY: VIETNAMESE<br/>
+                            ・LOCATION : VIETNAM REP OFFICE<br/>
+                            ・BACKGROUND : TRÊN 10 NĂM KINH NGHIỆM VỀ ĐIỀU HÀNH TRONG LĨNH VỰC FORWARDING, PHÁT TRIỂN SALES VÀ MARKETING Ở
+                            VIỆT NAM<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・NATIONALITY: VIETNAMESE<br/>
+                            ・LOCATION : VIETNAM REP OFFICE<br/>
+                            ・BACKGROUND : TRÊN HAI NĂM KINH NGHIỆM VỀ ĐIỀU HÀNH FORWARDING<br/>
+                        </div>
+                    </div>
+                    <!------------------------------- Our Team's 1st line end----------------------------------->
+                    <!------------------------------- Our Team's 2nd line end----------------------------------->
+                    <!-------------------------------  Our Team's 2nd line start----------------------------------->
+                    <!-------- Our Team's first line image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/Khanh.jpg?v=3"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://c.ap2.content.force.com/servlet/servlet.ImageServer?id=01528000004N8EO&oid=00D28000000rCfy&lastMod=1497837575000"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                      
+                    </div>
+                    <!--------  Our Team's 2nd line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            PHẠM KHÁNH (QUẢN LÝ- CHUYÊN VIÊN PHẦN MỀM Salesforce )<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            ĐÀO MINH ĐỨC (CHUYÊN VIÊN TƯ VẤN)<br/>
+                        </div>
+                        <div class="threelinetitle">
+                         
+                        </div>
+                    </div>
+                    <!-------- Our Team's 2nd line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            ・NATIONALITY: VIETNAMESE<br/>
+                            ・LOCATION : VIETNAM REP OFFICE<br/>
+                            ・BACKGROUND : TRÊN 5 NĂM KINH NGHIỆM VỀ LẬP TRÌNH Salesforce, TRÊN 1O NĂM KINH NGHIỆM VỀ LẬP
+                            TRÌNH JAVA <br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・NATIONALITY: VIETNAMESE<br/>
+                            ・LOCATION : VIETNAM REP OFFICE<br/>
+                            ・BACKGROUND : TRÊN 1 NĂM KINH NGHIỆM FORWARDING Ở
+                            VIỆT NAM<br/>
+                        </div>
+                        <div class="threelinebody">
+                           
+                            NHẬT BẢN<br/>
+                        </div>
+                    </div>
+                    <br/><br/>
+                    <!------------------------------- Our Team's 2nd line end----------------------------------->
+                    <!---------------------- about us end ------------------------------------>
+                    <!----------------------  How to access JAPAN HEADQUARTER ------------------------------------>
+                    <!-------- title --------------->
+                    <div class="wrap">
+                        <br/>
+                        <a name="Japan Headquater">Trụ sở chính tại Nhật</a>
+                    </div>
+                    <div class="orangeline"></div>
+                    <!-------- title --------------->
+                    <br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        <a name="Company profile">Trụ sở chính tại Nhật</a>
+                    </div>
+                    <div class="aboutusmap">
+                        ・Tên : Công ty AFR Solutions<br/>
+                        ・Ngày thành lập : 21/02/2014<br/>
+                        <br/>
+                        ・Nhà sáng lập : HYUKPEEL KWON<br/>
+                        <br/>
+                        ・Địa chỉ : 3-6-20 3F, HIGASHI-OI, SHINAGAWA-KU, <br/>TOKYO<br/>
+                        <br/>
+                        ・Số điện thoại. :+81-3-6868-7838<br/>
+                        <br/>
+                        ・Địa chỉ Email: vietnam1@afr-solutions.com
+                        <br/>
+                        Facebook: www.facebook.com/CloSCM<br/>
+                        <br/>
+                        ・Dịch vụ <br/>
+                        -Phát triển và kinh doanh hệ thống<br/>
+                        -Hỗ trợ bảo trì hệ thống<br/>
+                        -Nhân viên giải quyết nhanh chóng<br/>
+                        -Thương mại Xuất khẩu/Nhập khẩu và các người môi giới thương mại<br/>
+                        -Tất cả các hoạt động kinh doanh liên quan đến ngành công nghiệp như trên<br/>
+                        <br/>
+                    </div>
+                    <div class="aboutusmapimage">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d811.0059338085534!2d139.7392942291656!3d35.602481089182966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188a787d2bb4e b%3A0xa602ace1b2ee31d8!2s3+Chome-6-20+Higashi%C5%8Di%2C+Shinagawa-ku%2C+T%C5%8Dky%C5%8D-to+140-0011!5e0!3m2!1sen!2sjp!4v1455267165437"
+                                style="border:0" allowfullscreen="" frameborder="0" height="450" width="500"></iframe>
+                    </div>
+                    <!---------------------- how to access table start ------------------------------------>
+                    <div class="bodytitle">
+                        <br/><br/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        <a name="Company profile">Hướng dẫn đường đi</a>
+                    </div>
+                    <div class="aboutustable">
+                        <table class="alltable">
+                            <!----------- title line ---------------->
+                            <tbody>
+                            <tr>
+                                <td class="tabletop">
+                                    Tên tàu điện ngầm/Tên tàu hỏa<br/>
+                                </td>
+                                <td class="tabletop">
+                                    Tên ga
+                                </td>
+                                <td class="tabletop">
+                                    Lối thoát
+                                </td>
+                                <td class="tabletop">
+                                    Thời gian đi bộ
+                                </td>
+                                <td class="tabletop">
+                                    Chi tiết
+                                </td>
+                            </tr>
+                            <!----------- line 1 ---------------->
+                            <tr>
+                                <td class="intable">
+                                    keihin touhuku-sen<br/>
+                                </td>
+                                <td class="intable">
+                                    Ga Oimachi
+                                </td>
+                                <td class="intable">
+                                    JR West Exit
+                                </td>
+                                <td class="intable">
+                                    10 phút đi bộ
+                                </td>
+                                <td class="intable">
+                                </td>
+                            </tr>
+                            <!----------- line 2 ---------------->
+                            <tr>
+                                <td class="intable">
+                                    Toukyu Oimachi-sen<br/>
+                                </td>
+                                <td class="intable">
+                                    Ga Oimachi
+                                </td>
+                                <td class="intable">
+                                </td>
+                                <td class="intable">
+                                    10 phút đi bộ
+                                </td>
+                                <td class="intable">
+                                </td>
+                            </tr>
+                            <!----------- line 3 ---------------->
+                            <tr>
+                                <td class="intable">
+                                    Rinkai-sen<br/>
+                                </td>
+                                <td class="intable">
+                                    Ga Oimachi
+                                </td>
+                                <td class="intable">
+                                </td>
+                                <td class="intable">
+                                    10 phút đi bộ
+                                </td>
+                                <td class="intable">
+                                </td>
+                            </tr>
+                            <!----------- line 4 ---------------->
+                            <tr>
+                                <td class="intable">
+                                    Keikyu-sen
+                                </td>
+                                <td class="intable">
+                                    Ga Samezu or Ga Tachi-gawa
+                                </td>
+                                <td class="intable">
+                                </td>
+                                <td class="intable">
+                                    5 phút đi bộ
+                                </td>
+                                <td class="intable">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!---------------------- JAPAN HEADQUARTER table end ------------------------------------>
+                    <!---------------------- JAPAN HEADQUARTER end ------------------------------------>
+                    <br/><br/>
+
+                    <div class="grayline">
+                    </div>
+                    <!----------------------  How to access Vietnam REP office ------------------------------------>
+                    <!-------- title --------------->
+                    <div class="wrap">
+                        <br/>
+                        <a name="Vietnam Office"> Văn phòng Việt Nam</a>
+                    </div>
+                    <div class="orangeline"></div>
+                    <br/><br/>
+                    <!-------- title --------------->
+                    <br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        <a name="Company profile">Văn phòng Việt Nam</a>
+                    </div>
+                    <div class="aboutusmap">
+                        ・Tên : Văn phòng đại diện công ty AFR Solutions <br/>
+                        ・Ngày thành lập : 29/02/2016<br/>
+                        <br/>
+                        ・Nhà sáng lập : HYUKPEEL KWON<br/>
+                        <br/>
+                        ・Địa chỉ :TẦNG 11, TÒA NHÀ HẢI ÂU, 39B TRƯỜNG SƠN, PHƯỜNG 4, QUẬN TÂN BÌNH, THÀNH PHỐ HỒ CHÍ MINH , VIỆT
+                        NAM<br/>
+                        <br/>
+                        ・Số điện thoại.　 :
+                        +849-3212-3966<br/>
+                        <br/>
+                        ・Địa chỉ Email: vietnam1@afr-solutions.com, vietnam2@afr-solutions.com
+                        <br/>
+                        ・Facebook: www.facebook.com/CloSCM<br/>                        
+                         <br/>
+                        ・Các dịch vụ <br/>
+                        -Kinh doanh giải pháp forwarding trên công nghệ điện toán đám mây <br/>
+                        -Lập trình và kinh doanh sản phẩm Salesforce <br/>
+                        -Dịch vụ bảo trì Salesforce <br/>
+                        -Gia công nhập liệu Forwarding <br/>
+                        -Gia công nhập liệu và quản trị kế toán <br/>
+                    </div>
+                    <br/><br/>
+ <div class="aboutusmapimage">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9321.058439654113!2d106.66265286308469!3d10.809602691415813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x39c6a032b072cee7!2sHai+Au+building!5e0!3m2!1sja!2sjp!4v1503091680872" 
+                         style="border:0" allowfullscreen="" frameborder="0" height="450" width="500"></iframe>
+</div>
+                   
+                   
+                    <!---------------------- Company profile table end ------------------------------------>
+                    <!---------------------- Company profile end ------------------------------------>
+                    <div class="grayline">
+                    </div>
+ 
+ 
+ <!---------------------- Company profile table end ------------------------------------>
+                    <!---------------------- Company profile end ------------------------------------>
+                    <div class="grayline">
+                    </div>
+                    <!----------------------Career in AFR start ------------------------------------>
+                    <!-------- title --------------->
+                    <div class="wrap">
+                        <br/>
+                        <a name="Career in AFR">Cơ hội nghề nghiệp với AFR</a>
+                    </div>
+                    <div class="orangeline">
+                    </div>
+                    <!-------- body --------------->
+                    <br/><br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        Cơ hội nghề nghiệp của bạn với AFR solutions.<br/><br/>
+                    </div>
+                    <div class="bodybody">
+                        Công ty AFR solutions là công ty về giải pháp công nghệ của Nhật. Công ty của chúng tôi là một
+                        trong những đối tác được chứng nhận toàn cầu bởi Salesforce.com.<br/>
+                        Hiện nay, ngành công nghiệp giao nhận càng trở nên phát triển và trở nên cạnh tranh nhiều hơn
+                        bởi số lượng forwarders gia nhập vào thị trường gia tăng.<br/>
+                        Giải pháp của chúng tôi là CloFor, hỗ trợ forwadring và các tài liệu hướng dẫn sử dụng tới khách
+                        hàng.<br/>
+                        Chúng tôi đang tìm kiếm những ứng cử viên có tinh thần tận tụy, tham vọng cao để tham gia cùng
+                        chúng tôi để đáp ứng các thử thách này. <br/>
+                        Để biết thêm thông tin, vui lòng tải thêm thông tin chi tiết bên dưới.<br/>
+                        <br/>
+                    </div>
+                    <div class="bodybody">
+                        Vị trí tuyển dụng 1: Nhân viên tư vấn giải pháp Forwarding - Có kinh nghiệm làm chứng
+                        từ<br/>
+                        <a href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR_SolutionsJOb_Description-Forwarding_Solutuion_ConsultantDoc_Operation_Experience_Vietnam.pdf?v=1"
+                           class="hyperlink">Download Here!</a>
+                    </div>
+                    <br/>
+
+                    <div class="bodybody">
+                        Vị trí tuyển dụng 2: Nhân viên tư vấn giải pháp Forwarding - Có kinh nghiệm làm kế toán<br/>
+                        <a href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR_SolutionsJOb_Description-Forwarding_Solutuion_ConsultantAccounting_Experience_Vietnam.pdf?v=1"
+                           class="hyperlink">Download Here!</a>
+                    </div>
+                    <br/><br/>
+                    <!------------------------------- Career in AFR end----------------------------------->
+                    <!---------------------- Career in AFR end ------------------------------------>
+                </div>
+            </div>
+            <div style="background-color:#bfbfbf;height:450px;">
+                <div style="height:450px;">
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbottomtable.css?v=2534"/>
+                    <style type="text/css">
+                        @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+                        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+                    </style>
+                    <!------------------------------------- bottom menu ------------------------------------->
+                    <div class="absolute1">
+                        <div class="bottomtable1">
+                            □ GIẢI PHÁP<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFor" class="link">Giao nhận (CloFor)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloTra" class="link">Thông tin hàng hóa (CloTra)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloSyn" class="link">Đồng bộ lên saver
+                                ảo (CloSyn)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFil" class="link">Khai AFR (CloFil)</a><br/>
+                        </div>
+                        <div class="bottomtable2">
+                            □ DỊCH VỤ<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#DataInputService" class="link">Nhập liệu (CloSor)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#Development SF Service" class="link">Tư vấn cài đặt
+                                Salesforce</a><br/>
+                        </div>
+                        <div class="bottomtable3">
+                            □ GIÁ<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Solution List Price" class="link">Bảng giá gói giải
+                                pháp</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Service List Price" class="link">Bảng giá dịch vụ </a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#How to pay" class="link"> Cách thanh toán</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Legal information" class="link">Thông tin pháp lý</a>
+                        </div>
+                        <div class="bottomtable4">
+                            □ ƯU ĐIỂM<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cost Competitive" class="link">Chi phí cạnh
+                                tranh</a> <br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Speed and Flexibility" class="link">Nhanh và dễ tùy
+                                biến</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Accessibility" class="link">Dễ sử dụng/ Bảo mật/
+                                Sao lưu</a> <br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Real Time Performance" class="link">Hoạt động theo
+                                thời gian thật</a> <br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cargo Process" class="link">Lệnh giao hàng</a>
+                        </div>
+                        <div class="bottomtable5">
+                            □ TẢI DÙNG THỬ<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Trial" class="link">Dùng thử</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Appexchange" class="link">App Exchange</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Code download" class="link">Tải dữ
+                                liệu</a><br/>
+                        </div>
+                        <div class="bottomtable6">
+                            □ LIÊN LẠC VỚI CHÚNG TÔI<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Customer Support" class="link">Chăm sóc khách
+                                hàng</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Partner Support" class="link">Hỗ trợ đối
+                                tác</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Service" class="link">Yêu cầu giải
+                                pháp hay dịch vụ</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Hearing Sheet" class="link">Phiếu khảo sát khách
+                                hàng</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#FAQ" class="link">FAQ</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Technical issue" class="link">Yêu cầu
+                                về các vấn đề kỹ thuật</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Server Status" class="link">Tình trạng hoạt động
+                                của server</a><br/>
+                        </div>
+                        <div class="bottomtable7">
+                            □ VỀ CHÚNG TÔI<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Greetings" class="link">Greetings</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Our team" class="link">Các thành viên của công
+                                ty</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Japan Headquater" class="link">Japan
+                                Headquater</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Vietnam Office" class="link">Vietnam
+                                Office</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Career in AFR" class="link">Cơ hội nghề nghiệp với
+                                AFR</a><br/>
+                        </div>
+                    </div>
+                    <!------------------------------------- bottom menu end ------------------------------------->
+                </div>
+            </div>
+            <div id="footer" style="height:64px;background-color:#bfbfbf;">
+                <div style="background-color:#948F8F;">
+                    <meta charset="utf-8"/>
+                    <meta name="description" content="AFR Solutions Homepage"/>
+                    <title>AFR Solutions Homepage</title>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRmenu.css?v=306"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRlogo.css?v=260"/>
+                    <style type="text/css">
+                        #textcenter {
+                            text-align: center;
+                            color: white;
+                            font-weight: bold;
+                            background-color: gray;
+                        }
+                    </style>
+                    <div id="textcenter">
+                        <br/>
+                        3-6-20, HIGASHI-OI, SHINAGAWA-KU, TOKYO<br/>
+                        Tel : 036-868-7838<br/>
+                        ⓒ&nbsp;2015. AFR SOLUTIONS CO., LTD all rights reserved.<br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </apex:outputPanel>
+    <!-- Japanese -->
+    <apex:outputPanel rendered="{!language = 'ja'}">
+        <div id="AFRSolutions">
+            <div id="header" style="height:624px;">
+                <div>
+                    <meta charset="utf-8"/>
+                    <title>AFR Solutions</title>
+                    <link rel="shortcut icon"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/logoicon.ico?v=2"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRmenu.css?v=306"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRlogo.css?v=260"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRmainpage.css?v=183"/>
+                    <style type="text/css">
+                        #textcenter {
+                            text-align: center;
+                            color: white;
+                            font-weight: bold;
+                            background-color: gray;
+                        }
+                    </style>
+                    <style>
+                        /* ------------------------------------ image style --------------------------------------------*/
+
+                        .payZone img:hover {
+                            /* 위로 올리기
+                            background:#000;
+                            -moz-transform: translate3d(0, -100%, 0); /* position elements past bottom of layout */
+                            -webkit-transform: translate3d(0, -20%, 0);
+                            transform: translate3d(0, -20%, 0);
+                            -moz-transition: all 0.5s;
+                            -webkit-transition: all 0.5s;
+                            transition: all 0.5s;
+
+                        }
+                    </style>
+                    <!--------------------------------------- logo body ------------------------------------>
+                    <div id="logo">
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs?lang=ja"> <img
+                                src="https://afrs-developer-edition.ap6.force.com/afr/s/afrlogo.jpg?v=1"
+                                style="width:300px; height:100px;"/></a>
+                    </div>
+                    <div class="moveleft">
+                        <div class="payZone" style="">
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs?lang=vi"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Vietnam.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs?lang=en"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/America.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs?lang=ja"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Japan.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs?lang=ko"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Korea.png?v=1"
+                                    style="width:30px"/></a>
+                        </div>
+                    </div>
+                    <!--------------------------------------- slide menu body ------------------------------------>
+                    <div id="topMenu">
+                        <ul>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution" class="menuLink">ソリューション</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFor" class="submenuLink longLink">クラウドフォワーディング(CloFor)</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloTra" class="submenuLink longLink">トラッキングサービス(CloTra)</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloSyn" class="submenuLink longLink">クラウドシン(CloSyn)</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFil" class="submenuLink longLink">AFRファイリング(CloFil)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService" class="menuLink">サービス</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#DataInputService"
+                                           class="submenuLink longLink">データ入力サービス</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#Development SF Service"
+                                           class="submenuLink longLink">Salesforceの導入コンサルティングと開発</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice" class="menuLink">価格</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Solution List Price"
+                                           class="submenuLink longLink">ソリューション価格表</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Service List Price"
+                                           class="submenuLink longLink">サービス価格表</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#How to pay" class="submenuLink longLink">お支払い方法</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Legal information"
+                                           class="submenuLink longLink">法的情報</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength" class="menuLink">特長</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cost Competitive"
+                                           class="submenuLink longLink">競争力あるコスト</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Speed and Flexibility"
+                                           class="submenuLink longLink">スピードと柔軟性</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Accessibility"
+                                           class="submenuLink longLink">アクセシビリティ/セキュリティ/バックアップ</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Real Time Performance"
+                                           class="submenuLink longLink">リアルタイムなパフォーマンス</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cargo Process"
+                                           class="submenuLink longLink">カーゴプロセス</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown" class="menuLink">トライアル/ダウンロード</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Trial" class="submenuLink longLink">トライアル</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Appexchange"
+                                           class="submenuLink longLink">AppExchange</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Data download"
+                                           class="submenuLink longLink">データダウンロード</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs" class="menuLink">コンタクト</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Customer Support"
+                                           class="submenuLink longLink">カスタマーサポート</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Partner Support"
+                                           class="submenuLink longLink">パートナーサポート</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Service"
+                                           class="submenuLink longLink">ソリューションに関するお問い合わせ</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Hearing Sheet"
+                                           class="submenuLink longLink">ヒアリング・シート</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#FAQ" class="submenuLink longLink">FAQとパブリックソリューション</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Technical issue"
+                                           class="submenuLink longLink">技術的な問題に関するお問い合わせ</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Server Status"
+                                           class="submenuLink longLink">サーバーステータス</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs" class="menuLink">会社概要</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Greetings" class="submenuLink longLink">ご挨拶</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Our team" class="submenuLink longLink">社員紹介</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Japan Headquater"
+                                           class="submenuLink longLink">日本本社</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Vietnam Office"
+                                           class="submenuLink longLink">ベトナム支社</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Career in AFR"
+                                           class="submenuLink longLink">AFRで働く</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mainimage">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/aboutus.jpg?v=2" height="400px;"
+                             width="1400px;"/>
+                    </div>
+                </div>
+            </div>
+            <div style="overflow:hidden;height:6004px;">
+                <div style="height:5500px;">
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRtitle.css?v=174"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbody.css?v=1812"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3line.css?v=101"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3linecontent.css?v=943"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3linetitle.css?v=815"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRline.css?v=220"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRtable.css?v=276"/>
+                    <style type="text/css">
+                        @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+                        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+                        #orangeline {
+                            margin: 0.5px;
+                            text-align: center;
+                        }
+
+                        body {
+                            overflow-x: hidden
+                        }
+                    </style>
+                    <!----------------------  about us start------------------------------------>
+                    <!-------- title --------------->
+                    <div class="wrap">
+                        <br/>
+                        <a name="Greetings">ご挨拶</a>
+                    </div>
+                    <div class="orangeline">
+                    </div>
+                    <!-------- body --------------->
+                    <br/><br/><br/><br/><br/>
+                    <!------------------------------------------------- Greetings start ------------------------------------------------------>
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        ご挨拶のメッセージ
+                    </div>
+                    <div class="bodybodyj">
+                        <br/>
+                        AFRソリューションズ株式会社のホームページへようこそ!
+                        AFR(Advanced Freight forwarding)ソリューションズ株式会社は、2014年2月に設立されました。<br/>
+                        私たちは、クラウド形式の包括的なフォワーディング・ソリューションのパッケージを、世界中のフォワーダーに供給することを目標としています。<br/>
+                        私たちはSalesforceのグローバル・パートナーとして認証を受けており、クラウド・フォワーディング・ソリューションのパッケージはSalesforceのプラットフォームを基に開発されました。<br/>
+                        私たちのクラウド形式に基づいたフォワーディング・ソリューションのパッケージは、実績に対する透明性をもたらし、業務を効率化し、End-To-Endのサプライチェーンに対する可視性をもたらします。そして、収益を最大化するための迅速性と機動性をもたらし、市場をリードするカスタマーサービスを実現させます。<br/>
+                        <br/><br/>
+                        <!-------------------------------------------------  Greetings end ------------------------------------------------------>
+                        <div class="grayline">
+                            <br/>
+                        </div>
+                        <!------------------------------------------------- Our Team start ------------------------------------------------------>
+                        <!-------- title --------------->
+                        <div class="wrap">
+                            <br/><br/>
+                            <a name="Our team">チームメンバーのご紹介</a>
+                        </div>
+                        <div class="orangeline"></div>
+                        <br/>
+                    </div>
+                    <!-------------------------------  Our Team's 1st line start----------------------------------->
+                    <!-------- Our Team's 1st line image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/Kwon1.jpg?v=3"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://c.ap2.content.force.com/servlet/servlet.ImageServer?id=01528000004N2tz&oid=00D28000000rCfy&lastMod=1497669190000"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://c.ap2.content.force.com/servlet/servlet.ImageServer?id=01528000004LMcV&oid=00D28000000rCfy&lastMod=1494576807000"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <!--------  Our Team's 1st line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitlej">
+                            クォン・ヒョッピル(HYUKPEEL KWON, ゼネラルマネージャー)<br/>
+                        </div>
+                        <div class="threelinetitlej">
+                            ホアン・アン・フイ(HUY,REPRESENTATIVE OFFICER)<br/>
+                        </div>
+                        <div class="threelinetitlej">
+                            ラム・グエン・クアン・ミン(MINH, シニア・コンサルタント)<br/>
+                        </div>
+                    </div>
+                    <!-------- Our Team's 1st line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebodyj">
+                            ・国籍: 韓国<br/>
+                            ・勤務地 : 日本本社<br/>
+                            ・経歴 : ビジネスコンサルティング歴10年以上、日本で5年間のフォワーディング営業と、マネジメント経験有り<br/>
+                        </div>
+                        <div class="threelinebodyj">
+                            ・国籍: ベトナム<br/>
+                            ・勤務地 : ベトナム営業所<br/>
+                            ・経歴 : ベトナムで10年以上のフォワーディング業務、営業、マーケティング、事業開発部での経験<br/>
+                        </div>
+                        <div class="threelinebodyj">
+                            ・国籍: ベトナム<br/>
+                            ・勤務地 : ベトナム営業所<br/>
+                            ・経歴 : フォワーディング業務経験2年以上<br/>
+                        </div>
+                    </div>
+                    <!------------------------------- Our Team's 1st line end----------------------------------->
+                    <!------------------------------- Our Team's 2nd line end----------------------------------->
+                    <!-------------------------------  Our Team's 2nd line start----------------------------------->
+                    <!-------- Our Team's first line image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/Khanh.jpg?v=3"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://c.ap2.content.force.com/servlet/servlet.ImageServer?id=01528000004N8EO&oid=00D28000000rCfy&lastMod=14978375750000"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                       
+                    </div>
+                    <!--------  Our Team's 2nd line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitlej">
+                            ファム・カン (PHAM KHANH,Salsforceの開発マネージャー)<br/>
+                        </div>
+                        <div class="threelinetitlej">
+                            ダオ・ミン・ドゥク(DAO MINH DUC, ADDY コンサルタントエグゼクティブ)<br/>
+                        </div>
+                        <div class="threelinetitlej">
+                        
+                        </div>
+                    </div>
+                    <!-------- Our Team's 2nd line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebodyj">
+                            ・国籍: ベトナム<br/>
+                            ・勤務地 : ベトナム営業所<br/>
+                            ・経歴 : Salesforceの開発歴5年以上、JAVA開発歴10年以上<br/>
+                        </div>
+                        <div class="threelinebodyj">
+                            ・国籍: ベトナム<br/>
+                            ・勤務地 : ベトナム営業所<br/>
+                            ・経歴 : ベトナムでのフォワーディング業務経験1年以上<br/>
+                        </div>
+                        <div class="threelinebodyj">
+                           
+                        </div>
+                    </div>
+                    <br/><br/>
+                    <!------------------------------- Our Team's 2nd line end----------------------------------->
+                    <div class="grayline">
+                    </div>
+                    <!---------------------- about us end ------------------------------------>
+                    <!----------------------  How to access JAPAN HEADQUARTER ------------------------------------>
+                    <!-------- title --------------->
+                    <div class="wrap">
+                        <br/>
+                        <a name="Japan Headquater">日本本社</a>
+                    </div>
+                    <div class="orangeline"></div>
+                    <!-------- title --------------->
+                    <br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        <a name="Company profile">日本本社について</a>
+                    </div>
+                    <div class="aboutusmap">
+                        ・社名 : AFRソリューションズ株式会社<br/>
+                        ・設立年月日 : 2014/02/21<br/>
+                        <br/>
+                        ・創業者 : クォン・ヒョッピル(HYUKPEEL KWON)<br/>
+                        <br/>
+                        ・所在地 : 東京都品川区東大井3-6-20　3階 <br/><br/>
+                        <br/>
+                        ・電話番号 :+81(0)3-6868-7838<br/>
+                        <br/>
+                        ・電子メールアドレス:vietnam1@afr-solutions.com, vietnam2@afr-solutions.com
+                        <br/>
+                        ・私たちのように: www.facebook.com/CloSCM<br/>
+                        <br/>
+                        ・サービス内容 <br/>
+                        -システムの開発、販売<br/>
+                        -システムのメンテナンス、サポート<br/>
+                        -人材派遣業<br/> 　
+                        -輸出/輸入貿易および貿易業務代行<br/>
+                        -その他上記の分野に関わるビジネス活動の全て<br/>
+                        <br/>
+                    </div>
+                     <div class="aboutusmapimage">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9321.058439654113!2d106.66265286308469!3d10.809602691415813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x39c6a032b072cee7!2sHai+Au+building!5e0!3m2!1sja!2sjp!4v1503091680872" 
+                         style="border:0" allowfullscreen="" frameborder="0" height="450" width="500"></iframe>
+</div>
+                    
+                    <!---------------------- how to access table start ------------------------------------>
+                    <div class="bodytitle">
+                        <br/><br/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        <a name="Company profile">アクセス</a>
+                    </div>
+                    <div class="aboutustable">
+                        <table class="alltable">
+                            <!----------- title line ---------------->
+                            <tbody>
+                            <tr>
+                                <td class="tabletop">
+                                    路線名<br/>
+                                </td>
+                                <td class="tabletop">
+                                    駅名
+                                </td>
+                                <td class="tabletop">
+                                    出口
+                                </td>
+                                <td class="tabletop">
+                                    所要時間
+                                </td>
+                                <td class="tabletop">
+                                    備考
+                                </td>
+                            </tr>
+                            <!----------- line 1 ---------------->
+                            <tr>
+                                <td class="intable">
+                                    京浜東北線<br/>
+                                </td>
+                                <td class="intable">
+                                    大井町駅
+                                </td>
+                                <td class="intable">
+                                    JR 西側出口
+                                </td>
+                                <td class="intable">
+                                    徒歩10分
+                                </td>
+                                <td class="intable">
+                                </td>
+                            </tr>
+                            <!----------- line 2 ---------------->
+                            <tr>
+                                <td class="intable">
+                                    東急大井町線<br/>
+                                </td>
+                                <td class="intable">
+                                    大井町駅
+                                </td>
+                                <td class="intable">
+                                </td>
+                                <td class="intable">
+                                    徒歩10分
+                                </td>
+                                <td class="intable">
+                                </td>
+                            </tr>
+                            <!----------- line 3 ---------------->
+                            <tr>
+                                <td class="intable">
+                                    りんかい線<br/>
+                                </td>
+                                <td class="intable">
+                                    大井町駅
+                                </td>
+                                <td class="intable">
+                                </td>
+                                <td class="intable">
+                                    徒歩10分
+                                </td>
+                                <td class="intable">
+                                </td>
+                            </tr>
+                            <!----------- line 4 ---------------->
+                            <tr>
+                                <td class="intable">
+                                    京急線
+                                </td>
+                                <td class="intable">
+                                    鮫洲駅または立会川駅
+                                </td>
+                                <td class="intable">
+                                </td>
+                                <td class="intable">
+                                    徒歩5分
+                                </td>
+                                <td class="">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!---------------------- JAPAN HEADQUARTER table end ------------------------------------>
+                    <!---------------------- JAPAN HEADQUARTER end ------------------------------------>
+                    <br/><br/>
+
+                    <div class="grayline">
+                    </div>
+                    <!----------------------  How to access Vietnam REP office ------------------------------------>
+                    <!-------- title --------------->
+                    <div class="wrap">
+                        <br/>
+                        <a name="Vietnam Office">ベトナム営業所</a>
+                    </div>
+                    <div class="orangeline"></div>
+                    <br/><br/>
+                    <!-------- title --------------->
+                    <br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        <a name="Company profile">ベトナム支社について</a>
+                    </div>
+                    <div class="aboutusmap">
+                        ・社名 : AFRソリューションズ　ベトナム支店<br/>
+                        ・設立年月日 : 2016/02/29<br/>
+                        <br/>
+                        ・代表取締役 : クォン・ヒョッピル (HYUKPEEL KWON)<br/>
+                        <br/>
+                        ・所在地 : 11th Floor, HAI AU BUILDING, 39B TRUONG SON STREET, WARD 4, TAN BINH DISTRICT, HO CHI MINH CITY, VIETNAM<br/>
+                        <br/>
+                        ・Telephone No.　 :+849-3212-3966<br/>
+                        <br/>
+                        ・電子メールアドレス:vietnam1@afr-solutions.com
+                        <br/>
+                        ・私たちのように: www.facebook.com/CloSCM<br/>
+                        <br/>
+                        ・事業内容 <br/>
+                        -CloForマーケティング、販売<br/>
+                        -Salesforceの開発<br/>
+                        -Salesforceのメンテナンス、サポート<br/>
+                        -フォワーディング業務のアウトソーシング<br/>
+                        -経理・給与計算業務のアウトソーシング<br/>
+                    </div>
+                    <br/><br/>
+
+                    <div class="aboutusmapimage">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d979.8011700378462!2d106.67469092915076!3d10.795629899519295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175292a1c082355%3A0x8eb04260e3dfcf6a!2zMTYzIE5ndXnhu4VuIFbEg24gVHLhu5dpLCAxMSwgUGjDuiBOaHXhuq1uLCBI4buTIENow60gTWluaCwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1483428509549"
+                                style="border:0" allowfullscreen="" frameborder="0" height="450" width="500"></iframe>
+                    </div>
+                    <!---------------------- Company profile table end ------------------------------------>
+                    <!---------------------- Company profile end ------------------------------------>
+                    <div class="grayline">
+                    </div>
+ 
+                     <!---------------------- Company profile table end ------------------------------------>
+                    <!---------------------- Company profile end ------------------------------------>
+                    <!---------------------- Company profile end ------------------------------------>
+                    <div class="grayline">
+                    </div>
+                    <!----------------------Career in AFR start ------------------------------------>
+                    <!-------- title --------------->
+                    <div class="wrapk">
+                        <br/>
+                        <a name="Career in AFR">AFRで働く</a>
+                    </div>
+                    <div class="orangeline">
+                    </div>
+                    <!-------- body --------------->
+                    <br/><br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        AFRソリューションズでのキャリア形成<br/><br/>
+                    </div>
+                    <div class="bodybody">
+                        AFRソリューションズ株式会社は日本に基点を置いたITソリューション企業です。また、私たちはSalesforce.com.よりグローバルパートナーとして認証を受けています。<br/>
+                        近年、市場に参加するフォワーダーの増加とともに、フォワーディング業界はますます拡大し、競争が激しくなっています。<br/>
+                        私たちのCloForはフォワーディングおよびフォワーダーの顧客に対するドキュメント業務をサポートします。<br/>
+                        新しい挑戦に対して、野心的で意欲のある応募者の方を求めています。<br/>
+                        詳細は、下記のファイルをダウンロードして下さい。<br/>
+                        <br/>
+                    </div>
+                    <div class="bodybody">
+                        募集1: フォワーディングソリューションコンサルタント - ドキュメント業務経験の有る方<br/>
+                        <a href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR_SolutionsJOb_Description-Forwarding_Solutuion_ConsultantDoc_Operation_Experience_Vietnam.pdf?v=1"
+                           class="hyperlink">ダウンロードする</a>
+                    </div>
+                    <br/>
+
+                    <div class="bodybody">
+                        募集2: フォワーディングソリューションコンサルタント - 経理経験の有る方<br/>
+                        <a href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR_SolutionsJOb_Description-Forwarding_Solutuion_ConsultantAccounting_Experience_Vietnam.pdf?v=1"
+                           class="hyperlink">ダウンロードする</a>
+                    </div>
+                    <br/><br/>
+                    <!------------------------------- Career in AFR end----------------------------------->
+                    <!---------------------- Career in AFR end ------------------------------------>
+                </div>
+            </div>
+            <div style="background-color:#bfbfbf;height:450px;">
+                <div>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbottomtable.css?v=2534"/>
+                    <style type="text/css">
+                        @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+                        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+                    </style>
+                    <!--------------------------- bottom menu ------------------------------->
+                    <div class="absolute1">
+                        <div class="bottomtable1">
+                            □ ソリューション<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFor"
+                               class="link">クラウドフォワーディング(CloFor)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloTra"
+                               class="link">トラッキングサービス(CloTra)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloSync" class="link">クラウドシンク(CloSync)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFil" class="link">AFRファイリング(CloFil)</a><br/>
+                        </div>
+                        <div class="bottomtable2">
+                            □ サービス<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#DataInputService"
+                               class="link">データ入力サービス</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#Development SF Service" class="link">Salesforceの導入
+                                <div style="margin-bottom:-20px;">コンサルティングと開発</div>
+                            </a><br/>
+                        </div>
+                        <div class="bottomtable3">
+                            □ 価格<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Solution List Price" class="link hover">ソリューション価格表</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Service List Price" class="link">サービス価格表</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#How to pay" class="link">お支払い方法</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Legal information" class="link">法的情報</a>
+                        </div>
+                        <div class="bottomtable4">
+                            □ 特長<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cost Competitive"
+                               class="link">競争力あるコスト</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Speed and Flexibility"
+                               class="link">スピードと柔軟性</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Accessibility"
+                               class="link">アクセシビリティ/セキュリティ/バックアップ</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Real Time Performance"
+                               class="link">リアルタイムなパフォーマンス</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cargo Process" class="link">カーゴプロセス</a>
+                        </div>
+                        <div class="bottomtable5">
+                            □ トライアル/ダウンロード<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Trial" class="link" style="text-indent:-100px">トライアル</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Appexchange" class="link">AppExchange</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Data download" class="link">データダウンロード</a><br/>
+                        </div>
+                        <div class="bottomtable6">
+                            □ コンタクト<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Customer Support"
+                               class="link">カスタマーサポート</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Partner Support"
+                               class="link">パートナーサポート</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Solutions or Services" class="link">ソリューションに関するお問い合わせ</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Hearing Sheet" class="link">ヒアリング・シート</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#FAQ and Public Solutions" class="link">FAQとパブリックソリューション</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Technical Issue"
+                               class="link">技術的な問題に関するお問い合わせ</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Server Status" class="link">サーバーステータス</a><br/>
+                        </div>
+                        <div class="bottomtable7">
+                            □ 会社概要<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Greetings" class="link">ご挨拶</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Our team" class="link">社員紹介</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Japan Headquater" class="link">日本本社</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Vietnam Office" class="link">ベトナム支社</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Career in AFR" class="link">AFRで働く</a>
+                        </div>
+                    </div>
+                    <!--------------------------- bottom menu end ------------------------------->
+                </div>
+            </div>
+            <div id="footer" style="height:64px;background-color:#bfbfbf;">
+                <div style="background-color:#948F8F;">
+                    <meta charset="utf-8"/>
+                    <meta name="description" content="AFRソリューションズ株式会社 ホームページ"/>
+                    <title>AFRソリューションズ株式会社 ホームページ</title>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRmenu.css?v=306"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRlogo.css?v=260"/>
+                    <style type="text/css">
+                        #textcenter {
+                            text-align: center;
+                            color: white;
+                            font-weight: bold;
+                            background-color: gray;
+                        }
+                    </style>
+                    <div id="textcenter">
+                        <br/>
+                        3-6-20, HIGASHI-OI, SHINAGAWA-KU, TOKYO<br/>
+                        Tel : 036-868-7838<br/>
+                        ⓒ&nbsp;2015. AFR SOLUTIONS CO., LTD all rights reserved.<br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </apex:outputPanel>
+    <!-- Korean -->
+    <apex:outputPanel rendered="{!language = 'ko'}">
+        <div id="AFRSolutions">
+            <div id="header" style="height:621px;">
+                <div>
+                    <meta charset="utf-8"/>
+                    <title>AFR Solutions</title>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRmenu.css?v=306"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRlogo.css?v=260"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbody.css?v=1812"/>
+                    <link rel="shortcut icon"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/logoicon.ico?v=2"/>
+                    <style type="text/css">
+                        #textcenter {
+                            text-align: center;
+                            color: white;
+                            font-weight: bold;
+                            background-color: gray;
+                        }
+
+                        @import url(//fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+                    </style>
+                    <style>
+                        /* ------------------------------------ image style --------------------------------------------*/
+
+                        .payZone img:hover {
+                            /* 위로 올리기
+                            background:#000;
+                            -moz-transform: translate3d(0, -100%, 0); /* position elements past bottom of layout */
+                            -webkit-transform: translate3d(0, -20%, 0);
+                            transform: translate3d(0, -20%, 0);
+                            -moz-transition: all 0.5s;
+                            -webkit-transition: all 0.5s;
+                            -ms-transition: all 0.5s;
+                            transition: all 0.5s;
+
+                        }
+                    </style>
+                    <!--------------------------------------- logo body ------------------------------------>
+                    <div id="logo">
+                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs?lang=ko"> <img
+                                src="https://afrs-developer-edition.ap6.force.com/afr/s/afrlogo.jpg?v=1"
+                                style="width:300px; height:100px;"/></a>
+                    </div>
+                    <div class="moveleft">
+                        <div class="payZone" style="">
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs?lang=vi"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Vietnam.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs?lang=en"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/America.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs?lang=ja"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Japan.png?v=1"
+                                    style="width:30px"/></a>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs?lang=ko"><img
+                                    src="https://afrs-developer-edition.ap6.force.com/afr/s/Korea.png?v=1"
+                                    style="width:30px"/></a>
+                        </div>
+                    </div>
+                    <!--------------------------------------- slide menu body ------------------------------------>
+                    <div id="topMenu">
+                        <ul>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution" class="menuLink">솔루션</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFor" class="submenuLink longLink">클라우드
+                                        포워딩(CloFor)</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloTra" class="submenuLink longLink">트래킹
+                                        서비스(CloTra)</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloSyn" class="submenuLink longLink">데이터동기화
+                                        서비스(CloSyn)</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFil" class="submenuLink longLink">AFR
+                                        Filling(CloFil)</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService" class="menuLink">서비스</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#DataInputService"
+                                           class="submenuLink longLink">데이터 입력 서비스</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#Development SF Service"
+                                           class="submenuLink longLink">Salesforce 도입컨설팅과 개발</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice" class="menuLink">가격</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Solution List Price"
+                                           class="submenuLink longLink">솔루션 가격</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Service List Price"
+                                           class="submenuLink longLink">서비스 가격</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#How to pay"
+                                           class="submenuLink longLink">지불방법</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Legal information"
+                                           class="submenuLink longLink">법률정보</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength" class="menuLink">특징</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cost Competitive"
+                                           class="submenuLink longLink">가격 경쟁력</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Speed and Flexibility"
+                                           class="submenuLink longLink">신속함, 유연성</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Accessibility"
+                                           class="submenuLink longLink">접근성<br/>/보안/백업</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Real Time Performance"
+                                           class="submenuLink longLink">리얼타임 퍼포먼스</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cargo Process"
+                                           class="submenuLink longLink">화물정보처리</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown" class="menuLink">체험판/다운로드</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Trial"
+                                           class="submenuLink longLink">체험판</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Appexchange"
+                                           class="submenuLink longLink">AppExchange</a>
+                                    </li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Data download"
+                                           class="submenuLink longLink">다운로드</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs" class="menuLink">문의사항</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Customer Support"
+                                           class="submenuLink longLink">고객지원</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Partner Support"
+                                           class="submenuLink longLink">파트너지원</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Solutions or Services"
+                                           class="submenuLink longLink">솔루션/서비스 지원</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Hearing Sheet"
+                                           class="submenuLink longLink">설문조사</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#FAQ and Public Solutions"
+                                           class="submenuLink longLink">FAQ</a></li>
+                                    <li>
+                                        <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Technical Issue"
+                                           class="submenuLink longLink">기술지원</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Server Status"
+                                           class="submenuLink longLink">서버현황확인 지원</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                            </li>
+                            <li>|</li>
+                            <li class="topMenuLi">
+                                <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs" class="menuLink">회사소개</a>
+                                <ul class="submenu">
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Greetings" class="submenuLink longLink">인사의
+                                        말</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Our team" class="submenuLink longLink">담당자
+                                        소개</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Japan Headquater"
+                                           class="submenuLink longLink">일본 본사</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Vietnam Office"
+                                           class="submenuLink longLink">베트남 지사</a></li>
+                                    <li><a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Career in AFR"
+                                           class="submenuLink longLink">AFR
+                                        채용정보</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mainimage">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/aboutus.jpg?v=2" height="400px;"
+                             width="1400px;"/>
+                    </div>
+                </div>
+            </div>
+            <div style="overflow:hidden;height:5911px;">
+                <div style="height:5500px;">
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRtitle.css?v=174"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbody.css?v=1812"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3line.css?v=101"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3linecontent.css?v=943"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3linetitle.css?v=815"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRline.css?v=220"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRtable.css?v=276"/>
+                    <style type="text/css">
+                        @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+                        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+                        #orangeline {
+                            margin: 0.5px;
+                            text-align: center;
+                        }
+
+                        body {
+                            overflow-x: hidden
+                        }
+
+                        <!-- about us start------------------------------------>
+                    </style>
+                    <!-------- title --------------->
+                    <div class="wrapk">
+                        <br/>
+                        <a name="Greetings">인사의 말씀</a>
+                    </div>
+                    <div class="orangeline">
+                    </div>
+                    <!-------- body --------------->
+                    <br/><br/><br/><br/><br/>
+                    <!------------------------------------------------- Greetings start ------------------------------------------------------>
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        환영메세지
+                    </div>
+                    <div class="bodybody">
+                        <br/>
+                        AFR Solutions Co., LTD.의 홈페이지에 오신 것을 환영합니다!
+                        AFR(Advanced FReight forwarding)solutions co.,LTD는 2014년 2월에 설립되었습니다.<br/>
+                        AFR solutions co.,LTD는 Cloud 형식의 포괄적인 포워딩 솔루션을 전 세계의 포워더에게 공급하는 것을 목표로 하고 있습니다.<br/>
+                        또한 Salesforce의 글로벌 파트너로써 인증을 받고, 클라우드 포워딩 솔루션의 패키지는 Salesforce의 플랫폼을 기반으로 개발하고 있습니다.<br/>
+                        저희의 Cloud형식을 기반으로 한 포워딩 솔루션의 패키지는 실적에 대응하는 투명성을 가지고, 업무의 효율화, End-to-End의 서플라이 체인의 가시성을 확인할 수
+                        있습니다.<br/>
+                        그리고 수익을 극대화를 위해 신속성과 기동성을 가지고 시장을 리드하는 커스텀 서비스를 실현하고 있습니다.
+                        <br/><br/>
+                        <!-------------------------------------------------  Greetings end ------------------------------------------------------>
+                        <div class="grayline">
+                            <br/>
+                        </div>
+                        <!------------------------------------------------- Our Team start ------------------------------------------------------>
+                        <!-------- title --------------->
+                        <div class="wrapk">
+                            <br/><br/>
+                            <a name="Our team">담당자 소개</a>
+                        </div>
+                        <div class="orangeline"></div>
+                        <br/>
+                    </div>
+                    <!-------------------------------  Our Team's 1st line start----------------------------------->
+                    <!-------- Our Team's 1st line image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/Kwon1.jpg?v=3"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://c.ap2.content.force.com/servlet/servlet.ImageServer?id=01528000004N2tz&oid=00D28000000rCfy&lastMod=1497669190000"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://c.ap2.content.force.com/servlet/servlet.ImageServer?id=01528000004LMcV&oid=00D28000000rCfy&lastMod=1494576807000"
+                             style="width:300px; height:200px;"/>
+                    </div>
+                    <!--------  Our Team's 1st line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            권혁필(MANAGING DIRECTOR)<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            HOÀNG ANH HUY( CHIEF OF PRESENTATIVE OFFICE)<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            LAM NGUYEN QUANG MINH(SENIOR CONSULTANT)<br/>
+                        </div>
+                    </div>
+                    <!-------- Our Team's 1st line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            ・국적: 한국<br/>
+                            ・근무지 : 일본본사<br/>
+                            ・경력 : 비지니스 컨설팅 10년 이상 경력, 5년간 일본 포워딩 영업, 메니지먼트 경력<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・국적: 베트남<br/>
+                            ・근무지 : 베트남영업소<br/>
+                            ・경력 : 10년 이상의 베트남 포워딩 업무 및 영업관리<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・국적: 베트남<br/>
+                            ・근무지 : 베트남영업소<br/>
+                            ・경력 : 2년 이상의 포워딩 경력<br/>
+                        </div>
+                    </div>
+                    <!------------------------------- Our Team's 1st line end----------------------------------->
+                    <!------------------------------- Our Team's 2nd line end----------------------------------->
+                    <!-------------------------------  Our Team's 2nd line start----------------------------------->
+                    <!-------- Our Team's first line image--------------->
+                    <div class="firstshot">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/Khanh.jpg?v=3"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                        <img src="https://c.ap2.content.force.com/servlet/servlet.ImageServer?id=01528000004N8EO&oid=00D28000000rCfy&lastMod=1497837575000"
+                             style="margin-right:80px; width:300px; height:200px;"/>
+                      
+                    </div>
+                    <!--------  Our Team's 2nd line title--------------->
+                    <div class="threelinetitlediv">
+                        <div class="threelinetitle">
+                            PHAM KHANH(Salesforce DEVELOPMENT MANAGER)<br/>
+                        </div>
+                        <div class="threelinetitle">
+                            DAO MINH DUC(ADDY, CONSULTANT EXECUTIVE)<br/>
+                        </div>
+                        <div class="threelinetitle">
+                       
+                        </div>
+                    </div>
+                    <!-------- Our Team's 2nd line content--------------->
+                    <div class="threelinecontent">
+                        <div class="threelinebody">
+                            ・국적: 베트남<br/>
+                            ・근무지 : 베트남영업소<br/>
+                            ・경력 : 5년 이상 Salesforce 개발 경력 및 10년 이상 JAVA 개발경력<br/>
+                        </div>
+                        <div class="threelinebody">
+                            ・국적: 베트남<br/>
+                            ・근무지 : 베트남영업소<br/>
+                            ・경력 : 1년 이상의 베트남 포워딩 업무 및 영업관리<br/>
+                        </div>
+                        <div class="threelinebody">
+                           
+                        </div>
+                    </div>
+                    <br/><br/>
+                    <!------------------------------- Our Team's 2nd line end----------------------------------->
+                    <div class="grayline">
+                    </div>
+                    <!---------------------- about us end ------------------------------------>
+                    <!----------------------  How to access JAPAN HEADQUARTER ------------------------------------>
+                    <!-------- title --------------->
+                    <div class="wrapk">
+                        <br/>
+                        <a name="Japan Headquater">일본본사</a>
+                    </div>
+                    <div class="orangeline"></div>
+                    <!-------- title --------------->
+                    <br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        <a name="Company profile">일본본사정보</a>
+                    </div>
+                    <div class="aboutusmap">
+                        ・회사명 : AFR Solutions Co., LTD<br/>
+                        ・설립일자 : 2014/02/21<br/>
+                        <br/>
+                        ・회사대표 : HYUKPEEL KWON<br/>
+                        <br/>
+                        ・주소　 : 3-6-20 3F, HIGASHI-OI, SHINAGAWA-KU, <br/>TOKYO<br/>
+                        <br/>
+                        ・전화번호　 :+81(0)3-6868-7838<br/>
+                        <br/>
+                        ・서비스 <br/>
+                        <blockquote>
+                            -시스템 개발 및 판매<br/>
+                            -시스템 유지보수 지원<br/>
+                            -인력파견업무<br/>
+                            -수출/수입 업무 및 무역업무대행<br/>
+                            -그 외 위의 업무와 관련된 모든 비지니스 활동 전반<br/>
+                            <br/>
+                        </blockquote>
+                    </div>
+                    <div class="aboutusmapimage">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d811.0059338085534!2d139.7392942291656!3d35.602481089182966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188a787d2bb4e b%3A0xa602ace1b2ee31d8!2s3+Chome-6-20+Higashi%C5%8Di%2C+Shinagawa-ku%2C+T%C5%8Dky%C5%8D-to+140-0011!5e0!3m2!1sen!2sjp!4v1455267165437"
+                                style="border:0" allowfullscreen="" frameborder="0" height="450" width="500"></iframe>
+                    </div>
+                    <!---------------------- how to access table start ------------------------------------>
+                    <div class="bodytitle">
+                        <br/><br/>
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        <a name="Company profile">How to access</a>
+                    </div>
+                    <div class="aboutustable">
+                        <table class="alltable">
+                            <!----------- title line ---------------->
+                            <tbody>
+                            <tr>
+                                <td class="tabletop">
+                                    지하철/전철 이름<br/>
+                                </td>
+                                <td class="tabletop">
+                                    역명
+                                </td>
+                                <td class="tabletop">
+                                    출구
+                                </td>
+                                <td class="tabletop">
+                                    도보 소요시간
+                                </td>
+                                <td class="tabletop">
+                                    그 외
+                                </td>
+                            </tr>
+                            <!----------- line 1 ---------------->
+                            <tr>
+                                <td class="intable">
+                                    케이힌 토호구 선<br/>（京浜東北線）
+                                </td>
+                                <td class="intable">
+                                    오이마치 역
+                                </td>
+                                <td class="intable">
+                                    JR 서쪽 출구
+                                </td>
+                                <td class="intable">
+                                    도보 10분
+                                </td>
+                                <td class="intable">
+                                </td>
+                            </tr>
+                            <!----------- line 2 ---------------->
+                            <tr>
+                                <td class="intable">
+                                    토큐 오이마치 선<br/>(東急大井町線）
+                                </td>
+                                <td class="intable">
+                                    오이마치 역
+                                </td>
+                                <td class="intable">
+                                </td>
+                                <td class="intable">
+                                    도보 10분
+                                </td>
+                                <td class="intable">
+                                </td>
+                            </tr>
+                            <!----------- line 3 ---------------->
+                            <tr>
+                                <td class="intable">
+                                    린카이 선<br/>（りんかい線）
+                                </td>
+                                <td class="intable">
+                                    오이마치 역
+                                </td>
+                                <td class="intable">
+                                </td>
+                                <td class="intable">
+                                    도보 10분
+                                </td>
+                                <td class="intable">
+                                </td>
+                            </tr>
+                            <!----------- line 4 ---------------->
+                            <tr>
+                                <td class="intable">
+                                    케이큐 선（京急線）
+                                </td>
+                                <td class="intable">
+                                    사메즈역, 타치아이가와 역
+                                </td>
+                                <td class="intable">
+                                </td>
+                                <td class="intable">
+                                    도보 5분
+                                </td>
+                                <td class="intable">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!---------------------- JAPAN HEADQUARTER table end ------------------------------------>
+                    <!---------------------- JAPAN HEADQUARTER end ------------------------------------>
+                    <br/><br/>
+
+                    <div class="grayline">
+                    </div>
+                    <!----------------------  How to access Vietnam REP office ------------------------------------>
+                    <!-------- title --------------->
+                    <div class="wrapk">
+                        <br/>
+                        <a name="Vietnam Office">베트남영업소</a>
+                    </div>
+                    <div class="orangeline"></div>
+                    <br/><br/>
+                    <!-------- title --------------->
+                    <br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        <a name="Company profile">베트남 지사정보</a>
+                    </div>
+                    <div class="aboutusmap">
+                        ・회사명 : AFR Solutions REP Office<br/>
+                        ・설립일자 : 2016/02/29<br/>
+                        <br/>
+                        ・회사대표 : HYUKPEEL KWON<br/>
+                        <br/>
+                        ・주소　 : 11th Floor, HAI AU BUILDING, 39B TRUONG SON STREET, WARD 4, TAN BINH DISTRICT, HO CHI MINH CITY, VIETNAM<br/>
+                        <br/>
+                        ・전화번호　 :+849-3212-3966<br/>
+                        <br/>
+                        ・이메일 주소: vietnam1@afr-solutions.com, vietnam2@afr-solutions.com
+                        <br/>
+                        ・팬 페이지: https://www.facebook.com/CloSCM/<br/>
+                        <br/>
+                        ・서비스 <br/>
+                        <blockquote>
+                            -CloFor 마케팅 및 판매<br/>
+                            -Salesforce 개발<br/>
+                            -Salesforce 유지보수 지원<br/>
+                            -포워딩 업무 프로세스 아웃소싱<br/>
+                            -회계/급여관리 업무 아웃소싱<br/>
+                        </blockquote>
+                    </div>
+                    <br/><br/>
+ <div class="aboutusmapimage">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9321.058439654113!2d106.66265286308469!3d10.809602691415813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x39c6a032b072cee7!2sHai+Au+building!5e0!3m2!1sja!2sjp!4v1503091680872" 
+                         style="border:0" allowfullscreen="" frameborder="0" height="450" width="500"></iframe>
+</div>
+
+                    <!---------------------- Company profile table end ------------------------------------>
+                    <!---------------------- Company profile end ------------------------------------>
+                    <div class="grayline">
+                    </div>
+ 
+                    <!---------------------- Company profile table end ------------------------------------>
+                    <!---------------------- Company profile end ------------------------------------>
+                    <div class="grayline">
+                    </div>
+                    <!----------------------Career in AFR start ------------------------------------>
+                    <!-------- title --------------->
+                    <div class="wrapk">
+                        <br/>
+                        <a name="Career in AFR">AFR 채용정보</a>
+                    </div>
+                    <div class="orangeline">
+                    </div>
+                    <!-------- body --------------->
+                    <br/><br/><br/>
+
+                    <div class="bodytitle">
+                        <img src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1"
+                             width="12px"/>
+                        your carrer made with AFR solutions.<br/><br/>
+                    </div>
+                    <div class="bodybody">
+                        AFR solutions Co.,LTD is Japan Based IT solution company. Also our company is one of certified
+                        global partner of Salesforce.com.<br/>
+                        These days, forwarding industry is getting bigger and becoming more competitive as the number of
+                        forwarders entering the market increases.<br/>
+                        Our solution is CloFor, support forwadring and document opration to customers.<br/>
+                        we are looking for highly ambitious and movtivated candidates to join us to meet this new
+                        challenges.<br/>
+                        For more information, please download about details.<br/>
+                        <br/>
+                    </div>
+                    <div class="bodybody">
+                        Open Position1: Forwarding Solution Consultant - Document Operation Experience<br/>
+                        <a href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR_SolutionsJOb_Description-Forwarding_Solutuion_ConsultantDoc_Operation_Experience_Vietnam.pdf?v=1"
+                           class="hyperlink">Download Here!</a>
+                    </div>
+                    <br/>
+
+                    <div class="bodybody">
+                        Open Position2: Forwarding Solution Consultant - Accounting Experience<br/>
+                        <a href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR_SolutionsJOb_Description-Forwarding_Solutuion_ConsultantAccounting_Experience_Vietnam.pdf?v=1"
+                           class="hyperlink">Download Here!</a>
+                    </div>
+                    <br/><br/>
+                    <!------------------------------- Career in AFR end----------------------------------->
+                    <!---------------------- Career in AFR end ------------------------------------>
+                </div>
+            </div>
+            <div style="background-color:#bfbfbf;height:400px;">
+                <div>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbottomtable.css?v=2534"/>
+                    <meta charset="utf-8"/>
+                    <style type="text/css">
+                        @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+                        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+                        html, body {
+                            width: 100%;
+                            height: 100%
+                        }
+
+                        body {
+                            margin: 0;
+                            padding: 0;
+                        }
+                    </style>
+                    <!------------------------------ bottom menu end --------------------------------->
+                    <div class="absolute1">
+                        <div class="bottomtable1">
+                            □ 솔루션<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFor" class="link">클라우드 포워딩(CloFor)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloTra" class="link">트래킹 서비스(CloTra)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloSyn" class="link">데이터동기화
+                                서비스(CloSyn)</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HSolution#CloFil" class="link">AFR
+                                Filling(CloFil)</a><br/>
+                        </div>
+                        <div class="bottomtable2">
+                            □ 서비스<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#DataInputService" class="link">데이터 입력
+                                서비스</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HService#Development SF Service" class="link">Salesforce
+                                도입컨설팅과 개발</a><br/>
+                        </div>
+                        <div class="bottomtable3">
+                            □ 가격<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Solution List Price" class="link hover">솔루션
+                                가격</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Service List Price" class="link">서비스 가격</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#How to pay" class="link">지불방법</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HPrice#Legal information" class="link">법률정보</a>
+                        </div>
+                        <div class="bottomtable4">
+                            □ 특징<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cost Competitive" class="link">가격 경쟁력</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Speed and Flexibility" class="link">신속함,
+                                유연성</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Accessibility" class="link">접근성/보안/백업</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Real Time Performance" class="link">리얼타임
+                                퍼포먼스</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HStrength#Cargo Process" class="link">화물정보처리</a>
+                        </div>
+                        <div class="bottomtable5">
+                            □ 체험판/다운로드<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Trial" class="link"
+                               style="text-indent:-100px">체험판</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Appexchange" class="link">AppExchange</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HTrailDown#Data download" class="link">다운로드</a><br/>
+                        </div>
+                        <div class="bottomtable6">
+                            □ 문의사항<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Customer Support" class="link">고객지원</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Partner Support" class="link">파트너지원</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Solutions or Services" class="link">솔루션/서비스
+                                지원</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Hearing Sheet" class="link">설문조사</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#FAQ and Public Solutions"
+                               class="link">FAQ</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Inquiry for Technical Issue"
+                               class="link">기술지원</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HContactUs#Server Status" class="link">서버현황확인 지원</a><br/>
+                        </div>
+                        <div class="bottomtable7">
+                            □ About Us<br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Greetings" class="link">인사의 말</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Our team" class="link">담당자 소개</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Japan Headquater" class="link">일본 본사</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Vietnam Office" class="link">베트남 지사</a><br/>
+                            <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/HAboutUs#Career in AFR" class="link">AFR 채용정보</a><br/>
+                        </div>
+                    </div>
+                    <!------------------------------ bottom menu end --------------------------------->
+                </div>
+            </div>
+            <div id="footer" style="height:64px;background-color:#bfbfbf;">
+                <div style="background-color:#948F8F;">
+                    <meta name="description" content="AFR Solutions Homepage" charset="utf-8"/>
+                    <title>AFR Solutions Homepage</title>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRmenu.css?v=306"/>
+                    <link rel="stylesheet" type="text/css"
+                          href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRlogo.css?v=260"/>
+                    <style type="text/css">
+                        #textcenter {
+                            text-align: center;
+                            color: white;
+                            font-weight: bold;
+                            background-color: gray;
+                        }
+                    </style>
+                    <div id="textcenter">
+                        <br/>
+                        3-6-20, HIGASHI-OI, SHINAGAWA-KU, TOKYO<br/>
+                        Tel : 036-868-7838<br/>
+                        ⓒ&nbsp;2015. AFR SOLUTIONS CO., LTD all rights reserved.<br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </apex:outputPanel>
+</apex:page>

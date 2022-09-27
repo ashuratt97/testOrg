@@ -1,0 +1,111 @@
+<apex:page showHeader="false" sidebar="false" docType="html-5.0">
+    <head>
+        <title>
+            legal </title>
+        <script type="text/javascript">
+            //<![CDATA[
+            try {
+                (function () {
+                    var w = self, l, p, o;
+                    if (w && top) {
+                        for (; w !== top && (p = w.parent) && p !== w && (o = p.location) && o.protocol === (l = w.location).protocol && (o.host === l.host || (p.document && p.document.domain === w.document.domain)); w = p);
+                        if (w !== top)throw "";
+                    }
+                    ({
+                        f: function () {
+                            document.documentElement ? document.documentElement.style.display = "" : (!this.a && (this.a = 10), this.a < 1E5 && (window.sfdcRetryShowWindow = this) && setTimeout("sfdcRetryShowWindow.f()", this.a), this.a *= 2)
+                        }
+                    }.f())
+                })();
+            } catch (e) {
+                if (top !== self)top.location = location; else throw e;
+            }//]]></script>
+        <link href="https://afrs-developer-edition.ap6.force.com/afr/s/SiteStyleSheet?v=64" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="https://afrs-developer-edition.ap6.force.com/afr/s/sfsites/assets/Scripts/jquery/jquery.js?r=1.201606172351470929">
+        </script>
+        <script type="text/javascript"
+                src="https://afrs-developer-edition.ap6.force.com/afr/s/sfsites/assets/Scripts/Runtime/PicassoRuntime.js?r=1.201606172351470929">
+        </script>
+    </head>
+    <body itemid="body">
+    <div id="legal">
+        <div id="header">
+            &nbsp;      
+        </div>
+        <div id="content" style="overflow:hidden;">
+            <div>
+                1.Agreements &amp; Terms<br/>
+                Customer agreements and user terms for products and services<br/>
+                <br/>
+                2.Privacy<br/>
+                Privacy Statements<br/>
+                Learn about our commitment to privacy protection<br/>
+                <br/>
+                2.1 Information collected<br/>
+                •When you request additional information or register on Afr-solutions.com’s Web site, the Company will
+                ask you to provide basic contact information.<br/>
+                •When you purchase Afr-solutions.com’s applications or services (the “Services”), the Company will ask
+                you to provide billing information.<br/>
+                •When you register for or attend corporate events, the Company will ask you to provide basic contact
+                information, billing information,
+                and information on your participation in the events on Afr-solutions.com’s Web sites.<br/>
+                •Salesforce.com uses common Internet technologies, such as cookies and Web beacons, to keep track of
+                interactions with the Company's Web sites and emails.<br/>
+                <br/>
+                2.2 Use of information<br/>
+                •Afr-solutions.com uses information collected to provide you with the services you request.<br/>
+                •Afr-solutions.com may use information collected to provide you with additional information about the
+                Company’s Services, partners, promotions, and events.<br/>
+                •Afr-solutions.com may use information collected to improve the Company’s Web sites and Services.<br/>
+                •Unless described in the full Privacy Statement, Afr-solutions does not share, sell, rent, or trade
+                personally identifiable information
+                with third parties for their promotional purposes. Salesforce.com may share information collected with
+                other companies that work on Salesforce.com’s behalf.<br/>
+                <br/>
+                2.3 Customer Data<br/>
+                •Customers of Afr-solutions.com may electronically submit data or information to the Company’s services
+                (“Customer Data”).<br/>
+                •Afr-solutions.com will not review, share, distribute, or reference any such Customer Data except as
+                provided in the Afr-solutions.com
+                Master Subscription Agreement, or as may be required by law. In accordance with the Afr-solutions.com
+                Master Subscription Agreement,
+                Afr-solutions.com may access Customer Data only for the purposes of providing the services, preventing
+                or addressing service or technical problems,
+                at a Customer’s request in connection with customer support matters, or as may be required by law.<br/>
+                <br/>
+                2.4 Communication preferences<br/>
+                •Every marketing email from Afr-solutions.com contains instructions on how to opt out of receiving
+                further marketing emails from the Company.<br/>
+                •If you provide Afr-solutions.com with contact information, you can manage how the Company uses your
+                information by accessing our Preference Center.<br/>
+                •You may manage your receipt of marketing and non-transactional communications by your unsubscribe email
+                to Afr-solutions.com.<br/>
+                <br/>
+                2.5 How to contact us<br/>
+                For more information about Afr-solutions.com’s information practices, please contact to
+                Info@Afr-solutions.com<br/>
+                <br/>
+                3.Intellectual Property<br/>
+                Notifying Afr-solutions.com of copyright infringement<br/>
+                <br/>
+                Information on trademarks, copyrights, and more<br/>
+                ==&gt;Trade mark; AFR, CloFor, CloTra, CloFil, CloSrc, CloSyn<br/>
+                <br/>
+                Summary of the Process<br/>
+                Here is a summary of the process: 1.If anyone believes that material on a salesforce.com-hosted website
+                infringes their copyright,
+                that person may send us a written notice as described below. We will attempt to remove or disable the
+                allegedly infringing material.<br/>
+                2.We will attempt to notify the user who posted the allegedly infringement material. That user then has
+                the right to request that the material be re-enabled. <br/>
+                If they properly make such a request, we will re-enable the material unless and until the two parties
+                jointly ask us to remove it or a court orders us to
+                remove it.<br/>
+            </div>
+        </div>
+        <div id="footer">
+            &nbsp;      
+        </div>
+    </div>
+    </body>
+</apex:page>

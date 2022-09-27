@@ -1,0 +1,413 @@
+<apex:page showHeader="false" sidebar="false">
+    <meta charset="utf-8"/>
+    <meta name="description" content="AFR Solutions Homepage"/>
+    <META HTTP-EQUIV="Content-type" CONTENT="text/html;"/>
+    <title>AFR Solutions Homepage</title>
+    
+
+
+    <link rel="stylesheet" type="text/css" href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRmenu.css?v=305"/>
+    <link rel="stylesheet" type="text/css" href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRlogo.css?v=260"/>
+    <link rel="stylesheet" type="text/css" href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRtitle.css?v=174"/>
+    <link rel="stylesheet" type="text/css" href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbody.css?v=1812"/>
+    <link rel="stylesheet" type="text/css" href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3line.css?v=101"/>
+    <link rel="shortcut icon" href="https://c.ap2.content.force.com/servlet/servlet.FileDownload?file=01528000001G7bh" type="image/x-icon"/>
+    <link rel="icon" href="https://c.ap2.content.force.com/servlet/servlet.FileDownload?file=01528000001G7bh" type="image/x-icon"/>
+    <link rel="icon" href="https://c.ap2.content.force.com/servlet/servlet.FileDownload?file=01528000001G7bh" type="image/png"/>
+    
+    <link rel="stylesheet" type="text/css" href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3linecontent.css?v=943"/>
+    <link rel="stylesheet" type="text/css" href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR3linetitle.css?v=815"/>
+    <link rel="stylesheet" type="text/css" href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRline.css?v=220"/>
+    <link rel="stylesheet" type="text/css" href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRmainpage.css?v=183"/>
+    <link rel="stylesheet" type="text/css" href="https://afrs-developer-edition.ap6.force.com/afr/s/AFRbottomtable.css?v=2534"/>
+
+
+    <style type="text/css">
+        #textcenter {
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            background-color: gray;
+        }
+
+        #orangeline {
+            margin: 0.5px;
+            text-align: center;
+        }
+
+        body {
+            overflow-x: hidden
+        }
+
+        .payZone img:hover {
+            -webkit-transform: translate3d(0, -20%, 0);
+            transform: translate3d(0, -20%, 0);
+            -moz-transition: all 0.5s;
+            -webkit-transition: all 0.5s;
+            -ms-transition: all 0.5s;
+            transition: all 0.5s;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        @import url(//fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+        @import url(https://fonts.googleapis.com/css?family=Montserrat);
+        @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+
+    </style>
+
+    <div>
+        <div id="content" style="overflow:hidden;height:522px;">
+            <div>
+
+                <!--------------------------------------- logo body ------------------------------------>
+                <div id="logo">
+                    <a href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR%20SOLUTIONS"> <img
+                            src="https://afrs-developer-edition.ap6.force.com/afr/s/afrlogo.jpg?v=1"
+                            style="width:300px; height:100px;"/></a>
+                </div>
+                <div class="moveleft">
+                    <div class="payZone" style="">
+                        <a href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR%20SOLUTIONSv"><img
+                                src="https://afrs-developer-edition.ap6.force.com/afr/s/Vietnam.png?v=1"
+                                style="width:30px"/></a>
+                        <a href="https://afrs-developer-edition.ap6.force.com/afr/s/"><img
+                                src="https://afrs-developer-edition.ap6.force.com/afr/s/America.png?v=1"
+                                style="width:30px"/></a>
+                        <a href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR%20SOLUTIONSj"><img
+                                src="https://afrs-developer-edition.ap6.force.com/afr/s/Japan.png?v=1"
+                                style="width:30px"/></a>
+                        <a href="https://afrs-developer-edition.ap6.force.com/afr/s/AFR%20SOLUTIONSk"><img
+                                src="https://afrs-developer-edition.ap6.force.com/afr/s/Korea.png?v=1"
+                                style="width:30px"/></a>
+                    </div>
+                </div>
+                <!--------------------------------------- slide menu body ------------------------------------>
+                <div id="topMenu">
+                    <ul>
+                        <li class="topMenuLi"><a href="http://afr.force.com/ensolution"
+                                                 class="menuLink">Solution</a>
+                            <ul class="submenu">
+                                <li><a href="http://afr.force.com/ensolution#CloFor"
+                                       class="submenuLink longLink">Cloud Forwarding(CloFor)</a></li>
+                                <li><a href="http://afr.force.com/ensolution#CloTra"
+                                       class="submenuLink longLink">Cloud Tracking(CloTra)</a></li>
+                                <li><a href="http://afr.force.com/ensolution#CloSyn"
+                                       class="submenuLink longLink">Cloud Syn(CloSyn)</a></li>
+                                <li><a href="http://afr.force.com/ensolution#CloFil"
+                                       class="submenuLink longLink">AFR Filling(CloFil)</a></li>
+                            </ul>
+                        </li>
+                        <li>|</li>
+                        <li class="topMenuLi"><a href="http://afr.force.com/enservice"
+                                                 class="menuLink">Service</a>
+                            <ul class="submenu">
+                                <li>
+                                    <a href="{!$Setup.AppConfigs__c.VP_HOST_URL__c}/Hservice#DataInputService"
+                                       class="submenuLink longLink">Data Input Service</a></li>
+                                <li>
+                                    <a href="http://afr.force.com/enservice#Development SF Service"
+                                       class="submenuLink longLink">Salesforce Implementation Consulting</a></li>
+                            </ul>
+                        </li>
+                        <li>|</li>
+                        <li class="topMenuLi"><a href="http://afr.force.com/enprice"
+                                                 class="menuLink">Price</a>
+                            <ul class="submenu">
+                                <li>
+                                    <a href="http://afr.force.com/enprice#Solution List Price"
+                                       class="submenuLink longLink">Solution List Price</a></li>
+                                <li>
+                                    <a href="http://afr.force.com/enprice#Service List Price"
+                                       class="submenuLink longLink">Service List Price</a></li>
+                                <li><a href="http://afr.force.com/enprice#How to pay"
+                                       class="submenuLink longLink">How to pay?</a></li>
+                                <li><a href="http://afr.force.com/enprice#Legal information"
+                                       class="submenuLink longLink">Legal information</a></li>
+                            </ul>
+                        </li>
+                        <li>|</li>
+                        <li class="topMenuLi"><a href="http://afr.force.com/enstrength"
+                                                 class="menuLink">Strength</a>
+                            <ul class="submenu">
+                                <li>
+                                    <a href="http://afr.force.com/enstrength#Cost Compatitive"
+                                       class="submenuLink longLink">Cost Compatitive</a></li>
+                                <li>
+                                    <a href="http://afr.force.com/enstrength#Speed and Flexibility"
+                                       class="submenuLink longLink">Speed and Flexibility</a></li>
+                                <li><a href="http://afr.force.com/enstrength#Accessibility"
+                                       class="submenuLink longLink">Accessibility<br/>/Security/Backup</a></li>
+                                <li>
+                                    <a href="http://afr.force.com/enstrength#Real Time Performance"
+                                       class="submenuLink longLink">Real Time Performance</a></li>
+                                <li><a href="http://afr.force.com/enstrength#Cargo Process"
+                                       class="submenuLink longLink">Cargo Process</a></li>
+                            </ul>
+                        </li>
+                        <li>|</li>
+                        <li class="topMenuLi"><a
+                                href="http://afr.force.com/entraildown"
+                                class="menuLink">Trial/Download</a>
+                            <ul class="submenu">
+                                <li><a href="http://afr.force.com/entraildown#Trial"
+                                       class="submenuLink longLink">Trial</a></li>
+                                <li>
+                                    <a href="http://afr.force.com/entraildown#Appexchange"
+                                       class="submenuLink longLink">AppExchange</a></li>
+                                <li>
+                                    <a href="http://afr.force.com/entraildown#Data download"
+                                       class="submenuLink longLink">Data download</a></li>
+                            </ul>
+                        </li>
+                        <li>|</li>
+                        <li class="topMenuLi"><a href="http://afr.force.com/entraildown"
+                                                 class="menuLink">Contact us</a>
+                            <ul class="submenu">
+                                <li>
+                                    <a href="http://afr.force.com/entraildown#Customer Support"
+                                       class="submenuLink longLink">Customer Support</a></li>
+                                <li>
+                                    <a href="http://afr.force.com/entraildown#Partner Support"
+                                       class="submenuLink longLink">Partner Support</a></li>
+                                <li>
+                                    <a href="http://afr.force.com/entraildown#Inquiry for Solutions"
+                                       class="submenuLink longLink">Inquiry for Solutions</a></li>
+                                <li>
+                                    <a href="http://afr.force.com/entraildown#Hearing Sheet"
+                                       class="submenuLink longLink">Hearing Sheet</a></li>
+                                <li>
+                                    <a href="http://afr.force.com/entraildown#FAQ &amp; Our Solutions"
+                                       class="submenuLink longLink">FAQ &amp; Our Solutions</a></li>
+                                <li>
+                                    <a href="http://afr.force.com/entraildown#Inquiry for Technical Issue"
+                                       class="submenuLink longLink">Inquiry for Technical Issue</a></li>
+                                <li>
+                                    <a href="http://afr.force.com/entraildown#Server Status"
+                                       class="submenuLink longLink">Server Status</a></li>
+                            </ul>
+                        </li>
+                        <li></li>
+                        <li>|</li>
+                        <li class="topMenuLi"><a href="http://afr.force.com/enaboutus"
+                                                 class="menuLink">About Us</a>
+                            <ul class="submenu">
+                                <li><a href="http://afr.force.com/enaboutus#Greetings"
+                                       class="submenuLink longLink">Greetings</a></li>
+                                <li><a href="http://afr.force.com/enaboutus#Our team"
+                                       class="submenuLink longLink">Our team</a></li>
+                                <li>
+                                    <a href="http://afr.force.com/enaboutus#Japan Headquater"
+                                       class="submenuLink longLink">Japan Headquater</a></li>
+                                <li>
+                                    <a href="http://afr.force.com/enaboutus#Vietnam Office"
+                                       class="submenuLink longLink">Vietnam Office</a></li>
+                                <li><a href="http://afr.force.com/enaboutus#Korea Office"
+                                       class="submenuLink longLink">Korea Office</a></li>
+                                <li>
+                                    <a href="http://afr.force.com/enaboutus#Career in AFR"
+                                       class="submenuLink longLink">Career in AFR</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mainimage"><img src="https://afrs-developer-edition.ap6.force.com/afr/s/mainpage.jpg?v=1"
+                                            height="400px;" width="1400px;"/></div>
+            </div>
+        </div>
+        <div style="overflow:hidden;height:4659px;">
+            <div style="height:1158px;">
+
+                <!-------- title --------------->
+                <!-------- title --------------->
+                <div class="orangetitle"><br/> Welcome to AFR Solutions co.,ltd!</div>
+                <!-------- body --------------->
+                <!------------------------------------ Main page contents start --------------------------------------->
+                <!------------------------------- Main page contents 1st line start----------------------------------->
+                <!-------- body ---------------><br/><br/><br/><br/><br/>
+
+                <div class="bodytitle"><img
+                        src="https://afrs-developer-edition.ap6.force.com/afr/s/orangecircle.png?v=1" width="12px"/> <a
+                        name="Greetings">Greetings</a></div>
+                <div class="bodybody"><br/> Welcome to our AFR Solutions Co., LTD.! Website. AFR stands for Advanced
+                    FoRwarding.<br/> The role of freight forwarding(NVOCC, Consolidator, International Logistics, etc.)
+                    <br/> is more important than ever before. <br/> In today's fast-paced and global network
+                    environment, faster deliveries and more effecient services are demanded by people at lower
+                    prices.<br/> Forwarding industry is getting bigger and becoming more competitive as the number of
+                    forwarders entering the market increases.<br/> <br/> Here are the 5 benefits you will receive from
+                    our solutions.<br/> ・Cloud forwarding solution enables you to keep track of the entire freight
+                    forwarding process and document operation.<br/> ・One-stop-solution for forwarding and customer
+                    management with the Salesforce CRM Basic function.<br/> ・One time Input only.<br/> ・Print-out
+                    function in various languages and templates.<br/> ・Your tablet or smartphone will become your
+                    powerful tool for business operation.<br/> <br/> Please explore our solutions and services to
+                    experience efficient business system with minimized potential human errors. <br/><br/><br/></div>
+                <div class="orangetest3"><br/></div>
+                <div class="wrap"><br/> <a name="Customer Support">Announcement</a></div>
+                <div class="orangeline"></div>
+                Here is the latest news in AFR solutions! <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/><br/>
+                <br/> <br/>
+
+                <div class="orangetest2">
+                    <div class="whitetitle"><br/> Our Mission</div>
+                    <div class="firstshot"><img
+                            src="http://afr.force.com/enservicew.png?v=1"
+                            style="margin-right:170px; width:200px; height:200px;"/> <img
+                            src="https://afrs-developer-edition.ap6.force.com/afr/s/efficiency.png?v=1"
+                            style="margin-right:180px; width:200px; height:200px;"/> <img
+                            src="https://afrs-developer-edition.ap6.force.com/afr/s/performance.png?v=1"
+                            style="width:200px; height:200px;"/></div>
+                    <br/>
+                    <!-------- Application Concepts's 1st line title--------------->
+                    <div class="threelinetitledivw">
+                        <div class="threelinetitlew"> SERVICE</div>
+                        <div class="threelinetitlew"> EFFICIENCY</div>
+                        <div class="threelinetitlew"> PERFORMANCE</div>
+                    </div>
+                </div>
+                <div class="whiteback">
+                    <div class="content">
+                        <div class="contenttitle"> Our Solution</div>
+                        <br/> Cloud forwarding solution enables you to keep track of the entire freight forwarding
+                        process and document operation. <br/> <a
+                            href="http://afr.force.com/ensolution" class="hyperlink">Get
+                        more!</a></div>
+                    <div class="contentimage"><img
+                            src="https://afrs-developer-edition.ap6.force.com/afr/s/forwarding.png?v=2"
+                            style="margin-right:170px; width:350px; height:350px;"/></div>
+                </div>
+                <div class="orangetest">
+                    <div class="content2">
+                        <div class="whitetitle2"> Our Services</div>
+                        <br/> Your tablet or smartphone will become your powerful tool for business operation. <br/> <a
+                            href="http://afr.force.com/enservice" class="hyperlink">Get
+                        more!</a></div>
+                    <div class="contentimage2"><img
+                            src="https://afrs-developer-edition.ap6.force.com/afr/s/smartphone.png?v=1"
+                            style="margin-right:170px; width:350px; height:350px;"/></div>
+                </div>
+                <div class="whiteback">
+                    <div class="content">
+                        <div class="contenttitle"> Reasonable Cost</div>
+                        <br/> Cloud forwarding solution enables you to keep track of the entire freight forwarding
+                        process and document operation. <br/> <a
+                            href="http://afr.force.com/enprice" class="hyperlink">Get
+                        more!</a></div>
+                    <div class="contentimage"><img
+                            src="https://afrs-developer-edition.ap6.force.com/afr/s/forwarding.png?v=2"
+                            style="margin-right:170px; width:350px; height:350px;"/></div>
+                </div>
+                <div class="orangetest">
+                    <div class="content2">
+                        <div class="whitetitle2"> FREE Trial and Download</div>
+                        <br/> Your tablet or smartphone will become your powerful tool for business operation. <br/> <a
+                            href="http://afr.force.com/entraildown"
+                            class="hyperlink">Get more!</a></div>
+                    <div class="contentimage2"><img
+                            src="https://afrs-developer-edition.ap6.force.com/afr/s/smartphone.png?v=1"
+                            style="margin-right:170px; width:350px; height:350px;"/></div>
+                </div>
+                <div class="whiteback">
+                    <div class="content">
+                        <div class="contenttitle"> Contact Us!</div>
+                        <br/> Cloud forwarding solution enables you to keep track of the entire freight forwarding
+                        process and document operation. <br/> <a
+                            href="http://afr.force.com/entraildown" class="hyperlink">Get
+                        more!</a></div>
+                    <div class="contentimage"><img
+                            src="https://afrs-developer-edition.ap6.force.com/afr/s/forwarding.png?v=2"
+                            style="margin-right:170px; width:350px; height:350px;"/></div>
+                </div></div>
+        </div>
+        <div style="overflow:hidden;height:383px;background-color:#BFBFBF;">
+            <div>
+
+                <div class="absolute1">
+                    <div class="bottomtable1"> □ Solution<br/> <a
+                            href="http://afr.force.com/ensolution#CloFor" class="link">Cloud
+                        Forwarding(CloFor)</a><br/> <a
+                            href="http://afr.force.com/ensolution#CloTra" class="link">Tracking
+                        Service(CloTra)</a><br/> <a
+                            href="http://afr.force.com/ensolution#CloSyn" class="link">Cloud
+                        Syn(CloSyn)</a><br/> <a
+                            href="http://afr.force.com/ensolution#CloFil" class="link">AFR
+                        Filling(CloFil)</a><br/></div>
+                    <div class="bottomtable2"> □ Service<br/> <a
+                            href="http://afr.force.com/enservice#DataInputService"
+                            class="link">Data Input Service(CloSor)</a><br/> <a
+                            href="http://afr.force.com/enservice#Development SF Service"
+                            class="link">Salesforce Implementation <br/>
+
+                        <div style="margin-bottom:-20px;">Consulting</div>
+                    </a><br/></div>
+                    <div class="bottomtable3"> □ Price<br/> <a
+                            href="http://afr.force.com/enprice#Solution List Price"
+                            class="link hover">Solution List Price</a><br/> <a
+                            href="http://afr.force.com/enprice#Service List Price"
+                            class="link">Service List Price</a><br/> <a
+                            href="http://afr.force.com/enprice#How to pay" class="link">How
+                        to pay?</a><br/> <a
+                            href="http://afr.force.com/enprice#Legal information"
+                            class="link">Legal information</a></div>
+                    <div class="bottomtable4"> □ Strength<br/> <a
+                            href="http://afr.force.com/enstrength#Cost Compatitive"
+                            class="link">Cost Compatitive</a><br/> <a
+                            href="http://afr.force.com/enstrength#Speed and Flexibility"
+                            class="link">Speed and Flexibility</a><br/> <a
+                            href="http://afr.force.com/enstrength#Accessibility"
+                            class="link">Accessibility/Security/Backup</a><br/> <a
+                            href="http://afr.force.com/enstrength#Real Time Performance"
+                            class="link">Real Time Performance</a><br/> <a
+                            href="http://afr.force.com/enstrength#Cargo Process"
+                            class="link">Cargo Process</a></div>
+                    <div class="bottomtable5"> □ Trail/Download<br/> <a
+                            href="http://afr.force.com/entraildown#Trial"
+                            class="link" style="text-indent:-100px">Trial</a><br/> <a
+                            href="http://afr.force.com/entraildown#Appexchange"
+                            class="link">AppExchange</a><br/> <a
+                            href="http://afr.force.com/entraildown#Data download"
+                            class="link">Data download</a><br/></div>
+                    <div class="bottomtable6"> □ Contact us<br/> <a
+                            href="http://afr.force.com/entraildown#Customer Support"
+                            class="link">Customer Support</a><br/> <a
+                            href="http://afr.force.com/entraildown#Partner Support"
+                            class="link">Partner Support</a><br/> <a
+                            href="http://afr.force.com/entraildown#Inquiry for Solutions"
+                            class="link">Inquiry for Solutions</a><br/> <a
+                            href="http://afr.force.com/entraildown#Hearing Sheet"
+                            class="link">Hearing Sheet</a><br/> <a
+                            href="http://afr.force.com/entraildown#FAQ &amp; Our Solutions"
+                            class="link">FAQ &amp; Our Solutions</a><br/> <a
+                            href="http://afr.force.com/entraildown#Inquiry for Technical Issue"
+                            class="link">Inquiry for Technical Issue</a><br/> <a
+                            href="http://afr.force.com/entraildown#Server Status"
+                            class="link">Server Status</a><br/></div>
+                    <div class="bottomtable7"> □ About Us<br/> <a
+                            href="http://afr.force.com/enaboutus#Greetings" class="link">Greetings</a><br/>
+                        <a href="http://afr.force.com/enaboutus#Our team" class="link">Our
+                            team</a><br/> <a
+                                href="http://afr.force.com/enaboutus#Japan Headquater"
+                                class="link">Japan Headquater</a><br/> <a
+                                href="http://afr.force.com/enaboutus#Vietnam Office"
+                                class="link">Vietnam Office</a><br/> <a
+                                href="http://afr.force.com/enaboutus#Korea Office"
+                                class="link">Korea Office</a><br/> <a
+                                href="http://afr.force.com/enaboutus#Career in AFR"
+                                class="link">Career in AFR</a></div>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <div>
+                <div id="textcenter"><br/> 3-6-20, HIGASHI-OI, SHINAGAWA-KU, TOKYO<br/> Tel : 036-868-7838<br/> ⓒ&nbsp;2015.
+                    AFR SOLUTIONS CO., LTD all rights reserved.<br/></div>
+            </div>
+        </div>
+    </div>
+</apex:page>
